@@ -1,0 +1,21 @@
+.sticky-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    padding: 20px !important;
+    z-index: 200;
+    background-color: white;
+}
+
+
+@media (max-width:800px) {
+    .disp-none-xs {
+        display: none !important;
+    }
+
+    .never-clear {
+        display: block !important;
+    }
+    
+}

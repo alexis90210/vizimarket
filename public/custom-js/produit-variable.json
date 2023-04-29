@@ -1,0 +1,34 @@
+[
+    {
+        "attribut_id" : "1",
+        "nom_attribut" : "Couleur",
+        "termes" : [
+            {
+                "terme_id" : "1",
+                "nom_terme" : "Rouge",
+                "valeur" :"#0000"
+            },
+            {
+                "terme_id" : "2",
+                "nom_terme" : "Vert",
+                "valeur" :"#000"
+            }
+        ]
+    },
+    {
+        "attribut_id" : "2",
+        "nom_attribut" : "Taille",
+        "termes" : [
+            {
+                "terme_id" : "1",
+                "nom_terme" : "Petite",
+                "valeur" :"S"
+            },
+            {
+                "terme_id" : "2",
+                "nom_terme" : "Moyen",
+                "valeur" :"M"
+            }
+        ]
+    }
+]

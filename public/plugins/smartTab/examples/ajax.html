@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>jQuery Smart Tab Ajax Demo - The flexible tab control plugin for jQuery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootrap for the demo page -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!-- Animate CSS for the css animation support if needed -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+
+    <!-- Include SmartTab CSS -->
+    <link href="./css/smart_tab_all.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body>
+  <br>
+  <div class="container">
+
+    <div class="mb-5 border-bottom">
+
+      <button class="btn btn-outline-primary btn-sm float-end mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+        More Settings
+      </button>
+
+      <div class="mt-2 me-3 float-end">
+        <select id="theme_colors" class="form-select form-select-sm" aria-label="">
+          <option value="" disabled>Color</option>
+        </select>
+      </div>
+      
+      <div class="mt-2 me-3 float-end">
+        <select id="theme_selector" class="form-select form-select-sm" aria-label="">
+          <option value="" disabled>Theme</option>
+          <option value="basic">Basic (Default)</option>
+          <option value="elite" selected>Elite</option>
+          <option value="pills">Pills</option>
+          <option value="brick">Brick</option>
+          <option value="forge">Forge</option>
+          <option value="blocks">Blocks</option>
+        </select>                  
+      </div>
+      
+      <h1>jQuery Smart Tab Ajax Demo</h1>
+      <div class="mb-2 text-muted">
+        Shows the tab content loaded via ajax call for each step
+        <div class="float-end text-muted me-3">
+          Tab Page: <span id="current-page"></span> of <span id="total-pages"></span>
+        </div>
+      </div>
+
+      <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header border-bottom">
+          <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Smart Tab Settings</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="mb-2">
+            <label for="animation" class="form-label">Transition</label>
+              <select id="animation" class="form-select form-select-sm" aria-label="">
+                <optgroup label="Buit-in Animations">
+                  <option value="none">None</option>
+                  <option value="fade" selected>Fade</option>
+                  <option value="slideHorizontal">Slide Horizontal</option>
+                  <option value="slideVertical">Slide Vertical</option>
+                  <option value="slideSwing">Slide Swing</option>
+                </optgroup>
+                <optgroup label="CSS Animations (External Plugin)">
+                  <option value="cssSlideH">Slide Horizontal</option>
+                  <option value="cssSlideV">Slide Vertical</option>
+                  <option value="cssFade">Fade</option>
+                  <option value="cssFadeSlideH">Fade + Slide Horizontal</option>
+                  <option value="cssFadeSlideV">Fade + Slide Vertical</option>
+                  <option value="cssFadeSlideCorner1">Fade + Slide Corner 1</option>
+                  <option value="cssFadeSlideCorner2">Fade + Slide Corner 2</option>
+                  <option value="cssBounce">Bounce</option>
+                  <option value="cssBounceSlideH">Bounce + Slide Horizontal</option>
+                  <option value="cssBounceSlideV">Bounce + Slide Vertical</option>
+                  <option value="cssBackSlideH">Back + Slide Horizontal</option>
+                  <option value="cssBackSlideV">Back + Slide Vertical</option>
+                  <option value="cssFlipH">Flip Horizontal</option>
+                  <option value="cssFlipV">Flip Vertical</option>
+                  <option value="cssLightspeed">Lightspeed</option>
+                  <option value="cssRotate">Rotate</option>
+                  <option value="cssRotateClock">Rotate Clockwise</option>
+                  <option value="cssRotateAntiClock">Rotate Anti Clockwise</option>
+                  <option value="cssZoom">Zoom</option>
+                </optgroup>
+              </select>
+          </div>
+
+          <fieldset class="mb-2" style="display: none;" id="color-list">
+            <!-- <legend class="col-form-label col-sm-2 col-form-label">Colors</legend> -->
+          </fieldset>
+
+          <div class="mb-2">
+            <h6 for="Other" class="form-label border-bottom">Other Settings</h6>
+
+            <div class="form-check">
+              <input class="form-check-input align-middle" type="checkbox" id="is_vertical" value="1" checked>
+              <label class="form-check-label align-middle" for="is_vertical">Vertical</label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input align-middle option-setting-checkbox" type="checkbox" id="is_justified" value="1" checked>
+              <label class="form-check-label align-middle" for="is_justified">Justified</label>
+            </div>
+            
+            <div class="form-check">
+              <input class="form-check-input align-middle option-setting-checkbox" type="checkbox" id="key_navigation" value="1" checked>
+              <label class="form-check-label align-middle" for="key_navigation">Keyboard Navigation</label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input align-middle option-setting-checkbox" type="checkbox" id="back_button_support" value="1" checked>
+              <label class="form-check-label align-middle" for="back_button_support">Back Button Support</label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input align-middle option-setting-checkbox" type="checkbox" id="autoAdjustHeight" value="1" checked>
+              <label class="form-check-label align-middle" for="autoAdjustHeight">Auto Adjust Height</label>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <h6 for="theme_selector" class="form-label border-bottom">External Controls</h6>
+            <button class="btn btn-secondary btn-sm" id="prev-btn" type="button">Previous</button>
+            <button class="btn btn-secondary btn-sm" id="next-btn" type="button">Next</button>
+            <button class="btn btn-danger btn-sm" id="reset-btn" type="button">Reset</button>
+          
+            <div class="input-group input-group-sm mt-2">
+              <select class="form-select" id="got_to_step" aria-label="Select step number">
+                <option selected>Choose step...</option>
+                <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+              </select>
+              
+              <button class="btn btn-primary" id="btn-go-to" type="button">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SmartTab html -->
+    <div id="smarttab">
+        <ul class="nav" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#tab-1" data-repo="jquery-smarttab">
+                jQuery Smart Tab
+              </a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#tab-2" data-repo="jquery-smartwizard">
+                jQuery Smart Wizard
+
+              </a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#tab-3" data-repo="jquery-smartcart">
+                jQuery Smart Cart
+              </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane" role="tabpanel" aria-labelledby="tab-1">
+          </div>
+          <div id="tab-2" class="tab-pane" role="tabpanel" aria-labelledby="tab-2">
+          </div>
+          <div id="tab-3" class="tab-pane" role="tabpanel" aria-labelledby="tab-3">
+          </div>
+        </div>
+    </div>
+
+    <br> &nbsp;
+    </div>
+
+    <!-- Bootrap for the demo page -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- jQuery Slim 3.6  -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script> -->
+
+    <!-- Include SmartTab JavaScript source -->
+    <script type="text/javascript" src="./js/jquery.smartTab.min.js"></script>
+
+    <script type="text/javascript" src="./js/demo.js"></script>
+
+    <script type="text/javascript">
+
+        function provideContent(idx, stepDirection, stepPosition, selStep, callback) {
+          // Only get ajax content on the forward movement
+          let repo    = selStep.data('repo');
+          let ajaxURL = "https://api.npms.io/v2/search?q=" + repo;
+          // Ajax call to fetch your content
+          $.ajax({
+              method  : "GET",
+              url     : ajaxURL,
+              beforeSend: function( xhr ) {
+                  // Show the loader
+                  $('#smarttab').smartTab("loader", "show");
+              }
+          }).done(function( res ) {
+              let data = res.results[0];
+              
+              let keywordsHtml = '';
+              data.package.keywords.forEach(keyword =>  keywordsHtml += `<span class="badge bg-secondary me-1">${keyword}</span>`);
+
+              let popularity = parseInt(data.score.detail.popularity * 100);
+              let quality = parseInt(data.score.detail.quality * 100);
+              let maintenance = parseInt(data.score.detail.maintenance * 100);
+
+              var html = `<div class="card w-100 border-0" >
+                          <div class="card-body">
+                            <h5 class="card-title"><a href="${data.package.links.repository}">${data.package.name}</a>  <span class="badge bg-secondary">${data.package.version}</span></h5>
+                            <p class="card-text">${data.package.description}</p>
+                            <p class="card-text"><small class="text-muted">Created by ${data.package.author.name}</small></p>
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a class="card-link" href="${data.package.links.homepage}">Homepage</a> <a class="card-link" href="${data.package.links.npm}">Npm</a> <a class="card-link" href="${data.package.links.bugs}">Bug</a> </li>
+                            <li class="list-group-item">${keywordsHtml}</li>
+                            <li class="list-group-item">
+                              Popularity: <span class="badge bg-secondary me-1">${popularity}</span> 
+                              Quality: <span class="badge bg-secondary me-1">${quality}</span>
+                              Maintenance: <span class="badge bg-secondary me-1">${maintenance}</span>
+                            </li>
+                          </ul>
+                        </div>`;
+
+              // Resolve the Promise with the tab content
+              callback(html);
+
+              // Hide the loader
+              $('#smarttab').smartTab("loader", "hide");
+              $('#smarttab').smartTab("fixHeight");
+          }).fail(function(err) {
+              // Reject the Promise with error message to show as tab content
+              callback( "An error loading the resource" );
+
+              // Hide the loader
+              $('#smarttab').smartTab("loader", "hide");
+          });
+
+          callback();
+        }
+
+        $(function() {
+            // Step show event
+            $("#smarttab").on("showTab", function(e, anchorObject, stepIndex, stepDirection, stepPosition) {
+                $("#prev-btn").removeClass('disabled').prop('disabled', false);
+                $("#next-btn").removeClass('disabled').prop('disabled', false);
+                if(stepPosition === 'first') {
+                    $("#prev-btn").addClass('disabled').prop('disabled', true);
+                } else if(stepPosition === 'last') {
+                    $("#next-btn").addClass('disabled').prop('disabled', true);
+                } else {
+                    $("#prev-btn").removeClass('disabled').prop('disabled', false);
+                    $("#next-btn").removeClass('disabled').prop('disabled', false);
+                }
+
+                // Get step info
+                let tabInfo = $('#smarttab').smartTab("getInfo");
+                $("#current-page").text(tabInfo.currentPage + 1);
+                $("#total-pages").text(tabInfo.totalPages);
+            });
+
+            // Smart Tab
+            $('#smarttab').smartTab({
+                selected: 0,
+                theme: 'elite', // basic, arrows, square, round, dots
+                transition: {
+                  animation:'fade' // none|fade|slideHorizontal|slideVertical|slideSwing|css
+                },
+                getContent: provideContent
+            });
+
+        });
+    </script>
+</body>
+</html>

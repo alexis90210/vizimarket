@@ -1,0 +1,44 @@
+.st-theme-brick {
+
+  & > .nav {
+    border-color: var(--#{$var-prefix}anchor-active-primary-color);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+
+    .nav-link {
+      background: transparent;
+      height: 100%;
+      min-height: 100%;
+      color: var(--#{$var-prefix}anchor-default-primary-color)!important;
+
+      &.active {
+        color: var(--#{$var-prefix}anchor-active-secondary-color) !important;
+        background: var(--#{$var-prefix}anchor-active-primary-color) !important;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      &.disabled {
+        color: var(--#{$var-prefix}anchor-disabled-primary-color) !important;
+      }
+    }
+  }
+
+  // Vertical navigation style
+  &.st-vertical {
+    & > .nav {
+      border-right-style: solid;
+      border-right-width: 2px;
+      border-bottom: unset;
+
+      .nav-link {
+        &.active {
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px;
+          border-top-right-radius: unset;
+        }
+      }
+    }
+  }
+
+}
