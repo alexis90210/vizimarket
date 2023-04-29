@@ -1,0 +1,53 @@
+<style>
+  @media screen and(max-width: 768px) {
+    .hide-header-top {
+      display: none !important;
+    }
+  
+    .header-search.hs-expanded .input-wrapper {
+      border-radius: 30px;
+      height: 40px;
+    }
+  
+    .header-search.hs-expanded {
+      max-width: 95%;
+    }
+  }
+</style>
+
+<div class="header-top">
+  <div class="container" id="hide-top-header-info">
+    <div class="header-left">
+      <p class="welcome-msg ls-normal">Bienvenue dans la boutique Vazimarket</p>
+    </div>
+    <div class="header-right">
+      <!-- End DropDown Menu -->
+      <span class="divider"></span>
+      <a href="{{ path('app_tous_les_vendeurs') }}" class="contact d-lg-show"><i class="d-icon-map"></i>Vendeurs</a>
+
+      {% if app.session.get('user') != null %}
+        {% if app.session.get('user').roles[0] == 'ROLE_CLIENT' %}
+          <a href="{{ path('app_compte') }}" class="help d-lg-show"><i class="d-icon-info"></i> Mon compte</a>
+          <span class="delimiter">/</span>
+          <a href="{{ path('app_logout') }}">Se deconnexion</a>
+        {% endif %}
+      {% else %}
+        <a class="login-linkx" href="{{ path('app_client_login') }}" data-toggle="login-modal"><i class="d-icon-user"></i>S'identifier</a>
+        <span class="delimiter">/</span>
+        <a class="register-linkx ml-0" href="{{ path('app_client_sigin') }}" data-toggle="login-modal">S'inscrire</a>
+      {% endif %}
+
+      <!-- End of Login -->
+    </div>
+  </div>
+</div>
+
+<script>
+  {# window.addEventListener('scroll', (e) => {
+    if (window.scrollY > 10) {
+      document.querySelector('.header-top').classList.add('hide-header-top')
+    } else {
+      document.querySelector('.header-top').classList.remove('hide-header-top')
+    }
+  }) #}
+</script>

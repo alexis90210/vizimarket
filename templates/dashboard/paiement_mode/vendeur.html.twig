@@ -1,0 +1,144 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+  <!-- start page title -->
+  <div class="page-title-box">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-sm-6">
+          <div class="page-title">
+            <h4>Mode de Paiements</h4>
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item">
+                <a href="javascript: void(0);">Morvin</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript: void(0);">Marketplace</a>
+              </li>
+              <li class="breadcrumb-item active">Mode de Paiements</li>
+            </ol>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="float-end d-none d-sm-block">
+            <a href="" class="btn btn-success">Demander un mode</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end page title -->
+
+  <div class="container-fluid">
+    <div class="page-content-wrapper">
+      <div class="row">
+        {% for item in modesPaiements %}
+          <div class="col-xl-3">
+            <div class="card">
+              <div class="card-body">
+                <i class="fab fa-cc-visa text-info h1"></i>
+
+                <h3 class="mt-3 font-size-22">{{ item.getNumeroCarte }}</h3>
+
+                <div class="mt-3">
+                  {% if item.isActif %}
+                    <div class="float-end">
+                      <p class="mb-0 alert alert-success p-0 px-3">Actif</p>
+                    </div>
+                  {% else %}
+                    <div class="float-end">
+                      <p class="mb-0 alert alert-danger p-0 px-3">Non actif</p>
+                    </div>
+                  {% endif %}
+
+                  <p class="mb-0 mt-4">PAYPLUG</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- end col -->
+    </div>
+  </div>
+  <!-- container-fluid -->
+
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-visa text-info h1"></i>
+
+							<h3 class="mt-3 font-size-22">**** **** **** 2355</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-danger p-0 px-3">Non actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">PAYPLUG</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>   -->
+  <!-- end card -->
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-mastercard text-danger h1"></i>
+
+							<h3 class="mt-3 font-size-22">**** **** **** 5452</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-danger p-0 px-3">Non actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">Paypal</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>   -->
+
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-discover text-success h1"></i>
+
+							<h3 class="mt-3 font-size-22">**** **** **** 2656</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-success p-0 px-3">Actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">ALMA</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>   -->
+  <!-- end col -->
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-amex text-primary h1"></i>
+
+							<h3 class="mt-3 font-size-24">**** **** **** 4575</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-success p-0 px-3">Actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">Autre</p>
+							</div>
+						</div>
+					</div>
+				</div>   -->
+{% endblock %}

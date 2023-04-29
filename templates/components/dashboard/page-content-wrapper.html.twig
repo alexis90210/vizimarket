@@ -1,0 +1,395 @@
+<div class="page-content-wrapper">
+
+
+	<div class="row">
+		<div class="col-xl-8">
+			<div class="card">
+				<div class="card-body">
+
+
+					<h4 class="header-title mb-4 float-sm-start">Résumé rapide</h4>
+
+					<div class="float-sm-end">
+						<ul class="nav nav-pills">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Jour</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Semaine</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Mois</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Année</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="clearfix"></div>
+
+
+					<div class="row align-items-center">
+						<div class="col-xl-9">
+
+							<div>
+								<div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
+							</div>
+
+						</div>
+
+
+						<div class="col-xl-3">
+							<div class="dash-info-widget mt-4 mt-lg-0 py-4 px-3 rounded">
+
+
+								<div class="media dash-main-border pb-2 mt-2">
+									<div class="avatar-sm mb-3 mt-2">
+										<span class="avatar-title rounded-circle bg-white shadow">
+											<i class="mdi mdi-currency-inr text-primary font-size-18"></i>
+										</span>
+									</div>
+									<div class="media-body ps-3">
+
+										<h4 class="font-size-20">€2354</h4>
+										<p class="text-muted">Gagner
+											<a href="#" class="text-primary">Retirer
+												<i class="mdi mdi-arrow-right"></i>
+											</a>
+										</p>
+
+									</div>
+
+								</div>
+
+
+								<div class="media mt-4 dash-main-border pb-2">
+									<div class="avatar-sm mb-3 mt-2">
+										<span class="avatar-title rounded-circle bg-white shadow">
+											<i class="mdi mdi-credit-card-outline text-primary font-size-18"></i>
+										</span>
+									</div>
+									<div class="media-body ps-3">
+										<h4 class="font-size-20">€1598</h4>
+										<p class="text-muted">
+											A Payer
+											<a href="#" class="text-primary">Payer
+												<i class="mdi mdi-arrow-right"></i>
+											</a>
+										</p>
+									</div>
+								</div>
+
+
+								<div class="media mt-4">
+									<div class="avatar-sm mb-2 mt-2">
+										<span class="avatar-title rounded-circle bg-white shadow">
+											<i class="mdi mdi-eye-outline text-primary font-size-18"></i>
+										</span>
+									</div>
+									<div class="media-body ps-3">
+										<h4 class="font-size-20">1230</h4>
+										<p class="text-muted mb-0">Vers en ligne
+											<a href="#" class="text-primary">Afficher
+												<i class="mdi mdi-arrow-right"></i>
+											</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-xl-4">
+			<div class="row">
+				<div class="col-xl-6 col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center">
+								<p class="font-size-16">Commandes</p>
+								<div class="mini-stat-icon mx-auto mb-4 mt-3">
+									<span class="avatar-title rounded-circle bg-soft-primary">
+										<i class="mdi mdi-cart-outline text-primary font-size-20"></i>
+									</span>
+								</div>
+								<h5 class="font-size-22">{{commandes|length}}</h5>
+
+								<p class="text-muted">0% Cible</p>
+
+								<div class="progress mt-3" style="height: 4px;">
+									<div class="progress-bar progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="70"></div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="col-xl-6 col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center">
+								<p class="font-size-16">Createurs</p>
+								<div class="mini-stat-icon mx-auto mb-4 mt-3">
+									<span class="avatar-title rounded-circle bg-soft-success">
+										<i class="mdi mdi-account-outline text-success font-size-20"></i>
+									</span>
+								</div>
+								<h5 class="font-size-22">{{ createurs|length}}</h5>
+
+								<p class="text-muted">0% Cible</p>
+
+								<div class="progress mt-3" style="height: 4px;">
+									<div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80"></div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xl-6 col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center">
+								<p class="font-size-16">vendeurs</p>
+								<div class="mini-stat-icon mx-auto mb-4 mt-3">
+									<span class="avatar-title rounded-circle bg-soft-primary">
+										<i class="mdi mdi-cart-outline text-primary font-size-20"></i>
+									</span>
+								</div>
+								<h5 class="font-size-22">{{ vendeurs|length}}</h5>
+
+								<p class="text-muted">0% Cible</p>
+
+								<div class="progress mt-3" style="height: 4px;">
+									<div class="progress-bar progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="70"></div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+
+				<div class="col-xl-6 col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center">
+								<p class="font-size-16">Clients</p>
+								<div class="mini-stat-icon mx-auto mb-4 mt-3">
+									<span class="avatar-title rounded-circle bg-soft-success">
+										<i class="mdi mdi-account-outline text-success font-size-20"></i>
+									</span>
+								</div>
+								<h5 class="font-size-22">{{ clients|length}}</h5>
+
+								<p class="text-muted">0% Cible</p>
+
+								<div class="progress mt-3" style="height: 4px;">
+									<div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80"></div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+	<div class="col-xl-12">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="header-title mb-4">Commandes du mois</h4>
+					<div class="table-responsive">
+						<div class="table-responsive">
+								<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+									<thead class="thead-light">
+										<tr>
+											<th style="width: 20px;">
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="ordercheck">
+													<label class="form-check-label" for="ordercheck">&nbsp;</label>
+												</div>
+											</th>
+											<th>Commande</th>
+											<th>Date</th>
+											<th>Etat</th>
+											<th>Total</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for i,commande in commandes %}
+
+
+											<tr>
+												<td>
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input" id="ordercheck1">
+														<label class="form-check-label" for="ordercheck1">&nbsp;</label>
+													</div>
+												</td>
+
+												<td>Commande emi par : <br> <a href="#">{{ commande.getClient.getNom}} {{ commande.getClient.getPrenom}}</a> </td>
+
+												<td>
+													{{ commande.getDateCommande}}
+												</td>
+
+												<td>
+													{% if commande.getStatutPaiement < 2 %}
+														<div class="badge badge-soft-success font-size-12">En stock</div>
+													{% endif %}
+													{% if commande.getStatutPaiement == 2 %}
+														<div class="badge badge-soft-success font-size-12">En Rupture</div>
+													{% endif %}
+													{% if commande.getStatutPaiement > 2 %}
+														<div class="badge badge-soft-success font-size-12">En Reapprovisionnement</div>
+													{% endif %}
+												</td>
+
+												<td>
+													${{commande.getPrix}}
+												</td>
+
+												<td id="tooltip-container1">
+													<a href="{{ path('app_details_commandes', {'id': commande.id , 'role': app.user.access } )}}"><i class="mdi mdi-eye font-size-18"></i> details</a>
+												</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+					</div>
+					<!-- end table-responsive -->
+				</div>
+			</div>
+		</div>
+		</div>
+
+	<div class="row">
+
+		{% if app.user.access =='vendeur' %}
+		<div class="col-xl-12">
+			<div class="card">
+				<div class="card-body">
+
+					<h4 class="header-title mb-4">Suivi des produits</h4>
+
+
+
+					<ul class="list-unstyled activity-wid mb-0">
+						
+						{% for commande in commandes %}
+
+						<li class="activity-list">
+							<div class="activity-icon avatar-sm">
+								<span class="avatar-title bg-soft-success text-success rounded-circle">
+									<i class="ti-user font-size-16"></i>
+								</span>
+							</div>
+							<div class="media">
+								<div class="me-3">
+									<h5 class="font-size-15 mb-1">Nouveau produit commande</h5>
+									<p class="text-muted font-size-14 mb-0">Merci</p>
+								</div>
+
+								<div class="media-body">
+									<div class="text-end d-none d-md-block">
+										<p class="text-muted font-size-13 mt-2 pt-1 mb-0">
+											<i class="mdi mdi-timer-outline font-size-15 text-primary"></i>
+											Aujourd'hui</p>
+									</div>
+								</div>
+							</div>
+						</li>
+							
+						{% endfor %}
+
+						
+
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+			
+		{% endif %}
+
+
+
+		{% if app.user.access =='createur' %}
+			<div class="col-xl-12">
+			<div class="card">
+				<div class="card-body">
+
+					<h4 class="header-title mb-4">Suivi des vendeurs</h4>
+
+
+					<ul class="list-unstyled activity-wid mb-0">
+						
+						{% for commande in commandes %}
+
+						<li class="activity-list">
+							<div class="activity-icon avatar-sm">
+								<span class="avatar-title bg-soft-success text-success rounded-circle">
+									<i class="ti-user font-size-16"></i>
+								</span>
+							</div>
+							<div class="media">
+								<div class="me-3">
+									<h5 class="font-size-15 mb-1">Nouveau produit commande</h5>
+									<p class="text-muted font-size-14 mb-0">Merci</p>
+								</div>
+
+								<div class="media-body">
+									<div class="text-end d-none d-md-block">
+										<p class="text-muted font-size-13 mt-2 pt-1 mb-0">
+											<i class="mdi mdi-timer-outline font-size-15 text-primary"></i>
+											Aujourd'hui</p>
+									</div>
+								</div>
+							</div>
+						</li>
+							
+						{% endfor %}
+
+						
+
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+
+	</div>
+
+
+
+</div>

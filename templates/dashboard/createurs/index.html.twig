@@ -1,0 +1,104 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Createurs</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Createurs</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="float-end d-none d-sm-block">
+						<a href="" class="btn btn-success">Imprimer la liste</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper">
+
+
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="card m-b-30">
+						<div class="card-body">
+							<h4 class="mt-0 header-title mb-4">
+								<a href="{{ path('app_createurs_nouveau', {'role' : app.user.access})}}" class="btn btn-success">Ajouter un createur</a>
+							</h4>
+							<div class="table-responsive">
+								<table class="table table-centered table-nowrap table-hover mb-0">
+									<thead>
+										<tr>
+											<th scope="col">Logo</th>
+											<th scope="col">Nom</th>
+											<th scope="col">Email</th>
+											<th scope="col">Date</th>
+											<th scope="col">Produits</th>
+											<th scope="col">Solde compte</th>
+
+										</tr>
+									</thead>
+									<tbody>
+
+										{% for createur in createurs %}
+										<tr>
+											<td>
+												<img src="{{createur.getLogo}}" alt="" class="avatar-sm rounded">
+											</td>
+											<td>
+												<h5 class="font-size-16">
+													{{ createur.getNom}}</h5>
+												<p class="text-muted mb-0">
+													<i class="mdi mdi-account me-1"></i>
+													{{ createur.getPrenom}}
+												</p>
+											</td>
+											<td>
+												{{ createur.getEmail}}</td>
+											<td>{{ createur.getDateInscription}}</td>
+											<td>...</td>
+											<td>
+												$0
+											</td>
+
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<!-- END ROW -->
+
+
+			<!-- end row -->
+
+		</div>
+
+
+	</div>
+
+{% endblock %}

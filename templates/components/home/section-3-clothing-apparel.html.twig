@@ -1,0 +1,200 @@
+{% for i, element in en_avant %}
+	{% if element.produits|length > 0 %}
+
+		<div class="product-wrapper row mb-10 pb-2 appear-animate" data-animation-options="{'name': 'fadeIn'}">
+
+			<div class="col-xl-5col col-lg-3 col-md-4 mb-4">
+				<div class="category-wrapper bg-white d-flex flex-column align-items-start h-100">
+
+
+					<h2 class="title text-left">{{ element.nom}}</h2>
+					<ul class="pl-0 mt-0 flex-1">
+						<li>
+							<a href="#">Nouveautés</a>
+						</li>
+						{% for fille in element.filles %}
+							<li>
+								<a href="#">{{fille.nom}}</a>
+							</li>
+						{% endfor %}
+
+
+					</ul>
+					<a href="#" class="btn btn-dark btn-link btn-underline text-left">Parcourir tout<i class="d-icon-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+
+
+			<div class="col-xl-5col4 col-lg-9 col-md-8 mb-4">
+				<div class="owl-carousel owl-theme owl-nav-inner row cols-xl-4 cols-lg-3 cols-2 h-100" data-owl-options="{
+																													                                    'nav': true,
+																													                                    'dots': false,
+																													                                    'margin': 20,
+																													                                    'responsive': {
+																													                                        '0': {
+																													                                            'items': 2
+																													                                        },
+																													                                        '576': {
+																													                                            'items': 2
+																													                                        },
+																													                                        '992': {
+																													                                            'items': 3
+																													                                        },
+																													                                        '1200': {
+																													                                            'items': 4
+																													                                        }
+																													                                    }
+																													                                }">
+					{% for produit in element.produits %}
+
+						<div class="product-wrap h-100 mb-0">
+							<div class="product  product-border text-center cart-full">
+								<figure class="product-media">
+
+								{% if produit.getProduitType != 2 %}
+								<a href="{{path('app_product', {'id': produit.id } ) }}">
+										<img src="{{produit.image}}" alt="product" width="240" height="270">
+									</a>
+								{% else %}
+								<a href="{{path('app_product', {'id': produit.id } ) }}">
+										<img src="{{produit.image}}" alt="product" width="240" height="270">
+									</a>
+									
+								{% endif %}
+									
+									<div class="product-action-vertical">
+										<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+											<i class="d-icon-heart"></i>
+										</a>
+										<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+											<i class="d-icon-search"></i>
+										</a>
+										<a href="#" class="btn-product-icon btn-compare" title="Compare">
+											<i class="d-icon-compare"></i>
+										</a>
+									</div>
+								</figure>
+								<div class="product-details">
+									<span class="product-id" style="opacity:0;">0000{{ produit.getId }}</span>
+									<h3 class="product-name">
+									{% if produit.getProduitType != 2 %}
+										<a href="{{path('app_product', {'id': produit.id } ) }}">{{ produit.nom}}</a>
+									{% else %}
+										<a href="{{path('app_product', {'id': produit.id } ) }}">{{ produit.nom}}</a>
+									{% endif %}
+										
+									</h3>
+
+									{% if produit.getProduitType != 2 %}
+										<div class="product-price">
+										<ins class="new-price promo-price">{{ produit.getTarifPromo}}</ins>€ &nbsp;
+						<del class="old-price prix-regulier">{{ produit.getTarifRegulier}}</del> &nbsp;&nbsp;<span style="opacity:.4">€</span>
+									</div>
+									{% else %}
+									<div class="product-price">
+										{# Prix variable #}
+										<ins class="new-price promo-price"></ins>
+										<del class="old-price prix-regulier"></del>
+									</div>
+										
+									{% endif %}
+
+									<div class="ratings-container">
+										<div class="ratings-full">
+											<span class="ratings" style="width:0%"></span>
+											<span class="tooltiptext tooltip-top"></span>
+										</div>
+
+										{% if produit.getProduitType != 2 %}
+										<a href="{{path('app_product', {'id': produit.id } ) }}" class="rating-reviews">( 0 Commentaires )</a>
+										{% else %}
+										<a href="{{path('app_product', {'id': produit.id } ) }}" class="rating-reviews">( 0 Commentaires )</a>
+										{% endif %}
+
+										
+									</div>
+
+
+									{% if produit.getProduitType != 2 %}
+										<a href="#" class="btn-product btn-cart" data-toggle="modal" data-target="#addCartModal" title="Ajouter au panier">
+										<i class="d-icon-bag"></i>Ajouter au panier</a>	
+									{% else %}
+									<a href="{{path('app_product', {'id': produit.id } ) }}" style="display: block; overflow: hidden;  text-overflow: ellipsis; white-space: nowrap; padding: 0 0.5rem; height: 4.6rem; line-height: 3.1; font-size: 1.4rem; border-color: #666;" title="Voir les Details">
+										<i class="d-icon-bag"></i>Voir les Details</a>	
+									{% endif %}
+									
+									
+									
+								</div>
+							</div>
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		{% if i== 0 %}
+			<div class="banner-grid-2cols row cols-md-2 pb-2">
+				<div class="banner banner-fixed content-middle banner-radius mb-4 appear-animate" data-animation-options="{
+																												                                'name': 'fadeInLeftShorter', 'duration': '1s'
+																												                            }">
+					<figure>
+						<img src="{{ asset('theme/images/demos/demo-market2/banner/4.jpg') }}" alt="Banner" width="680" height="180" style="background-color: #dedfe0;"/>
+					</figure>
+					<div class="banner-content">
+						<h4 class="banner-subtitle font-weight-normal ls-normal text-dark">Réduction finale
+						</h4>
+						<h3 class="banner-title font-weight-semi-bold font-secondary ls-m mb-3">Vente jusqu'à 20 % de réduction</h3>
+						<hr class="divider border-no">
+						<div class="banner-price-info font-weight-normal text-body">
+							Only From<span class="font-weight-bold text-secondary ml-1 ls-m">€270.00</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="banner banner-fixed content-middle banner-radius mb-4 appear-animate" data-animation-options="{
+																												                                'name': 'fadeInRightShorter', 'duration': '1s'
+																												                            }">
+					<figure>
+						<img src="{{ asset('theme/images/demos/demo-market2/banner/5.jpg') }}" alt="Banner" width="680" height="180" style="background-color: #636363;"/>
+					</figure>
+					<div class="banner-content">
+						<h4 class="banner-subtitle font-weight-normal ls-normal">Vente du week-end</h4>
+						<h3 class="banner-title text-white font-weight-semi-bold font-secondary ls-m mb-3">
+							Haut-parleur intelligent fin</h3>
+						<hr class="divider border-no bg-light">
+						<div class="banner-price-info font-weight-normal text-white">
+							À partir de<span class="font-weight-bold text-secondary ml-1 ls-m">€185.00</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		{% endif %}
+
+		{% if i == 1 %}
+			<div class="banner banner-radius banner-wrapper mb-10 appear-animate" data-animation-options="{'name': 'fadeIn'}" style="background-image: url(theme/images/demos/demo-market2/banner/7.jpg);
+																				                            background-color: #e7ebee;">
+				<div class="banner-content d-flex align-items-center justify-content-end">
+					<h3 class="banner-title font-secondary font-weight-bold text-uppercase text-center mb-0 ls-m">
+						Gift
+						<span class="text-secondary">50 % de réduction</span>
+						Styles parfaits<br>
+						<span class="banner-text font-primary font-weight-normal text-normal ls-normal d-inline-block">Seulement
+											jusqu'à la fin de cette semaine</span>
+						<span class="banner-text font-primary font-weight-normal text-normal ls-normal">.Les termes et conditions s'appliquent</span>
+					</h3>
+					<a href="#" class="btn btn-white btn-rounded">Découvrez maintenant<i class="d-icon-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+
+		{% endif %}
+
+
+	{% endif %}
+
+
+{% endfor %}

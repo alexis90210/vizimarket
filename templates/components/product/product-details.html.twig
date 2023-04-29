@@ -1,0 +1,137 @@
+{# inline style #}
+<style>
+  @media screen and (max-width: 770px) {
+    .hide-on-mobile {
+      display: none !important;
+    }
+  
+    .only-product {
+      display: none !important;
+    }
+  }
+</style>
+
+<div class="col-md-6" produit-id="{{produit.getId}}" attribut-length="{{attributs|length}}" id="produit-id">
+  <div class="product-details pt-3">
+   <span class="py-0 my-0 produit-link" style="opacity:0">{{produit.image}}</span>
+    <h1 class="product-name">{{ produit.getNom }}</h1>
+    <div class="product-meta">
+      CODE:<span class="product-sku mr-1 product-id">0000{{ produit.getId }}</span> /
+      QUANTITE:<span class="product-sku mr-1">{{ produit.getQuantite }}</span> /
+      CATEGORIES:{% for categorie in produit.getCategorie %}
+        <span class="product-brand px-2">{{ categorie.getNom }}</span>
+      {% endfor %}
+    </div>
+     {% if produit.getProduitType == 2 %}
+    <div class="d-flex" style="flex-direction:row;">
+      <span class="mt-1 mr-4" style="font-weight:bold">A partir de </span> <span class="product-price">{{minPrix}} $</span>
+      {% if ecart_variable %}
+        <span class="text-danger">(-{{ecart_variable}} %)</span>
+      {% endif %}
+    </div>
+
+    {% else %}
+        <div class="product-price">
+        $<span class="promo-price">{{ produit.getTarifPromo }}</span> - 
+    
+        <del class='old-price prix-regulier'>{{ produit.getTarifRegulier }}</del>
+        
+
+        {% if ecart %}
+        <span class="text-danger">(-{{ecart}} %)</span>  
+        {% endif %}
+        </div>
+    {% endif %}
+    <div class="ratings-container">
+      <div class="ratings-full">
+        <span class="ratings" style="width:0%"></span>
+        <span class="tooltiptext tooltip-top"></span>
+      </div>
+      <a href="#product-tab-reviews" class="link-to-tab rating-reviews">( 0 avis )</a>
+    </div>
+    <p class="product-short-desc">{{ produit.getDescription|raw }}</p>
+    {% if produit.getProduitType == 2 %}
+
+    {% for attribut in attributs %}
+
+      {% if attribut.type =='Taille' or attribut.type =='Label' %}
+        {# SIZE #}
+        <div class="product-form product-size" attribut-type="Taille" attribut-id="{{attribut.id}}">
+          <label>Taille:</label>
+          <div class="product-form-group">
+            <div class="product-variations">
+              {% for terme in attribut.terme %}
+              <a class="size" onclick="taille({terme:'{{terme.valeur}}',attribut:'{{attribut.attribut}}'})" cocher='0' terme-id="{{terme.id}}" title="{{terme.terme}}">{{terme.valeur}}</a>
+                
+              {% endfor %}
+            </div>
+            
+          </div>
+        </div>        
+      
+      {% endif %}
+
+      {% if  attribut.type =='Couleur' %}
+
+         {# COLOR #}
+        <div class="product-form product-color" attribut-type="Couleur" attribut-id="{{attribut.id}}">
+          <label>Couleur:</label>
+          <div class="product-variations">
+            {% for terme in attribut.terme %}
+              <a class="color"  onclick="couleur({terme:'{{terme.valeur}}',attribut:'{{attribut.attribut}}'})"   title="{{terme.terme}}"  style="background-color: {{terme.valeur}}"  terme-id="{{terme.id}}"></a>
+            {% endfor %}           
+          </div>
+        </div>
+      
+      
+      {% endif %}
+      
+      
+      
+    {% endfor %}
+     
+        
+    {% endif %}
+
+   
+
+    <hr class="product-divider" />
+
+     <div class="product-price d-none" id="product-price-toggle">
+        $<span class="promo-price" id="produit-promo-price">{{ produit.getTarifPromo }}</span> -     
+        <del class='old-price prix-regulier' id="produit-prix-regulier">{{ produit.getTarifRegulier }}</del>
+      </div>
+
+
+
+
+    <div class="product-form product-qty" id="product-form-product-qty">
+      <div class="product-form-group">
+        <div class="input-group mr-2">
+          <button class="quantity-minus d-icon-minus"></button>
+          <input class="quantity form-control" type="number" min="1" max="{{produit.getQuantite}}" />
+          <button class="quantity-plus d-icon-plus"></button>
+        </div>
+        <button class="btn-product btn-cart text-normal ls-normal font-weight-semi-bold hide-on-mobile"><i class="d-icon-bag"></i>Ajouter au panier</button>
+      </div>
+    </div>
+
+    <hr class="product-divider mb-3" />
+
+    <div class="product-footer">
+      <div class="social-links mr-4">
+        <a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+        <a href="#" class="social-link social-twitter fab fa-twitter"></a>
+        <a href="#" class="social-link social-pinterest fab fa-pinterest-p"></a>
+      </div>
+      <span class="divider"></span>
+      <div class="product-action">
+        <a href="#" class="btn-product btn-wishlist mr-6"><i class="d-icon-heart"></i>Ajouter à la liste de souhaits</a>
+        <span class="divider"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ asset('custom-js/load-produit-variable-variation.js')}}"></script>
+

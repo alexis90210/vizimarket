@@ -1,0 +1,150 @@
+<div class="vertical-menu">
+	<div data-simplebar class="h-100">
+		<div class="user-sidebar text-center">
+			<div class="dropdown">
+				<div class="user-img">
+					<img src="{{ asset('_dashboard/assets/images/small/img-4.jpg') }}" alt="" class="rounded-circle"/>
+					<span class="avatar-online bg-success"></span>
+				</div>
+				<div class="user-info">
+					<h5 class="mt-3 font-size-16 text-white">{{ app.user.nom}}</h5>
+					<span class="font-size-13 text-white-50 text-uppercase">{{ app.user.access}}</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- - Sidemenu -->
+		<div
+			id="sidebar-menu">
+			<!-- Left Menu Start -->
+			<ul class="metismenu list-unstyled" id="side-menu">
+				<li class="menu-title">Menu</li>
+
+				<li>
+					<a href="{{ path('app_dashboard', { role: app.user.access }) }}" class="waves-effect">
+						<i class="dripicons-home"></i>
+						<span class="badge rounded-pill bg-info float-end">0</span>
+						<span>Dashboard</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="javascript: void(0);" class="has-arrow waves-effect">
+						<i class="dripicons-cart"></i>
+						<span>Vazimarket</span>
+					</a>
+					<ul class="sub-menu" aria-expanded="false">
+						{% if app.user.access == 'vendeur' %}
+							<li>
+								<a href="{{ path('app_commandes', {'role' : app.user.access}) }}">Commandes</a>
+							</li>
+						{% endif %}
+
+						{% if app.user.access == 'vendeur' %}
+							<li>
+								<a href="{{ path('app_clients', {'role' : app.user.access}) }}">Clients</a>
+							</li>
+						{% endif %}
+
+						{% if app.user.access =='vazimarket' %}
+							<li>
+								<a href="{{ path('app_createurs', {'role' : app.user.access}) }}">Créateurs</a>
+							</li>
+						{% endif %}
+
+						{% if app.user.access =='createur' %}
+							<li>
+								<a href="{{ path('app_vendeurs', {'role' : app.user.access}) }}">Vendeurs</a>
+							</li>
+						{% endif %}
+
+						{% if app.user.access == 'vazimarket' %}
+							<li>
+								<a href="#">Livraison</a>
+							</li>
+							<li>
+								<a href="#">Pays de couverture</a>
+							</li>
+							<li>
+								<a href="#">Options</a>
+							</li>
+						{% endif %}
+
+					</ul>
+				</li>
+
+				{% if app.user.access == 'vendeur' %}
+					<li>
+						<a href="javascript: void(0);" class="has-arrow waves-effect">
+							<i class="dripicons-basket"></i>
+							<span>Produits</span>
+						</a>
+						<ul class="sub-menu" aria-expanded="false">
+							<li>
+								<a href="{{ path('app_liste_produit', {'role' : app.user.access}) }}">Tous les Produits</a>
+							</li>
+							<li>
+								<a href="{{ path('app_produit_new', {'role' : app.user.access}) }}">Ajouter un produit</a>
+							</li>
+							<li>
+								<a href="{{ path('app_categorie', {'role' : app.user.access}) }}">Categories</a>
+							</li>
+							<li>
+								<a href="{{ path('app_marques', {'role' : app.user.access}) }}">Marques</a>
+							</li>
+							<li>
+								<a href="{{ path('app_attributs', {'role' : app.user.access}) }}">Attributs</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+
+
+				{% if app.user.access == 'vendeur' %}
+					<li>
+						<a href="{{ path('app_messagerie', {'role' : app.user.access}) }}" class="waves-effect">
+							<i class="dripicons-message"></i>
+							<span>Messagerie</span>
+						</a>
+					</li>
+
+				{% endif %}
+				
+        <li>
+					<a href="{{ path('app_paiement_mode', {'role' : app.user.access}) }}" class="waves-effect">
+						<i class="mdi mdi-credit-card-outline"></i>
+						<span>Paiement</span>
+					</a>
+				</li>
+
+				{% if app.user.access == 'createur' %}
+
+					<li>
+						<a href="javascript: void(0);" class="has-arrow waves-effect">
+							<i class="dripicons-device-desktop"></i>
+							<span>Apparence</span>
+						</a>
+						<ul class="sub-menu" aria-expanded="false">
+							<li>
+								<a href="{{path('app_configuration_design', {'role' : app.user.access}) }}">Design</a>
+							</li>
+							<li>
+								<a href="{{path('app_configuration_contenu', {'role' : app.user.access}) }}">Contenu</a>
+							</li>
+						</ul>
+					</li>
+
+				{% endif %}
+
+				<li>
+					<a href="{{ path('app_logout') }}" class="waves-effect">
+						<i class="mdi mdi-logout"></i>
+						<span>Deconnexion</span>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+		<!-- Sidebar -->
+	</div>
+</div>

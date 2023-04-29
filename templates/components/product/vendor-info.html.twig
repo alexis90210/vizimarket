@@ -1,0 +1,27 @@
+<div class="widget widget-collapsible widget-vendor-info">
+  <h3 class="widget-title">Information sur le vendeur</h3>
+  <ul class="widget-body filter-items">
+    <input type="hidden" value="{{ produit.getId }}" id="store-id" />
+    <li class="store-name">
+      <span>Nom du magasin :</span>
+      <span class="details">{{ produit.getVendeur.getNom ?? '' }}</span>
+    </li>
+    <li class="seller-name">
+      <span>Vendeur:</span>
+      <span class="details">{{ produit.getVendeur.getNom ?? '' }}</span>
+    </li>
+    <li class="store-address">
+      <span>Adresse:</span>
+      <span class="details">{{ produit.getVendeur.getAdresse ?? '' }}</span>
+    </li>
+    <li class="clearfix">
+      <span class="ratings-container">
+        <span class="ratings-full" title="Rated 4.65 out of 5">
+          <span class="ratings" style="width:90%"></span>
+          <span class="tooltiptext tooltip-top"></span>
+        </span>
+      </span>
+      <span class="details">0 note sur 0 avis</span>
+    </li>
+  </ul>
+</div>

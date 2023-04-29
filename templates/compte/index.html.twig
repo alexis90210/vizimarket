@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte | Client
+{% endblock %}
+
+{% block body %}
+	<main class="main account">
+		<nav class="breadcrumb-nav">
+			<div class="container">
+				<ul class="breadcrumb">
+					<li>
+						<a href="/">
+							<i class="d-icon-home"></i>
+						</a>
+					</li>
+					<li>Compte</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="page-content mt-4 mb-10 pb-6">
+			<div class="container">
+				<div class="tab tab-vertical gutter-lg">
+					<ul class="nav nav-tabs mb-4 col-lg-3 col-md-4" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" href="#dashboard">Tableau de bord</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#orders">Commandes</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#downloads">Mes favoris</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#address">Adresse</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#address">Messagerie</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#account">Détails du compte</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#devenir-vendeur">Devenir Vendeur</a>
+						</li>
+					</ul>
+					<div class="tab-content col-lg-9 col-md-8" style="padding-inline:14px;">
+						<div class="tab-pane active" id="dashboard">
+							<p class="mb-0">
+								Bonjour
+								<span>{{ currentClient.prenom ~ ' ' ~ currentClient.nom }}</span>
+							
+							</p>
+							<p class="mb-8">
+								À partir du tableau de bord de votre compte, vous pouvez afficher votre
+								<a href="#orders" class="link-to-tab text-primary">commandes récentes, gérez vos
+									                                         expédition et
+									                                         facturation
+									                                         adresses,<br>et modifiez votre mot de passe et les détails de votre compte</a>.
+							</p>
+							<a href="{{ path('app_logout')}}" class="btn btn-dark btn-rounded">Se deconnecter<i class="d-icon-arrow-right"></i>
+							</a>
+						</div>
+						<div class="tab-pane" id="orders">
+							<table class="order-table">
+								<thead>
+									<tr>
+										<th class="pl-2">Commander</th>
+										<th>Date</th>
+										<th>Statut</th>
+										<th>Totale</th>
+										<th class="pr-2">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+								
+									<tr>
+										<td class="order-number">
+											<a href="#">#2549</a>
+										</td>
+										<td class="order-date">
+											<span>19 janvier 2021</span>
+										</td>
+										<td class="order-status">
+											<span>En attente</span>
+										</td>
+										<td class="order-total">
+											<span>680,00 $ pour 5 articles</span>
+										</td>
+										<td class="order-action">
+											<a href="#" class="btn btn-primary btn-link btn-underline">Afficher</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tab-pane" id="downloads">
+							<p class="mb-4 text-body">Aucun téléchargement disponible pour le moment.</p>
+							<a href="#" class="btn btn-primary btn-link btn-underline">Browser Products<i class="d-icon-arrow-right"></i>
+							</a>
+						</div>
+						<div class="tab-pane" id="address">
+							<p class="mb-2">Les adresses suivantes seront utilisées par défaut sur la page de paiement.
+							</p>
+							<div class="row">
+								<div class="col-sm-6 mb-4">
+									<div class="card card-address">
+										<div class="card-body">
+											<h5 class="card-title text-uppercase">Adresse de facturation</h5>
+											<p>{{ currentClient.prenom ~ ' ' ~ currentClient.nom }}<br>
+												Client  {{ currentClient.getCreatedAt }}<br>
+												{{ currentClient.adresse }}<br>
+												{{ currentClient.tel }}
+												{{ currentClient.email }}
+											</p>
+											<a href="#" class="btn btn-link btn-secondary btn-underline">Éditer
+												<i class="far fa-edit"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								{# <div class="col-sm-6 mb-4">
+									<div class="card card-address">
+										<div class="card-body">
+											<h5 class="card-title text-uppercase">Adresse de livraison</h5>
+											<p>Vous n'avez pas encore configuré ce type d'adresse.</p>
+											<a href="#" class="btn btn-link btn-secondary btn-underline">Editer<i class="far fa-edit"></i>
+											</a>
+										</div>
+									</div>
+								</div> #}
+							</div>
+						</div>
+						<div class="tab-pane" id="account">
+							<form action="#" class="form">
+								<div class="row">
+									<div class="col-sm-4">
+										<label>Nom *</label>
+										<input type="text" class="form-control" value="{{currentClient.nom}}" readonly name="first_name" required="">
+									</div>
+									<div class="col-sm-4">
+										<label>Prenom *</label>
+										<input type="text" class="form-control" name="last_name" value="{{currentClient.prenom}}" readonly required="">
+									</div>
+									<div class="col-sm-4">
+										<label>Mobile *</label>
+										<input type="text" class="form-control" name="mobile" value="{{currentClient.tel}}" readonly required="">
+									</div>
+								</div>
+
+								<label>Nom a afficher *</label>
+								<input type="text" class="form-control mb-0" name="display_name" required=""  value="{{currentClient.nom ~ ' ' ~  currentClient.prenom }}" readonly>
+								<small class="d-block form-text mb-7">C'est ainsi que votre nom sera affiché
+									                                         dans la section compte et dans les avis</small>
+								<label>Adresse e-mail *</label>
+								<input type="email" class="form-control" name="email"  value="{{currentClient.email}}" readonly  required="">
+								<fieldset>
+									<legend>Modification du mot de passe</legend>
+									
+									<label>Nouveau mot de passe (laisser vide pour laisser inchangé)</label>
+									<input type="password" class="form-control" name="new_password">
+
+									<label>Confirmer le nouveau mot de passe</label>
+									<input type="password" class="form-control" name="confirmer_password">
+								</fieldset>
+
+								<button type="submit" class="btn btn-primary">ENREGISTRER LES MODIFICATIONS</button>
+							</form>
+						</div>
+						<div class="tab-pane" id="devenir-vendeur">
+							
+							<p class="mb-8">
+								Vous pouvez commencer a vendre vos articles 
+								<a href="#orders" class="link-to-tab text-primary">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa blanditiis placeat, sed, ducimus maxime cupiditate quia sit,<br> recusandae aliquam nemo animi aperiam reprehenderit repellat?</a>.
+							</p>
+							<a href="{{path('app_tous_les_vendeurs')}}" class="btn btn-dark btn-rounded">Commencer à vendre maintenant<i class="d-icon-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

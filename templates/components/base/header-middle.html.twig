@@ -1,0 +1,149 @@
+<style>
+.fix-menu-search {
+	background-color: #fff;
+	display:none;
+}
+
+.only-mobile {
+	display:none;
+}
+.header-middle-fixed {
+	position:fixed;
+	z-index:99;
+	width:100%;
+}
+
+@media screen and (max-width: 770px) {
+	.header-middle-fixed {
+		position:fixed;
+		z-index:99;
+		width:100%;
+	}
+
+	.fix-menu-search {
+		display:block;
+	}
+	
+	.min-mobile {
+		font-size:22px !important;
+	}
+
+	.mobile-menu {
+		width:90px;
+	}
+
+	.header-search-hide-mobile {
+		display:block;
+	}
+
+
+}
+
+</style>
+
+<div class="header-middle-fixed">
+
+	<div class="header-middle " style="height:70px">
+	<div class="container">
+		<div class="header-left mr-4">
+		    <a href="/" class="only-on-product">
+				<i class="d-icon-angle-left min-mobile"></i>
+			</a>
+			<a href="#" class="mobile-menu-toggle">
+				<i class="d-icon-bars2 min-mobile"></i>
+			</a>
+			<a href="/" class="logo">
+				<img src="{{ asset('theme/images/demos/demo-market2/logo.png') }}" alt="logo" width="120" height="44" class="mobile-menu"/>
+			</a>
+			<!-- End Logo -->
+
+			<div class="header-search hs-expanded">
+				<form action="#" class="input-wrapper">
+					<div class="select-box">
+						<select name="cat" class="cat" id="cat-select">
+							
+						</select>
+					</div>
+					<input type="text" class="form-control" name="search" autocomplete="off" placeholder="Recherche...." required/>
+					<button class="btn btn-search" type="submit" title="submit-button">
+						<i class="d-icon-search"></i>
+					</button>
+				</form>
+			</div>
+			<!-- End Header Search -->
+		</div>
+		<div class="header-right">
+			<div class="icon-box icon-box-side never-clear">
+				<div class="icon-box-icon mr-0 mr-3 only-mobile only-product" onclick="toggleSearch()">
+					<a ><i class="d-icon-search min-mobile"></i></a>
+				</div>
+
+				<div class="icon-box-icon mr-0 mr-lg-2">
+					<a href="{{path('app_compte')}}"><i class="d-icon-user min-mobile"></i></a>
+				</div>
+				<div class="icon-box-content d-lg-show">
+					<h4 class="icon-box-title text-dark text-normal">
+						<a href="mailto:#" class="text-primary d-inline-block">Chat en direct</a>
+						ou:</h4>
+					<p>
+						<a href="tel:#">0(200) 123-001</a>
+					</p>
+				</div>
+			</div>
+			<span class="divider mr-4"></span>
+	
+			<div class="dropdown cart-dropdown type2 off-canvas mr-0 mr-lg-2">
+				<a href="#" class="cart-toggle label-block link">
+					<div class="cart-label d-lg-show">
+						<span class="cart-name">Panier :</span>
+						<span class="cart-price d-flex">€ <span class="preview-panier-total-prix">0.00</span></span>
+					</div>
+					<i class="d-icon-bag min-mobile">
+						<span class="cart-count preview-panier-total">0</span>
+					</i>
+				</a>
+				<div class="canvas-overlay"></div>
+				<!-- End Cart Toggle -->
+				<div class="dropdown-box">
+					<div class="canvas-header">
+						<h4 class="canvas-title">Panier </h4>
+						<a href="#" class="btn btn-dark btn-link btn-icon-right btn-close">Fermer<i class="d-icon-arrow-right"></i>
+							<span class="sr-only">Panier</span>
+						</a>
+					</div>
+					<div class="products scrollable preview-panier"></div>
+					<!-- End of Products  -->
+					<div class="cart-total">
+						<label>Subtotal:</label>
+						<span class="price">€ <span id="preview-subtotal-price">0</span></span>
+					</div>
+					<!-- End of Cart Total -->
+					<div class="cart-action">
+						<a href="{{path('app_panier')}}" class="btn btn-dark btn-link">Voir le panier</a>
+						<a href="/checkout" class="btn btn-dark">
+							<span>Aller à la caisse</span>
+						</a>
+					</div>
+					<!-- End of Cart Action -->
+				</div>
+				<!-- End Dropdown Box -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="fix-menu-search">
+	<div class="mSearch  pb-3">
+	{% include "/components/base/mobile-menu-search.html.twig" %}
+	</div>
+</div>
+</div>
+<script src="{{ asset('custom-js/load-categorie.js')}}"></script>
+<script src="{{ asset('custom-js/load-panier-preview.js')}}"></script>
+<script>
+function toggleSearch() {
+	console.log( 'ok' )
+	document.querySelector('.mSearch').classList.toggle('d-none')
+}
+</script>

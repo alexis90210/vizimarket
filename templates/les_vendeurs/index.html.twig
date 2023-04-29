@@ -1,0 +1,309 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Vendor
+{% endblock %}
+
+{% block body %}
+  <main class="main">
+    <div class="page-content mb-10">
+      <div class="container">
+        <nav class="breadcrumb-nav">
+          <ul class="breadcrumb">
+            <li>
+              <a href="/"><i class="d-icon-home"></i></a>
+            </li>
+            <li>
+              <a href="{{ path('app_tous_les_vendeurs') }}">Boutique</a>
+            </li>
+            <li>fournisseur</li>
+          </ul>
+        </nav>
+        <div class="row gutter-lg">
+          <aside class="col-xl-3 col-lg-4 sidebar left-sidebar sidebar-fixed sticky-sidebar-wrapper">
+            <div class="sidebar-overlay"></div>
+            <a class="sidebar-close" href="#"><i class="d-icon-times"></i></a>
+            <a href="#" class="sidebar-toggle"><i class="fas fa-chevron-right"></i></a>
+            <div class="sidebar-content">
+              <div class="sticky-sidebar">
+                <div class="widget widget-collapsible">
+                  <h2 class="widget-title">Catégorie de produit du magasin</h2>
+                  <ul class="widget-body filter-items search-ul">
+                    {% for categorie in categories %}
+                      <li>
+                        <a href="{{ path('app_boutique', { id: categorie['id'] }) }}">{{ categorie['nom'] }}</a>
+                      </li>
+                      {# {% if categorie['sousCategorie'] %}
+                        <ul>
+                          {% for sousCategorie in allCategorie %}
+                            {% if sousCategorie.getParent == categorie['id'] %}
+                              <li>
+                                <a href="{{ path('app_boutique', { id: sousCategorie.getId }) }}">{{ sousCategorie.getNom }}</a>
+                              </li>
+                            {% endif %}
+                          {% endfor %}
+                        </ul>
+                      {% endif %} #}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="widget widget-collapsible widget-contact-vendor">
+                  <h3 class="widget-title">Contact Vendor</h3>
+                  <div class="widget-body">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required="" />
+                    <input type="text" class="form-control" id="address" name="address" placeholder="you@example.com" required="" />
+                    <textarea id="message" cols="30" rows="6" class="form-control" placeholder="Type your message..." required=""></textarea>
+                    <a href="#" class="btn btn-dark btn-rounded">Envoyer le message</a>
+                  </div>
+                </div>
+                <div class="widget widget-collapsible">
+                  <h2 class="widget-title">Temps de stockage</h2>
+                  <ul class="widget-body widget-store-time">
+                    <li>
+                      <label>dimanche</label><span>6h00 - 22h00</span>
+                    </li>
+                    <li>
+                      <label>Lundi</label><span>6h00 - 22h00</span>
+                    </li>
+                    <li>
+                      <label>mardi</label><span>6h00 - 22h00</span>
+                    </li>
+                    <li>
+                      <label>mercredi</label><span>6h00 - 22h00</span>
+                    </li>
+                    <li>
+                      <label>jeudi</label><span>6h00 - 22h00</span>
+                    </li>
+                    <li>
+                      <label>Vendredi</label><span>6h00 - 22h00</span>
+                    </li>
+                    <li>
+                      <label>Samedi</label><span>6h00 - 22h00</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="widget widget-collapsible">
+                  <h2 class="widget-title">Produit le plus vendu</h2>
+                  <div class="widget-body mt-2 mb-6">
+                    <div class="product product-list-sm">
+                      <figure class="product-media">
+                        <a href="{{ path('app_product', { id: '1' }) }}"><img src="{{ asset('theme/images/demos/demo-market1/product/5.jpg') }}" alt="product" width="165" height="184" /></a>
+                      </figure>
+                      <div class="product-details">
+                        <h3 class="product-name"><a href="{{ path('app_product', { id: '1' }) }}">Professionnel à la mode Teinture Noir</a></h3>
+                        <div class="product-price">
+                          <ins class="new-price">€36.00</ins>
+                          <del class="old-price">€210.00</del>
+                        </div>
+                        <div class="ratings-container">
+                          <div class="ratings-full">
+                            <span class="ratings" style="width:100%"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                          </div>
+                          <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product product-list-sm">
+                      <figure class="product-media">
+                        <a href="{{ path('app_product', { id: '1' }) }}"><img src="{{ asset('theme/images/demos/demo-market1/product/9.jpg') }}" alt="product" width="165" height="184" /></a>
+                      </figure>
+                      <div class="product-details">
+                        <h3 class="product-name"><a href="{{ path('app_product', { id: '1' }) }}">Produits alimentaires transformés</a></h3>
+                        <div class="product-price">
+                          <span class="price">€25.00</span>
+                        </div>
+                        <div class="ratings-container">
+                          <div class="ratings-full">
+                            <span class="ratings" style="width:60%"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                          </div>
+                          <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product product-list-sm mb-0">
+                      <figure class="product-media">
+                        <a href="{{ path('app_product', { id: '1' }) }}"><img src="{{ asset('theme/images/demos/demo-market1/product/6.jpg') }}" alt="product" width="165" height="184" /></a>
+                      </figure>
+                      <div class="product-details">
+                        <h3 class="product-name"><a href="{{ path('app_product', { id: '1' }) }}">Sac à main à la mode</a></h3>
+                        <div class="product-price">
+                          <ins class="new-price">€198.00</ins>
+                          <del class="old-price">€270.00</del>
+                        </div>
+                        <div class="ratings-container">
+                          <div class="ratings-full">
+                            <span class="ratings" style="width:100%"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                          </div>
+                          <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget widget-collapsible">
+                  <h2 class="widget-title">Produit le mieux noté</h2>
+                  <div class="widget-body mt-2">
+                    <div class="product product-list-sm">
+                      <figure class="product-media">
+                        <a href="{{ path('app_product', { id: '1' }) }}"><img src="{{ asset('theme/images/demos/demo-market1/product/5.jpg') }}" alt="product" width="165" height="184" /></a>
+                      </figure>
+                      <div class="product-details">
+                        <h3 class="product-name"><a href="{{ path('app_product', { id: '1' }) }}">Teinture à la mode Pro Hairdye Noir</a></h3>
+                        <div class="product-price">
+                          <ins class="new-price">€36.00</ins>
+                          <del class="old-price">€210.00</del>
+                        </div>
+                        <div class="ratings-container">
+                          <div class="ratings-full">
+                            <span class="ratings" style="width:100%"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                          </div>
+                          <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product product-list-sm">
+                      <figure class="product-media">
+                        <a href="{{ path('app_product', { id: '1' }) }}"><img src="{{ asset('theme/images/demos/demo-market1/product/9.jpg') }}" alt="product" width="165" height="184" /></a>
+                      </figure>
+                      <div class="product-details">
+                        <h3 class="product-name"><a href="{{ path('app_product', { id: '1' }) }}">Produits alimentaires transformés</a></h3>
+                        <div class="product-price">
+                          <span class="price">€25.00</span>
+                        </div>
+                        <div class="ratings-container">
+                          <div class="ratings-full">
+                            <span class="ratings" style="width:60%"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                          </div>
+                          <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product product-list-sm mb-0">
+                      <figure class="product-media">
+                        <a href="{{ path('app_product', { id: '1' }) }}"><img src="{{ asset('theme/images/demos/demo-market1/product/6.jpg') }}" alt="product" width="165" height="184" /></a>
+                      </figure>
+                      <div class="product-details">
+                        <h3 class="product-name"><a href="{{ path('app_product', { id: '1' }) }}">Sac à main à la mode</a></h3>
+                        <div class="product-price">
+                          <ins class="new-price">€198.00</ins>
+                          <del class="old-price">€270.00</del>
+                        </div>
+                        <div class="ratings-container">
+                          <div class="ratings-full">
+                            <span class="ratings" style="width:100%"></span>
+                            <span class="tooltiptext tooltip-top"></span>
+                          </div>
+                          <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="col-xl-9 col-lg-8 main-content">
+            <div class="vendor-store-banner banner banner-fixed banner-radius">
+              <figure>
+                <img src="{{ asset('theme/images/vendeur/store/7.jpg') }}" alt="Vendor" width="1030" height="500" />
+              </figure>
+              <div class="vendor-store-content banner-content">
+                <figure>
+                  <img src="{{ vendeurInfos.getImageProfile != null ? vendeurInfos.getImageProfile : asset('theme/images/vendeur/store/vendor.png') }}" alt="Vendor avatar" width="80" height="80" />
+                </figure>
+                <h2 class="vendor-store-title">{{ vendeurInfos.getNom }}</h2>
+                <ul>
+                  <li>
+                    <i class="d-icon-map"></i>
+                    <span class="street">{{ vendeurInfos.getAdresse }}</span>
+
+                    <span class="country">{{ '/' ~ vendeurInfos.getPays }}</span>
+                  </li>
+                  <li>
+                    <i class="d-icon-phone"></i>
+                    <a href="tel:123456789">{{ vendeurInfos.getMobile }}</a>
+                  </li>
+                  <li>
+                    <i class="d-icon-star-full"></i>
+                    <span>4.67 note sur 9 avis</span>
+                  </li>
+                  <li>
+                    <i class="d-icon-bag"></i>
+                    <span>Magasin ouvert</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row product-wrapper cols-xl-3 cols-lg-3 cols-md-3 cols-2 mt-6">
+              {% for produit in produits %}
+                <div class="product-wrap">
+                  <div class="product">
+                    <figure class="product-media">
+                      <a href="{{ path('app_product', { id: produit.getId }) }}"><img src="{{ produit.getImage }}" alt="Product" width="238" height="267" /></a>
+                      <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Ajouter au panier"><i class="d-icon-bag"></i></a>
+                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                        <a href="#" class="btn-product-icon btn-compare" title="Comparer"><i class="d-icon-compare"></i></a>
+                      </div>
+                      <div class="product-action">
+                        <a href="/quick-view" class="btn-product btn-quickview" title="Aperçu rapide">Aperçu rapide</a>
+                      </div>
+                    </figure>
+                    <div class="product-details">
+                      <div class="product-cat">
+                        {% if (produit.getCategorie|length) > 0 %}
+                          {% for item in produit.getCategorie %}
+                            {% if loop.index < (produit.getCategorie|length) %}
+                              <a href="#">{{ item.getNom ~ ',' }}</a>
+                            {% else %}
+                              <a href="#">{{ item.getNom ~ '.' }}</a>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                      <h4 class="product-name"><a href="{{ path('app_product', { id: produit.getId }) }}">{{ produit.getNom }}</a></h4>
+                      {% if produit.getProduitType == 1 %}
+                        <div class="product-price">
+                          <span class="price">{{ produit.getTarifRegulier }}</span>
+                        </div>
+                      {% endif %}
+
+                      <div class="ratings-container">
+                        <div class="ratings-full">
+                          <span class="ratings" style="width:100%"></span>
+                          <span class="tooltiptext tooltip-top"></span>
+                        </div>
+                        <a href="{{ path('app_product', { id: '1' }) }}" class="rating-reviews">( 6 avis )</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <nav class="toolbox justify-content-center">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true"><i class="d-icon-arrow-left"></i>Prev</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link page-link-next" href="#" aria-label="Next">Next<i class="d-icon-arrow-right"></i></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

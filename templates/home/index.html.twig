@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Acceuil | VaziMarket
+{% endblock %}
+
+{% block body %}
+  <style>
+    .only-on-product {
+      display: none;
+    }
+  </style>
+  <main id="main-home" class="main">
+    {# {% if app.session.get('user') is defined and app.session.get('user') != null %}
+      <pre>{{ dump(app.session.get('user')) }}</pre>
+    {% endif %} #}
+
+    <div class="page-content">
+      {% include 'components/home/section-1.html.twig' %}
+
+      {% include 'components/home/section-2.html.twig' %}
+
+      {% include 'components/home/section-3.html.twig' %}
+    </div>
+  </main>
+  <script src="{{ asset('/custom-js/acceuil.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Liste des magasins
+{% endblock %}
+
+{% block body %}
+  <main class="main">
+    <div class="page-content mb-10 pb-10">
+      <div class="container">
+        <nav class="breadcrumb-nav">
+          <ul class="breadcrumb">
+            <li>
+              <a href="/"><i class="d-icon-home"></i></a>
+            </li>
+            <li>Liste des boutiques</li>
+          </ul>
+        </nav>
+        <div class="toolbox">
+          <div class="toolbox-left mb-4 mb-md-0">
+            <a href="#" class="toolbox-item btn btn-outline btn-dark btn-rounded btn-icon-left form-toggle-btn"><i class="d-icon-filter-2"></i>Filtrer</a>
+            <p class="store-count">Nombre total de magasins affichés :
+              {{ vendeurs|length }}</p>
+          </div>
+          <div class="toolbox-right">
+            <div class="toolbox-item toolbox-sort select-box text-dark">
+              <label class="d-block">Trier par :</label>
+              <select name="orderby" class="form-control">
+                <option value="default" selected="selected">Le plus récent</option>
+                <option value="popularity">Les plus populaires</option>
+              </select>
+            </div>
+            <div class="toolbox-item toolbox-layout">
+              <a href="{{ path('app_tous_les_vendeurs') }}" class="d-icon-mode-grid btn-layout active"></a>
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <form action="#" class="input-wrapper-inline">
+            <input type="email" class="form-control" name="vendor" id="vendor" placeholder="Rechercher des fournisseurs" required="" />
+            <button class="btn btn-primary btn-rounded" type="submit">Appliquer</button>
+          </form>
+        </div>
+        <div class="row cols-lg-3 cols-sm-2 cols-1 mt-4">
+          {% for vendeur in vendeurs %}
+            <div class="store-wrapper">
+              <div class="store">
+                <div class="store-header">
+                  <figure class="store-banner">
+                    <img src="{{ asset('theme/images/vendeur/store/1.jpg') }}" alt="Vendor" width="447" height="291" style="background-color: #8d9eaa;" />
+                  </figure>
+                </div>
+                <div class="store-content">
+                  <h2 class="store-title">
+                    <a href="{{ path('app_detail_boutique', { id: vendeur.id }) }}">{{ vendeur.getNom }}</a>
+                    {# <span class="featured-label">En vedette</span> #}
+                  </h2>
+                  <div class="ratings-container">
+                    <span class="ratings-full" title="Rated 4.65 out of 5"><span class="ratings" style="width:87%"></span></span>
+                  </div>
+                  <p>
+                    <span class="street">{{ vendeur.getAdresse }}</span><br />
+                    <span class="city">{{ vendeur.getPays }}</span><br />
+                  </p>
+                  <div class="store-phone">
+                    <i class="fa fa-phone"></i>{{ vendeur.getMobile }}
+                  </div>
+                </div>
+                <div class="store-footer">
+                  <figure class="seller-avatar">
+                    <img src="{{ asset('theme/images/vendeur/avatar/1.jpg') }}" alt="Vendor avatar" width="64" height="64" />
+                  </figure>
+                  <a href="{{ path('app_detail_boutique', { id: vendeur.id }) }}" class="btn btn-dark btn-link btn-underline">Visiter le magasin<i class="d-icon-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

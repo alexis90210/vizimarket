@@ -1,0 +1,159 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Toutes les Etiquettes</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Toutes les marques</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div
+						class="float-end d-none d-sm-block">{# <a href="" class="btn btn-success">Ajouter une Etiquette</a> #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper">
+			<div class="row">
+
+				<div class="col-xl-6">
+					<div class="card">
+						<div class="card-body">
+							<p class="card-title-desc">Ajouter une etiquette</p>
+							{% for type, messages in app.flashes() %}
+
+								<p class="text-{{type}} mt-2">
+									{{ messages[0] }}
+								</p>
+							{% endfor %}
+							{{form_start(form)}}
+							<div class="text-danger">
+								{{ form_errors(form) }}
+							</div>
+							<div class="my-3">
+								<label for="">Nom</label>
+								{{ form_widget(form.nom, {'attr': {'class': 'form-control','name':'nom'}}) }}
+							</div>
+
+							<div class="my-3">
+								<label for="logo">Logo</label>
+								{{ form_widget(form.logo, {'attr': {'class': 'form-control','name':'logo'}}) }}
+							</div>
+
+							<div>
+							    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary waves-effect waves-light','id':'submit'}}) }}
+							</div>
+							
+
+							{{form_end(form)}}
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-xl-6">
+					<div class="card m-b-30">
+						<div class="card-body">
+							<h4 class="mt-0 header-title mb-4">Marques</h4>
+
+							<div class="table-responsive">
+								<table class="table table-centered table-nowrap table-hover mb-0">
+									<thead>
+										<tr>
+											<th scope="col">Nom</th>
+											<th scope="col">Logo</th>
+											<th scope="col">Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										{% for marque in allMarque %}
+											<tr>
+												<td>
+													<h5 class="font-size-14">
+														{{marque.nom}}
+													</h5>
+												</td>
+												<td>
+													<img src="{{marque.logo}}" alt="" width="50px" class="rounded" srcset="">
+												</td>
+												<td id="tooltip-container0">
+													<btn data-bs-toggle="modal" data-bs-target="{{'#marque'~marque.getId}}" class="me-3 text-primary" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+														<i class="mdi mdi-pencil font-size-18"></i>
+													</btn>
+													<a href="{{path('app_delete_marque',{'id':marque.id,'role': app.user.access})}}" class="text-danger" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+														<i class="mdi mdi-trash-can font-size-18"></i>
+													</a>
+												</td>
+
+												<div class="modal fade" id="{{'marque'~marque.getId}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+													<div class="modal-header">
+														<h1 class="modal-title fs-5" id="exampleModalLabel">Modifier cette marque</h1>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<form action="{{path('app_edit_marque',{'id':marque.id,'role': app.user.access})}}" method="post" enctype="multipart/form-data">
+													<div class="modal-body">
+														
+															<div class="my-3">
+																<label for="">Nom</label>
+																<input type="text" id="nom" name="nom" class="form-control" value="{{marque.getNom}}">
+															</div>
+
+															<div class="my-3">
+																<label for="logo">Selectionner pour changer le logo</label>
+																<input type="file" name="logo" />
+															</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+														<button type="submit" class="btn btn-primary">Modifier</button>
+													</div>
+													</form>
+													</div>
+												</div>
+												</div>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- END ROW -->
+
+
+		</div>
+
+
+	</div>
+
+
+	<!-- container-fluid -->
+{% endblock %}

@@ -1,0 +1,11 @@
+# handle 404
+_error:
+    controller: App\Controller\Error404Controller::notFound
+    path: /error404
+
+controllers:    
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+

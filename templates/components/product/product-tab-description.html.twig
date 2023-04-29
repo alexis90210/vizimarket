@@ -1,0 +1,63 @@
+<div class="tab-pane active in" id="product-tab-description">
+  <div class="row mt-6">
+    <div class="col-12">
+      <h5 class="description-title mb-4 font-weight-semi-bold ls-m">Caractéristiques</h5>
+      <p class="mb-2">{{ produit.getCaracteristique|raw }}</p>
+      <h5 class="description-title mb-3 font-weight-semi-bold ls-m">Specifications</h5>
+      <table class="table">
+        <tbody>
+          {% if produit.getPoids != null %}
+            <tr>
+              <th class="font-weight-semi-bold text-dark pl-0">Poids</th>
+              <td class="pl-4">{{ produit.getPoids ~ 'kg' }}</td>
+            </tr>
+          {% endif %}
+          {% if produit.getLongueur != null %}
+            <tr>
+              <th class="font-weight-semi-bold text-dark pl-0">Longueur</th>
+              <td class="pl-4">{{ produit.getLongueur ~ 'cm' }}</td>
+            </tr>
+          {% endif %}
+          {% if produit.getHauteur != null %}
+            <tr>
+              <th class="font-weight-semi-bold text-dark pl-0">Hauteur</th>
+              <td class="pl-4">{{ produit.getHauteur ~ 'cm' }}</td>
+            </tr>
+          {% endif %}
+
+          {% if produit.getLargeur %}
+            <tr>
+              <th class="font-weight-semi-bold text-dark border-no pl-0">Largeur</th>
+              <td class="border-no pl-4">{{ produit.getLargeur ~ 'cm' }}</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 mt-4">
+      <h5 class="description-title font-weight-semi-bold ls-m mb-5">Guarantie du produit</h5>
+
+      <div class="icon-box-wrap d-flex flex-wrap">
+        <div class="icon-box icon-box-side icon-border pt-2 pb-2 mb-4 mr-10">
+          <div class="icon-box-icon">
+            <i class="d-icon-lock"></i>
+          </div>
+          <div class="icon-box-content">
+            <h4 class="icon-box-title lh-1 pt-1 ls-s text-normal">2 ans garantie</h4>
+            <p>Garantie sans aucun doute</p>
+          </div>
+        </div>
+        <div class="divider d-xl-show mr-10"></div>
+        <div class="icon-box icon-box-side icon-border pt-2 pb-2 mb-4">
+          <div class="icon-box-icon">
+            <i class="d-icon-truck"></i>
+          </div>
+          <div class="icon-box-content">
+            <h4 class="icon-box-title lh-1 pt-1 ls-s text-normal">Livraison gratuite</h4>
+            <p>Sur les commandes supérieures à 50,00 $</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

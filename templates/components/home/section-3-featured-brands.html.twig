@@ -1,0 +1,30 @@
+<h2 class="title appear-animate" data-animation-options="{'name': 'fadeIn'}">Marques en vedette
+</h2>
+<div class="brands-wrapper bg-white pl-md-4 pr-md-4 mb-10 appear-animate" data-animation-options="{'name': 'fadeIn'}">
+	<div class="owl-carousel owl-theme owl-nav-inner row cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-1" data-owl-options="{
+						                                'nav': true,
+						                                'dots': false,
+						                                'margin': 12,
+						                                'loop': true,
+						                                'responsive': {
+						                                    '0': {
+						                                        'items': 2
+						                                    },
+						                                    '576': {
+						                                        'items': 3
+						                                    },
+						                                    '768': {
+						                                        'items': 4
+						                                    },
+						                                    '992': {
+						                                        'items': 6
+						                                    }
+						                                }
+						                            }">
+		{% for marque in marques %}
+			<figure>
+				<img src="{{ marque.getLogo}}" alt="Brand" width="213" height="100"/>
+		    </figure>
+		{% endfor %}
+	</div>
+</div>

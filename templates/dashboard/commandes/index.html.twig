@@ -1,0 +1,122 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Les commandes</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vendeur</a>
+							</li>
+							<li class="breadcrumb-item active">Commandes</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="float-end d-none d-sm-block">
+						<a href="" class="btn btn-success">Tous Imprimer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body  pt-0">
+							<ul class="nav nav-tabs nav-tabs-custom mb-4">
+								<li class="nav-item">
+									<a class="nav-link fw-bold p-3 active" href="#">Toutes les commandes</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link p-3 fw-bold" href="#">Active</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link p-3 fw-bold" href="#">En stock</a>
+								</li>
+							</ul>
+							<div class="table-responsive">
+								<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+									<thead class="thead-light">
+										<tr>
+											<th style="width: 20px;">
+												<div class="form-check">
+													<input type="checkbox" class="form-check-input" id="ordercheck">
+													<label class="form-check-label" for="ordercheck">&nbsp;</label>
+												</div>
+											</th>
+											<th>Commande</th>
+											<th>Date</th>
+											<th>Etat</th>
+											<th>Total</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for i,commande in commandes %}
+
+
+											<tr>
+												<td>
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input" id="ordercheck1">
+														<label class="form-check-label" for="ordercheck1">&nbsp;</label>
+													</div>
+												</td>
+
+												<td>Commande emi par : <br> <a href="#">{{ commande.getClient.getNom}} {{ commande.getClient.getPrenom}}</a> </td>
+
+												<td>
+													{{ commande.getDateCommande}}
+												</td>
+
+												<td>
+													{% if commande.getStatutPaiement < 2 %}
+														<div class="badge badge-soft-success font-size-12">En stock</div>
+													{% endif %}
+													{% if commande.getStatutPaiement == 2 %}
+														<div class="badge badge-soft-success font-size-12">En Rupture</div>
+													{% endif %}
+													{% if commande.getStatutPaiement > 2 %}
+														<div class="badge badge-soft-success font-size-12">En Reapprovisionnement</div>
+													{% endif %}
+												</td>
+
+												<td>
+													${{commande.getPrix}}
+												</td>
+
+												<td id="tooltip-container1">
+													<a href="{{ path('app_details_commandes', {'id': commande.id , 'role': app.user.access } )}}"><i class="mdi mdi-eye font-size-18"></i> details</a>
+												</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end row -->
+
+		</div>
+
+
+	</div>
+	<!-- container-fluid -->
+</div>{% endblock %}

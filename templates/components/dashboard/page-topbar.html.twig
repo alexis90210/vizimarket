@@ -1,0 +1,246 @@
+<header id="page-topbar">
+  <div class="navbar-header">
+    <div class="d-flex">
+      <!-- LOGO -->
+      <div class="navbar-brand-box">
+        <a href="{{ path('app_home') }}" class="logo logo-dark">
+          <span class="logo-sm"><img src="{{ asset('_dashboard/assets/images/logo-sm.png') }}" alt="" height="22" /></span>
+          <span class="logo-lg"><img src="{{ asset('_dashboard/assets/images/logo-dark.png') }}" alt="" height="20" /></span>
+        </a>
+
+        <a href="{{ path('app_home') }}" class="logo logo-light">
+          <span class="logo-sm"><img src="{{ asset('_dashboard/assets/images/logo-sm.png') }}" alt="" height="22" /></span>
+          <span class="logo-lg"><img src="{{ asset('_dashboard/assets/images/logo-light.png') }}" alt="" height="20" /></span>
+        </a>
+      </div>
+
+      <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn"><i class="mdi mdi-menu"></i></button>
+
+      <div class="topbar-social-icon me-3 d-none d-md-block">
+        <ul class="list-inline title-tooltip m-0">
+          {# <li class="list-inline-item">
+						<a href="email-inbox.html" data-bs-toggle="tooltip" data-placement="top" title="Email">
+							<i class="mdi mdi-email-outline"></i>
+						</a>
+					</li> #}
+
+          <li class="list-inline-item">
+            <a href="{{ path('app_messagerie', { role: app.user.access, id: app.user.id }) }}" data-bs-toggle="tooltip" data-placement="top" title="Chat"><i class="mdi mdi-tooltip-outline"></i></a>
+          </li>
+
+          {# <li class="list-inline-item">
+						<a href="calendar.html" data-bs-toggle="tooltip" data-placement="top" title="Calendar">
+							<i class="mdi mdi-calendar"></i>
+						</a>
+					</li> #}
+
+          {# <li class="list-inline-item">
+						<a href="pages-invoice.html" data-bs-toggle="tooltip" data-placement="top" title="Printer">
+							<i class="mdi mdi-printer"></i>
+						</a>
+					</li> #}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Search input -->
+    <div class="search-wrap" id="search-wrap">
+      <div class="search-bar">
+        <input class="search-input form-control" placeholder="Search" />
+        <a href="#" class="close-search toggle-search" data-target="#search-wrap"><i class="mdi mdi-close-circle"></i></a>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div class="dropdown d-none d-lg-inline-block">
+        <button type="button" class="btn header-item toggle-search noti-icon waves-effect" data-target="#search-wrap"><i class="mdi mdi-magnify"></i></button>
+      </div>
+
+      <div class="dropdown d-none d-md-block ms-2">
+        {# <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img class="me-2" src="{{ asset('_dashboard/assets/images/flags/us.jpg') }}" alt="Header Language" height="16">
+					Anglais
+					<span class="mdi mdi-chevron-down"></span>
+				</button> #}
+        {# <div
+					class="dropdown-menu dropdown-menu-end">
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img src="{{ asset('_dashboard/assets/images/flags/germany.jpg') }}" alt="user-image" class="me-1" height="12">
+						<span class="align-middle">
+							Allemand
+						</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img src="{{ asset('_dashboard/assets/images/flags/italy.jpg') }}" alt="user-image" class="me-1" height="12">
+						<span class="align-middle">
+							Italien
+						</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img src="{{ asset('_dashboard/assets/images/flags/french.jpg') }}" alt="user-image" class="me-1" height="12">
+						<span class="align-middle">
+							Français
+						</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img src="{{ asset('_dashboard/assets/images/flags/spain.jpg') }}" alt="user-image" class="me-1" height="12">
+						<span class="align-middle">
+							Espagnol
+						</span>
+					</a>
+
+					<!-- item-->
+					<a href="javascript:void(0);" class="dropdown-item notify-item">
+						<img src="{{ asset('_dashboard/assets/images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12">
+						<span class="align-middle">
+							russe
+						</span>
+					</a>
+				</div> #}
+      </div>
+
+      <div class="dropdown d-none d-lg-inline-block ms-1">
+        <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen"><i class="mdi mdi-fullscreen"></i></button>
+      </div>
+
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="mdi mdi-bell-outline bx-tada"></i>
+          <span class="badge bg-danger rounded-pill">3</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+          <div class="p-3">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="m-0">Notifications</h6>
+              </div>
+              <div class="col-auto">
+                <a href="#!" class="small">Voir tout</a>
+              </div>
+            </div>
+          </div>
+          <div data-simplebar style="max-height: 230px;">
+            <a href="" class="text-reset notification-item">
+              <div class="media">
+                <div class="avatar-xs me-3">
+                  <span class="avatar-title bg-primary rounded-circle font-size-16"><i class="mdi mdi-cart text-white"></i></span>
+                </div>
+                <div class="media-body">
+                  <h6 class="mt-0 mb-1">Votre commande est passée</h6>
+                  <div class="font-size-13 text-muted">
+                    <p class="mb-1">Si plusieurs langues fusionnent la grammaire</p>
+                    <p class="mb-0">
+                      <i class="mdi mdi-clock-outline"></i>
+                      il y a 3 minutes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="" class="text-reset notification-item">
+              <div class="media">
+                <img src="{{ asset('_dashboard/assets/images/users/avatar-3.jpg') }}" class="me-3 rounded-circle avatar-xs" alt="user-pic" />
+                <div class="media-body">
+                  <h6 class="mt-0 mb-1">James Lemire</h6>
+                  <div class="font-size-13 text-muted">
+                    <p class="mb-1">Cela ressemblera à un anglais simplifié.</p>
+                    <p class="mb-0">
+                      <i class="mdi mdi-clock-outline"></i>
+                      il y a 1 heure
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="" class="text-reset notification-item">
+              <div class="media">
+                <div class="avatar-xs me-3">
+                  <span class="avatar-title bg-success rounded-circle font-size-16"><i class="mdi mdi-check text-white"></i></span>
+                </div>
+                <div class="media-body">
+                  <h6 class="mt-0 mb-1">Votre article est expédié</h6>
+                  <div class="font-size-13 text-muted">
+                    <p class="mb-1">Si plusieurs langues fusionnent la grammaire</p>
+                    <p class="mb-0">
+                      <i class="mdi mdi-clock-outline"></i>
+                      il y a 3 minutes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="" class="text-reset notification-item">
+              <div class="media">
+                <img src="{{ asset('_dashboard/assets/images/users/avatar-4.jpg') }}" class="me-3 rounded-circle avatar-xs" alt="user-pic" />
+                <div class="media-body">
+                  <h6 class="mt-0 mb-1">Salena Layfield</h6>
+                  <div class="font-size-13 text-muted">
+                    <p class="mb-1">Comme un ami occidental sceptique de Cambridge.</p>
+                    <p class="mb-0">
+                      <i class="mdi mdi-clock-outline"></i>
+                      il y a 1 heure
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="p-2 border-top">
+            <a class="btn btn-sm btn-link font-size-14 w-100 text-center" href="javascript:void(0)">
+              <i class="mdi mdi-arrow-right-circle me-1"></i>
+              Voir plus..
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="rounded-circle header-profile-user" src="{{ asset('_dashboard/assets/images/small/img-4.jpg') }}" alt="Header Avatar" />
+          <span class="d-none d-xl-inline-block ms-1">{{ app.user.nom }}</span>
+          <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end">
+          <!-- item -->
+          <a class="dropdown-item" href="{{path('app_createur_profile', {'role':app.user.access})}}">
+            <i class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i>
+            Profil
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="mdi mdi-wallet-outline font-size-16 align-middle me-1"></i>
+            Mon portefeuille
+          </a>
+          <a class="dropdown-item d-block" href="#">
+            <span class="badge badge-success float-end">11</span>
+            <i class="mdi mdi-cog-outline font-size-16 align-middle me-1"></i>
+            Paramètres
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="mdi mdi-lock-open-outline font-size-16 align-middle me-1"></i>
+            Verrouiller l'écran
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-danger" href="{{ path('app_logout') }}">
+            <i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i>
+            Déconnexion
+          </a>
+        </div>
+      </div>
+
+      {# <div class="dropdown d-inline-block">
+				<button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+					<i class="mdi mdi-cog-outline font-size-20"></i>
+				</button>
+			</div> #}
+    </div>
+  </div>
+</header>

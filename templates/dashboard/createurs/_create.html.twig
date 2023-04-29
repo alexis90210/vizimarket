@@ -1,0 +1,93 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Ajouter un createur</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Ajouter un createur</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid">
+		<div class="page-content-wrapper">
+			<div class="row">
+				<form method="POST" id="form-create-createur">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+
+
+								<div class="row">
+									<div class="mb-3 col-lg-4">
+										<label class="form-label" for="logo">Logo du createur</label>
+										<input id="logo" name="logo" required type="file" accept="image/*" class="form-control">
+									</div>
+
+									<div class="mb-3 col-lg-4">
+										<label class="form-label" for="password">Password</label>
+										<input id="Password" name="password" required type="password" class="form-control" placeholder="Entrer le password du createur">
+									</div>
+								</div>
+								<div class="row">
+									<div class="mb-3 col-lg-4">
+										<label class="form-label" for="nom">Nom</label>
+										<input id="nom" name="nom" type="text" required class="form-control" placeholder="Entrer le Nom du createur">
+									</div>
+									<div class="mb-3 col-lg-4">
+										<label class="form-label" for="prenom">prenom</label>
+										<input id="prenom" name="prenom" type="text" required class="form-control" placeholder="Entrer le prenom du createur">
+									</div>
+
+									<div class="mb-3 col-lg-4">
+										<label class="form-label" for="email">email</label>
+										<input id="email" name="email" type="email" required class="form-control" placeholder="Entrer l'email du createur">
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="mb-3 col-lg-4">
+										<label class="form-label" for="Commission">Commission Vendeur</label>
+										<input id="Commission" name="commission" type="number" value="0" class="form-control" placeholder="Entrer la commission Vendeur">
+									</div>
+
+									<div class="mb-3 col-lg-4">
+										<label for="typeValidationVendeur">Type de validation vendeur</label>
+										<select class="form-select" name="typeValidationVendeur" id="typeValidationVendeur" required>
+											<option disabled value="">choisir...</option>
+											<option value="1">Manuelle, avec controle papier
+											</option>
+											<option value="2">Automatique, Des l'inscription</option>
+										</select>
+									</div>
+								</div>
+
+								<button class="btn btn-primary btn-block btn-rounded mt-3 mb-3" type="submit">Ajouter un createur</button>
+
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{ asset('custom-js/create.js')}}"></script>
+{% endblock %}

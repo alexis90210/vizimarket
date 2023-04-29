@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        Vazimarket
+      {% endblock %}
+    </title>
+    <style>
+      .select2-container {
+        width: 100% !important;
+      }
+      
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 9999;
+      }
+      
+      .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 10px solid #f3f3f3;
+        border-top: 10px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .content {
+        display: none;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Riode - Ultimate eCommerce Template" />
+    <meta name="author" content="D-THEMES" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('theme/images/icons/favicon.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    {# WaitMe #}
+    <link rel="stylesheet" href="{{ asset('plugins/waitMe/waitMe.css') }}" />
+
+    {# Multiselect #}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/multiselect.css') }}" />
+    {# spop.css #}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/spop.css') }}" />
+
+    {% block vazimarketStyle %}
+      <!-- Preload Font -->
+      <link rel="preload" href="{{ asset('theme/fonts/riode.ttf?5gap68') }}" as="font" type="font/woff2" crossorigin="anonymous" />
+      <link rel="preload" href="{{ asset('theme/vendor/fontawesome-free/webfonts/fa-solid-900.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous" />
+      <link rel="preload" href="{{ asset('theme/vendor/fontawesome-free/webfonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous" />
+
+      <script src="{{ asset('main.js') }}"></script>
+
+      <link rel="stylesheet" type="text/css" href="{{ asset('theme/vendor/fontawesome-free/css/all.min.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('theme/vendor/animate/animate.min.css') }}" />
+
+      <!-- Plugins CSS File -->
+      <link rel="stylesheet" type="text/css" href="{{ asset('theme/vendor/magnific-popup/magnific-popup.min.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('theme/vendor/owl-carousel/owl.carousel.min.css') }}" />
+
+      <link rel="stylesheet" type="text/css" href="{{ asset('theme/vendor/sticky-icon/stickyicon.css') }}" />
+
+      <!-- Main CSS File -->
+      <link rel="stylesheet" type="text/css" href="{{ asset('theme/css/market2.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+    {% endblock %}
+    <link rel="stylesheet" href="{{ asset('plugins/lobibox/css/lobibox.min.css') }}" />
+
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+  </head>
+  <body id="body" class="home market">
+    <div class="preloader">
+      <div class="loader"></div>
+    </div>
+
+    <div id="content-body" class="content">
+      <!-- Contenu du site web -->
+      {% block vazimarket %}
+        <div class="page-wrapper">
+          {% block header %}
+            {% include 'components/base/header.html.twig' %}
+          {% endblock %}
+
+          <!-- End Header -->
+
+          {% block body %}
+            <div class="centered-widget">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="
+								          margin: auto;
+								          background: transparent;
+								          display: block;
+								          shape-rendering: auto;
+								        " width="250px" height="250px" viewbox="0 0 100 100" preserveaspectratio="xMidYMid">
+                <circle cx="50" cy="50" r="0" fill="none" stroke="#e90c59" stroke-width="2">
+                  <animate attributename="r" repeatcount="indefinite" dur="1s" values="0;40" keytimes="0;1" keysplines="0 0.2 0.8 1" calcmode="spline" begin="0s"></animate>
+                  <animate attributename="opacity" repeatcount="indefinite" dur="1s" values="1;0" keytimes="0;1" keysplines="0.2 0 0.8 1" calcmode="spline" begin="0s"></animate>
+                </circle>
+                <circle cx="50" cy="50" r="0" fill="none" stroke="#46dff0" stroke-width="2">
+                  <animate attributename="r" repeatcount="indefinite" dur="1s" values="0;40" keytimes="0;1" keysplines="0 0.2 0.8 1" calcmode="spline" begin="-0.5s"></animate>
+                  <animate attributename="opacity" repeatcount="indefinite" dur="1s" values="1;0" keytimes="0;1" keysplines="0.2 0 0.8 1" calcmode="spline" begin="-0.5s"></animate>
+                </circle>
+              </svg>
+            </div>
+            <style>
+              centered-widget {
+                width: 100%;
+                height: 100vh;
+                display: grid;
+                place-items: center;
+              }
+            </style>
+          {% endblock %}
+
+          <!-- End Main -->
+          {% block footer %}
+            {% include 'components/base/footer.html.twig' %}
+          {% endblock %}
+
+          <!-- End Footer -->
+        </div>
+        <!-- Sticky Footer -->
+        {% block footerSticky %}
+          {% include 'components/base/sticky-footer.html.twig' %}
+        {% endblock %}
+        <!-- Scroll Top -->
+        <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-arrow-up"></i></a>
+
+        <!-- MobileMenu -->
+        {% include 'components/base/mobile-menu.html.twig' %}
+
+        <!-- newsletter-popup type4 -->
+        {% include 'components/base/newsletter-popup.html.twig' %}
+        <!-- sticky icons -->
+        {# {% include "components/base/sticky-icons-wrapper.html.twig" %} #}
+
+        <!-- Plugins JS File -->
+        <script src="{{ asset('/custom-js/load-createur-configuration.js') }}"></script>
+        <script src="{{ asset('theme/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/jquery.plugin/jquery.plugin.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/owl-carousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/isotope/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/photoswipe/photoswipe.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/photoswipe/photoswipe-ui-default.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/elevatezoom/jquery.elevatezoom.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/jquery.countdown/jquery.countdown.min.js') }}"></script>
+        <!-- Main JS File -->
+        <script src="{{ asset('theme/js/main.js') }}"></script>
+      {% endblock %}
+    </div>
+    <script>
+      window.addEventListener('load', function () {
+        var preloader = document.querySelector('.preloader')
+        preloader.classList.add('hide')
+        setTimeout(function () {
+          preloader.style.display = 'none'
+          document.querySelector('.content').style.display = 'block'
+        }, 1000) // temps en millisecondes du preloader
+      })
+    </script>
+
+    {# name that color #}
+
+    <script type="text/javascript" src="https://chir.ag/projects/ntc/ntc.js"></script>
+
+    <!-- Plugins JS File -->
+    <script src="{{ asset('theme/vendor/jquery/jquery.min.js') }}"></script>
+
+    {# lobibox #}
+    <script src="{{ asset('plugins/lobibox/js/lobibox.min.js') }}"></script>
+
+    {# multiselect #}
+    <script type="text/javascript" src="{{ asset('_dashboard/assets/js/multiselect.js') }}"></script>
+
+    {# spop #}
+    <script type="text/javascript" src="{{ asset('_dashboard/assets/js/spop.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('plugins/waitMe/waitMe.js') }}"></script>
+
+    <script>
+			let input = document.querySelector('input[type="number"]')
+			input.addEventListener('input', function () {if (input?.value <= 0) {input?.value = 1}})
+		</script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Tous les attributss</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Tous les attributs</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div
+						class="float-end d-none d-sm-block">{# <a href="" class="btn btn-success">Ajouter un attribut</a> #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper">
+			<div class="row">
+
+				<div class="col-xl-6">
+					<div class="card">
+						<div class="card-body">
+							<p class="card-title-desc">Ajouter un attribut</p>
+							{% for type, messages in app.flashes() %}
+
+								<p class="text-{{type}} mt-2">
+									{{ messages[0] }}
+								</p>
+							{% endfor %}
+							{{form_start(form)}}
+							<div class="my-3">
+								<label for="">Nom</label>
+								{{ form_widget(form.nom, {'attr': {'class': 'form-control','name':'nom'}})}}
+							</div>
+
+							<div class="my-3">
+								<label for="">Type d'attribut</label>
+								{{ form_widget(form.type, {'attr': {'class': 'form-select','name':'type'}})}}
+							</div>
+
+							<div>
+							    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary waves-effect waves-light','id':'submit'}}) }}
+							</div>
+
+							
+							{{form_end(form)}}
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-xl-6">
+					<div class="card m-b-30">
+						<div class="card-body">
+							<h4 class="mt-0 header-title mb-4">Tous les attributs</h4>
+							<div class="table-responsive">
+								<table class="table table-centered table-nowrap table-hover mb-0">
+									<thead>
+										<tr>
+											<th scope="col">Nom</th>
+										    <th scope="col">Type</th>	
+											<th scope="col">Actions</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										{% for attribut in allAttribute %}
+											<tr>
+												<td>
+													<h5 class="font-size-16">
+														{{attribut.nom}}
+													</h5>
+												</td>
+
+												<td>
+													<h5 class="font-size-16">
+														{{attribut.type}}
+													</h5>
+												</td>
+
+												<td id="tooltip-container0">
+													<btn data-bs-toggle="modal" data-bs-target="{{'#attribut'~attribut.getId}}" class="me-3 text-primary" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+														<i class="mdi mdi-pencil font-size-18"></i>
+													</btn>
+													<a href="{{path('app_delete_attribut',{'id':attribut.id,'role': app.user.access})}}" class="text-danger" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+														<i class="mdi mdi-trash-can font-size-18"></i>
+													</a>
+													<a href="{{path('app_config_attribut',{'id':attribut.id,'role': app.user.access})}}" class="text-success px-3" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="configuration">
+														<i class="mdi mdi-eye font-size-18"></i>
+													</a>
+												</td>
+												{# ------------------------LE MODAL DE LA MODIFICATION #}
+
+												<!-- Modal -->
+												<div class="modal fade" id="{{'attribut'~attribut.getId}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+													<div class="modal-header">
+														<h1 class="modal-title fs-5" id="exampleModalLabel">Modifier cette etiquette</h1>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<form action="{{path('app_edit_attribut',{'id':attribut.id,'role': app.user.access})}}" method="post">
+													<div class="modal-body">
+														
+															<div class="my-3">
+																<label for="">Nom</label>
+																<input type="text" id="nom" name="nom" class="form-control" value="{{attribut.getNom}}">
+															</div>
+
+															<div class="my-3">
+																<label for="">Type d'attribut</label>
+																<select id="attribut_type" name="type" class="form-select">
+																	{% if(attribut.getType == 'Couleur') %}
+																		<option value="Couleur" selected="selected">Couleur</option>
+																		<option value="Taille">Taille</option>
+																		<option value="Label">Label</option>
+																		<option value="Image">Image</option>
+																	{% elseif (attribut.getType == 'Taille') %}
+																		<option value="Couleur">Couleur</option>
+																		<option value="Taille" selected="selected">Taille</option>
+																		<option value="Label">Label</option>
+																		<option value="Image">Image</option>
+																	{% elseif (attribut.getType == 'Label') %}
+																		<option value="Couleur">Couleur</option>
+																		<option value="Taille">Taille</option>
+																		<option value="Label" selected="selected" >Label</option>
+																		<option value="Image">Image</option>
+																	{% else %}
+																		<option value="Couleur">Couleur</option>
+																		<option value="Taille">Taille</option>
+																		<option value="Label" >Label</option>
+																		<option value="Image" selected="selected" >Image</option>
+																	{% endif %}
+																	
+																</select>
+															</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+														<button type="submit" class="btn btn-primary">Modifier</button>
+													</div>
+													</form>
+													</div>
+												</div>
+												</div>
+											</tr>
+											{% endfor%}</tbody>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- END ROW -->
+
+
+		</div>
+
+
+	</div>
+
+
+	<!-- container-fluid -->
+<script>
+
+	function sendEdit(id){
+
+		console.log('------------envoie du formulaire'+i);
+		let form= document.getElementById('form-'+id);
+
+		form.submit();
+
+
+	}
+</script>
+
+{% endblock %}

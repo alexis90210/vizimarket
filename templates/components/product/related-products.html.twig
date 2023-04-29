@@ -1,0 +1,100 @@
+<section class="pt-2 mt-10">
+	<h2 class="title justify-content-center ls-normal">Produits associés</h2>
+
+	<div class="owl-carousel owl-theme owl-nav-full row cols-2 cols-md-3 cols-lg-4" data-owl-options="{
+									                                    'items': 5,
+									                                    'nav': false,
+									                                    'loop': false,
+									                                    'dots': true,
+									                                    'margin': 20,
+									                                    'responsive': {
+									                                        '0': {
+									                                            'items': 2
+									                                        },
+									                                        '768': {
+									                                            'items': 3
+									                                        },
+									                                        '992': {
+									                                            'items': 4,
+									                                            'dots': false,
+									                                            'nav': true
+									                                        }
+									                                    }
+									                                }">
+		{% for similaire in similaires %}
+
+			{% if similaire.getId != id %}
+				<div class="product product-border text-center">
+					<figure class="product-media">
+						<a href="{{path('app_product',{'id': similaire.getId})}}">
+							<img src="{{ similaire.getImage }}" alt="product" width="260" height="293">
+							{% if similaire.getGalleries|length> 0 %}
+								<img src="{{ similaire.getGalleries[0].getImage }}" alt="product" width="260" height="293">
+							{% else %}
+								<img src="{{ similaire.getImage }}" alt="product" width="260" height="293">
+							{% endif %}
+						</a>
+						<div class="product-action-vertical">
+							<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+								<i class="d-icon-bag"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+								<i class="d-icon-heart"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+								<i class="d-icon-search"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+								<i class="d-icon-compare"></i>
+							</a>
+						</div>
+					</figure>
+					<div class="product-details">
+						<h3 class="product-name">
+							<a href="{{path('app_product',{'id':similaire.getId})}}">{{ similaire.getNom}}</a>
+						</h3>
+						{% if similaire.getProduitType != 2 %}
+							<div class="product-price">
+
+								<ins class="new-price promo-price">{{ similaire.getTarifPromo}}</ins>€ &nbsp;
+								<del class="old-price prix-regulier">{{ similaire.getTarifRegulier}}</del>
+								&nbsp;&nbsp;<span style="opacity:.4">€</span>
+
+							</div>
+						{% else %}
+							<div class="product-price">
+								{# Prix Variable #}
+								<ins class="new-price promo-price"></ins>
+								<del class="old-price prix-regulier"></del>
+
+							</div>
+
+						{% endif %}
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:0%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+
+							{% if similaire.getProduitType != 2 %}
+								<a href="{{path('app_product', {'id': similaire.id } ) }}" class="rating-reviews">( 0 Commentaires )</a>
+							{% else %}
+								<a href="{{path('app_product', {'id': similaire.id } ) }}" class="rating-reviews">( 0 Commentaires )</a>
+							{% endif %}
+
+
+						</div>
+
+
+						<a href="{{path('app_product', {'id': similaire.id } ) }}" style="display: block; overflow: hidden;  text-overflow: ellipsis; white-space: nowrap; padding: 0 0.5rem; height: 4.6rem; line-height: 3.1; font-size: 1.4rem; border-color: #666;" title="Voir les Details">
+							<i class="d-icon-bag"></i>Voir les Details</a>
+
+					</div>
+				</div>
+
+			{% endif %}
+
+
+		{% endfor %}
+	</div>
+</section>

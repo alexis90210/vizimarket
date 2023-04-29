@@ -1,0 +1,36 @@
+<nav class="breadcrumb-nav product-navigation">
+	<ul class="breadcrumb pt-0 pb-0 mb-0">
+		<li>
+			<a href="/">
+				<i class="d-icon-home"></i>
+			</a>
+		</li>
+		<li>
+			<a href="{{path('app_product',{'id':'1'})}}" class="active">Produits</a>
+		</li>
+		<li>Detail</li>
+	</ul>
+
+	<ul class="product-nav mb-0">
+		<li class="product-nav-prev">
+			<a href="#">
+				<i class="d-icon-arrow-left"></i>
+				Préc
+				<span class="product-nav-popup">
+					<img src="{{ asset ('theme/images/product/product-thumb-prev.jpg') }}" alt="product thumbnail" width="110" height="123">
+					<span class="product-name">Sed egtas Dnte Comfort</span>
+				</span>
+			</a>
+		</li>
+		<li class="product-nav-next">
+			<a href="#">
+				Suiv
+				<i class="d-icon-arrow-right"></i>
+				<span class="product-nav-popup">
+					<img src="{{ asset ('theme/images/product/product-thumb-next.jpg') }}" alt="product thumbnail" width="110" height="123">
+					<span class="product-name">Sed egtas Dnte Comfort</span>
+				</span>
+			</a>
+		</li>
+	</ul>
+</nav>

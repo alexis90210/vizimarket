@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login Createur
+{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+	<br><br>
+	<center>
+		<a href="/" class="logo">
+			<img src="{{ asset('theme/images/demos/demo-market2/logo.png') }}" alt="logo" width="153" height="44"/>
+		</a>
+	</center>
+	<link rel="stylesheet" type="text/css" href="{{ asset('theme/css/style.min.css')}}">
+	<main class="main">
+
+		<div class="page-content mt-6 pb-2 mb-10">
+			<div class="container">
+				<div class="login-popup">
+					<div class="form-box">
+						<div class="tab tab-nav-simple tab-nav-boxed form-tab">
+							<ul class="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active border-no lh-1 ls-normal" href="#signin">Connexion</a>
+								</li>
+								<li class="delimiter">ou</li>
+								<li class="nav-item">
+									<a class="nav-link border-no lh-1 ls-normal" href="#register">S'inscrire</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="signin">
+									<form action="#">
+										<div class="form-group mb-3">
+											<input type="text" class="form-control" id="singin-email" name="singin-email" placeholder="Username or Email Address *" required/>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" id="singin-password" name="singin-password" placeholder="Password *" required/>
+										</div>
+										<div class="form-footer">
+											<div class="form-checkbox">
+												<input type="checkbox" class="custom-checkbox" id="signin-remember" name="signin-remember"/>
+												<label class="form-control-label" for="signin-remember">Se souvenir de moi</label>
+											</div>
+											<a href="#" class="lost-link">Vous avez perdu votre mot de passe ?</a>
+										</div>
+										<button class="btn btn-dark btn-block btn-rounded" type="submit">Connexion</button>
+									</form>
+									<div class="form-choice text-center">
+										<label class="ls-m">ou Connectez-vous avec</label>
+										<div class="social-links">
+											<a href="#" class="social-link social-google fab fa-google border-no"></a>
+											<a href="#" class="social-link social-facebook fab fa-facebook-f border-no"></a>
+											<a href="#" class="social-link social-twitter fab fa-twitter border-no"></a>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="register">
+									<form action="#">
+										<div class="form-group">
+											<input type="email" class="form-control" id="register-email" name="register-email" placeholder="Your Email address *" required/>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" id="register-password" name="register-password" placeholder="Password *" required/>
+										</div>
+										<div class="form-footer">
+											<div class="form-checkbox">
+												<input type="checkbox" class="custom-checkbox" id="register-agree" name="register-agree" required/>
+												<label class="form-control-label" for="register-agree">J'accepte la politique de confidentialité</label>
+											</div>
+										</div>
+										<button class="btn btn-dark btn-block btn-rounded" type="submit">S'inscrire</button>
+									</form>
+									<div class="form-choice text-center">
+										<label class="ls-m">ou inscrivez-vous avec</label>
+										<div class="social-links">
+											<a href="#" class="social-link social-google fab fa-google border-no"></a>
+											<a href="#" class="social-link social-facebook fab fa-facebook-f border-no"></a>
+											<a href="#" class="social-link social-twitter fab fa-twitter border-no"></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block footerSticky %}{% endblock %}

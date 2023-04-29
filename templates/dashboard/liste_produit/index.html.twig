@@ -1,0 +1,152 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+  <!-- start page title -->
+  <div class="page-title-box">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-sm-6">
+          <div class="page-title">
+            <h4>Les produits</h4>
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item">
+                <a href="javascript: void(0);">Morvin</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript: void(0);">Market place</a>
+              </li>
+              <li class="breadcrumb-item active">Produits</li>
+            </ol>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="float-end d-none d-sm-block">
+            <a href="{{ path('app_produit_new', { role: app.user.access }) }}" class="btn btn-success">Ajouter un produit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end page title -->
+
+  <div class="container-fluid">
+    <div class="page-content-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body pt-0">
+              <ul class="nav nav-tabs nav-tabs-custom mb-4">
+                <li class="nav-item">
+                  <a class="nav-link fw-bold p-3 active" href="#">Tous les produits</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link p-3 fw-bold" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link p-3 fw-bold" href="#">En stock</a>
+                </li>
+              </ul>
+              <div class="table-responsive">
+                <table class="table table-centered datatable dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                  <thead class="thead-light">
+                    <tr>
+                      <th style="width: 20px;">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="ordercheck" />
+                          <label class="form-check-label" for="ordercheck">&nbsp;</label>
+                        </div>
+                      </th>
+                      <th>
+                        <i class="mdi mdi-camera"></i>
+                      </th>
+                      <th>Nom</th>
+                      <th>Stock</th>
+                      <th>Prix regulier</th>
+                      <th>Prix promo</th>
+                      <th>Marque</th>
+                      <th>Categorie(s)</th>
+                      <th>Date</th>
+                      <th style="width: 120px;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if (produits|length) > 0 %}
+                      {% for produit in produits %}
+                        <tr>
+                          <td>
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="ordercheck1" />
+                              <label class="form-check-label" for="ordercheck1">&nbsp;</label>
+                            </div>
+                          </td>
+
+                          <td>
+                            <img src="{{ produit.getImage }}" width="50px" class="rounded" />
+                          </td>
+                          <td>{{ produit.nom }}</td>
+
+                          <td>
+                            {% if produit.quantite > 0 %}
+                              <div class="badge badge-soft-success font-size-12">En stock({{ produit.quantite }})</div>
+                            {% else %}
+                              <div class="badge badge-soft-danger font-size-12">En rupture</div>
+                            {% endif %}
+                          </td>
+
+                          <td>
+                            {% if produit.getProduitType == 1 %}
+                              {{ produit.getTarifRegulier ~ '€' }}
+                            {% else %}
+                              variable
+                            {% endif %}
+                          </td>
+                          <td>
+                            {% if produit.getProduitType == 1 %}
+                              {{ produit.getTarifPromo ~ '€' }}
+                            {% else %}
+                              variable
+                            {% endif %}
+                          </td>
+                          <td>{{ produit.getMarque.getNom ?? '' }}</td>
+                          <td>
+                            <p>
+                              {% for categorie in produit.getCategorie %}
+                                {% if loop.index == (produit.getCategorie|length) %}
+                                  <span>{{ categorie.getNom }}</span>
+                                {% else %}
+                                  <span>{{ categorie.getNom ~ ',' }}</span>
+                                {% endif %}
+                              {% endfor %}
+                            </p>
+                          </td>
+
+                          <td>{{ produit.getDateCreation }}</td>
+
+                          <td id="tooltip-container1" style="width:180px">
+                            {% if produit.getProduitType == 1 %}
+                              <a style="border:1px solid ; border-radius:10px !important; border-color:#399962 !important" href="{{ path('app_product', { id: produit.getId, role: app.user.access }) }}" class="me-3 text-success p-1" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="consulter"><i class="mdi mdi-eye font-size-18"></i></a>
+
+                              <a style="border:1px solid ; border-radius:10px !important; border-color:#556CE5 !important" href="{{ path('app_produit_edit_page', { id: produit.getId, role: app.user.access }) }}" class="me-3 text-primary p-1" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"><i class="mdi mdi-pencil font-size-18"></i></a>
+                              <a style="border:1px solid ; border-radius:10px !important; border-color:#F14E4E !important" href="{{ path('app_delete_produit', { id: produit.getId, role: app.user.access }) }}" class="text-danger p-1" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                            {% else %}
+                              <a style="border:1px solid ; border-radius:10px !important; border-color:#399962 !important" href="{{ path('app_product', { id: produit.getId, role: app.user.access }) }}" class="me-3 text-success p-1" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="consulter"><i class="mdi mdi-eye font-size-18"></i></a>
+
+                              <a style="border:1px solid ; border-radius:10px !important; border-color:#556CE5 !important" href="{{ path('app_produit_variable_edit_page', { id: produit.getId, role: app.user.access }) }}" class="me-3 text-primary p-1" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Editer"><i class="mdi mdi-pencil font-size-18"></i></a>
+                              <a style="border:1px solid ; border-radius:10px !important; border-color:#F14E4E !important" href="{{ path('app_delete_produit_variable', { id: produit.getId, role: app.user.access }) }}" class="text-danger p-1" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                            {% endif %}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                    {% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+    </div>
+  </div>
+  <!-- container-fluid -->
+{% endblock %}

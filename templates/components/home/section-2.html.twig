@@ -1,0 +1,192 @@
+<section class="container mt-10 pt-6 mb-10 pb-2">
+	<div class="banner banner-radius banner-simple mb-10 appear-animate" data-animation-options="{'name': 'fadeIn'}">
+		<div class="banner-content">
+			<h4 class="banner-subtitle font-secondary font-weight-semi-bold text-uppercase ls-m mb-md-0 p-relative">
+				<span class="p-relative">Soldes du Black Friday !</span>
+			</h4>
+			<h3 class="banner-title font-secondary font-weight-normal text-white text-uppercase mb-6 mb-md-0 font-italic">
+				<span>Ne payez que pour
+					<strong class="mr-10 pr-10">votre électronique aimante</strong>
+					Ne payez que pour
+					<strong class="mr-10 pr-10">votre électronique aimante</strong>
+					Ne payez que pour
+					<strong class="mr-10 pr-10">votre électronique aimante</strong>
+				</span>
+			</h3>
+			<a href="{{path('app_produit_categorie',{'id':5})}}" class="btn btn-white btn-rounded mr-8 ml-6 ml-md-0 mb-6 mb-md-0">Achetez maintenant<i class="d-icon-arrow-right"></i>
+			</a>
+		</div>
+	</div>
+	<h2 class="title with-link pt-6 appear-animate" data-animation-options="{'name': 'fadeIn'}">
+		Offres du jour
+		<span class="countdown-container d-inline-flex align-items-center font-weight-normal ml-0 ml-md-4
+																			                            mt-2 mt-md-0 mb-2 mb-md-0 ls-normal text-white flex-wrap bg-primary">
+			<label class="text-white text-capitalize mr-2">L'offre se termine dans:</label>
+			<span class="countdown countdown-compact" data-format="DHMS" data-until="+10d" data-relative="true" data-compact="true">00:00:00</span>
+		</span>
+		<a href="{{path('app_produit_categorie',{'id':5})}}" class="btn btn-dark btn-link btn-underline d-inline-block text-capitalize font-weight-semi-bold ls-normal">Plus de produits<i class="d-icon-arrow-right"></i>
+		</a>
+	</h2>
+	<div class="owl-carousel owl-theme owl-nav-inner row cols-xl-5 cols-lg-4 cols-md-3 cols-2 mb-10 pb-6 appear-animate" data-animation-options="{'name': 'fadeIn'}" data-owl-options="{
+															                        'nav': true,
+															                        'dots': false,
+															                        'margin': 20,
+															                        'responsive': {
+															                            '0': {
+															                                'items': 2
+															                            },
+															                            '576': {
+															                                'items': 2
+															                            },
+															                            '768': {
+															                                'items': 3
+															                            },
+															                            '992': {
+															                                'items': 4
+															                            },
+															                            '1200': {
+															                                'items': 5
+															                            }
+															                        }
+															                    }">
+		{% for produit in produits %}
+			<div class="product  product-border text-center cart-full">
+				<figure class="product-media">
+
+				{% if produit.getProduitType != 2 %}
+					<a href="{{path('app_product', {'id': produit.id } ) }}">
+						<img src="{{produit.image}}" alt="product" width="240" height="270">
+					</a>
+				{% else %}
+					<a href="{{path('app_product', {'id': produit.id } ) }}">
+						<img src="{{produit.image}}" alt="product" width="240" height="270">
+					</a>
+				{% endif %}
+					
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Compare">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<span class="product-id" style="opacity:0;">0000{{ produit.getId }}</span>
+					
+					{% if produit.getProduitType != 2 %}
+					<h3 class="product-name">
+						<a href="{{path('app_product', {'id': produit.id } ) }}">{{ produit.nom}}</a>
+					</h3>
+					{% else %}
+					<h3 class="product-name">
+						<a href="{{path('app_product', {'id': produit.id } ) }}">{{ produit.nom}}</a>
+					</h3>
+					
+					{% endif %}
+					
+
+					{% if produit.getProduitType != 2 %}
+						<div class="product-price">
+
+						<ins class="new-price promo-price">{{ produit.getTarifPromo}}</ins>€ &nbsp;
+						<del class="old-price prix-regulier">{{ produit.getTarifRegulier}}</del> &nbsp;&nbsp;<span style="opacity:.4">€</span>
+
+						</div>
+						{% else %}
+							<div class="product-price">
+						{# Prix Variable #}
+						<ins class="new-price promo-price"></ins>
+						<del class="old-price prix-regulier"></del>
+
+						</div>
+
+					{% endif %}
+
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:0%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+
+							{% if produit.getProduitType != 2 %}
+							<a href="{{path('app_product', {'id': produit.id } ) }}" class="rating-reviews">( 0 Commentaires )</a>
+							{% else %}
+							<a href="{{path('app_product', {'id': produit.id } ) }}" class="rating-reviews">( 0 Commentaires )</a>
+							{% endif %}
+
+							
+						</div>
+
+							{% if produit.getProduitType != 2 %}
+										<a href="#" class="btn-product btn-cart" data-toggle="modal" data-target="#addCartModal" title="Ajouter au panier">
+										<i class="d-icon-bag"></i>Ajouter au panier</a>	
+									{% else %}
+									<a href="{{path('app_product', {'id': produit.id } ) }}" style="display: block; overflow: hidden;  text-overflow: ellipsis; white-space: nowrap; padding: 0 0.5rem; height: 4.6rem; line-height: 3.1; font-size: 1.4rem; border-color: #666;" title="Voir les Details">
+										<i class="d-icon-bag"></i>Voir les Details</a>
+									{% endif %}
+					
+				</div>
+			</div>
+		{% endfor %}
+
+
+	</div>
+	<div class="banner-grid-3cols row cols-lg-3 cols-md-2 cols-1 justify-content-center">
+		<div class="banner banner-fixed content-middle banner-radius mb-4 appear-animate" data-animation-options="{
+																			                            'name': 'fadeInLeftShorter', 'duration': '1s'
+																			                        }">
+			<figure>
+				<img src="{{ asset('theme/images/demos/demo-market2/banner/1.jpg') }}" alt="Banner" width="447" height="180" style="background-color: #f1f1f1;"/>
+			</figure>
+			<div class="banner-content">
+				<h4 class="banner-subtitle text-uppercase text-body font-weight-normal ls-normal">Nouveautés</h4>
+				<h3 class="banner-title font-secondary font-weight-semi-bold text-uppercase ls-m">
+					Soldes vêtements de ski<br>
+					<span class="font-weight-normal text-normal">Jusqu'à</span>
+					<span class="text-capitalize text-secondary">35 % de réduction</span>
+				</h3>
+				<a href="{{path('app_produit_categorie',{'id':5})}}" class="btn btn-dark btn-link btn-underline">Achetez maintenant<i class="d-icon-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="banner banner-fixed content-middle banner-radius mb-4 appear-animate" data-animation-options="{
+																			                            'name': 'fadeIn'
+																			                        }">
+			<figure>
+				<img src="{{ asset('theme/images/demos/demo-market2/banner/2.jpg') }}" alt="Banner" width="447" height="180" style="background-color: #2b2833;"/>
+			</figure>
+			<div class="banner-content">
+				<h4 class="banner-subtitle text-white text-uppercase font-weight-normal ls-normal">Meilleur vendeur</h4>
+				<h3 class="banner-title text-white font-secondary font-weight-semi-bold text-uppercase ls-m">
+					Tendance Femme<br>
+					<span class="font-weight-normal text-uppercase">Des lunettes de soleil</span>
+				</h3>
+				<a href="{{path('app_produit_categorie',{'id':5})}}" class="btn btn-white btn-link btn-underline">Achetez maintenant<i class="d-icon-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="banner banner-fixed content-middle banner-radius mb-4 appear-animate" data-animation-options="{
+																			                            'name': 'fadeInRightShorter', 'duration': '1s'
+																			                        }">
+			<figure>
+				<img src="{{ asset('theme/images/demos/demo-market2/banner/3.jpg') }}" alt="Banner" width="447" height="180" style="background-color: #edecec;"/>
+			</figure>
+			<div class="banner-content">
+				<h4 class="banner-subtitle text-uppercase text-body font-weight-normal ls-normal">Nouveautés</h4>
+				<h3 class="banner-title font-secondary font-weight-semi-bold text-uppercase ls-m">
+					Nouveau dernier sac<br>
+					<span class="font-weight-normal text-uppercase">Collection</span>
+				</h3>
+				<a href="{{path('app_produit_categorie',{'id':5})}}" class="btn btn-dark btn-link btn-underline">Achetez maintenant<i class="d-icon-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

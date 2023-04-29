@@ -1,0 +1,17 @@
+{% if app.session.get('user') is defined and app.session.get('user') != null %}
+  {% for role in app.session.get('user').roles %}
+    {% if role == 'ROLE_CLIENT' %}
+      <div class="widget widget-collapsible widget-contact-vendor">
+        <h3 class="widget-title">Contacter le vendeur</h3>
+        <form method="POST" action="{{ path('api_message_prive_send_message', { id: app.session.get('user').id }) }}">
+          <div class="widget-body">
+            <input type="hidden" value="{{ produit.getVendeur.getId }}" name="idVendeur" />
+            <input type="hidden" value="{{ produit.getId }}" name="idProduit" />
+            <textarea id="contenu" cols="30" rows="6" class="form-control" placeholder="Tapez votre message ici" name="contenu" required></textarea>
+            <button type="submit" class="btn btn-dark btn-rounded">Envoyer le message</button>
+          </div>
+        </form>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}

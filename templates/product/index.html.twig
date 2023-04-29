@@ -1,0 +1,228 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Product
+{% endblock %}
+
+{% block body %}
+  <style>
+    .only-on-product {
+      display: block !important;
+      font-size: 30px;
+      padding-right: 10px;
+    }
+    
+    .fix-menu-search {
+      display: none;
+    }
+  </style>
+  <main class="main single-product">
+    <div class="page-content mb-10 pb-6">
+      <div class="container">
+        {# {% for message in app.session.flashBag.get('success') %}
+          <div class="alert alert-success">{{ message }}</div>
+        {% endfor %} #}
+
+        {% include 'components/product/breadcrumb.html.twig' %}
+
+        <div class="row gutter-lg">
+          <div class="col-xl-9 col-lg-8">
+            <div class="product product-single row mb-5">
+              {% include 'components/product/product-gallery.html.twig' %}
+
+              {% include 'components/product/product-details.html.twig' %}
+            </div>
+
+            <a href="#alert-chat">
+              <div class="alert alert-light alert-primary alert-icon mb-4 card-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="text-body">Avez-vous des questions?</span>
+                <span class="text-primary">Cliquez ici pour le chat</span>
+              </div>
+            </a>
+            <div class="tab tab-nav-simple product-tabs">
+              <ul class="nav nav-tabs justify-content-center" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#product-tab-description">Description</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#product-tab-additional">Informations supplémentaires</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#product-tab-shipping-returns">Livraison &amp; Retours</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#product-tab-reviews">avis (0)</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                {% include 'components/product/product-tab-description.html.twig' %}
+
+                {% include 'components/product/product-tab-additional.html.twig' %}
+
+                {% include 'components/product/product-tab-shipping-returns.html.twig' %}
+
+                {% include 'components/product/product-tab-reviews.html.twig' %}
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="comments">
+                <h3 class="title title-simple text-left text-normal font-weight-bold">3 Commentaires</h3>
+                <ul>
+                  {% for commentaire in commentaires %}
+                    <li>
+                      <div class="comment">
+                        <figure class="comment-media">
+                          <a href="#"><img src="{{ asset('theme/images/blog/comments/1.jpg') }}" alt="avatar" /></a>
+                        </figure>
+                        <div class="comment-body">
+                          <div class="comment-user">
+                            <span class="comment-date">{{ commentaire.getDate }}</span>
+
+                            {% if app.session.get('user') != null %}
+                              {% if commentaire.getType == 1 %}
+                                <h4><a href="#">{{ commentaire.getClient.getId == app.session.get('user').id ? 'Vous' : commentaire.getExpediteur.getNom }}</a></h4>
+                              {% else %}
+                                <h4><a href="#">{{ commentaire.getVendeur.getId == app.session.get('user').id ? 'Vous' : commentaire.getExpediteur.getNom }}</a></h4>
+                              {% endif %}
+                            {% else %}
+                              {% if commentaire.getType == 1 %}
+                                <h4><a href="#">{{ commentaire.getClient.getNom != null ? commentaire.getClient.getNom : '' }}</a></h4>
+                              {% else %}
+                                <h4><a href="#">{{ commentaire.getVendeur.getNom != null ? commentaire.getVendeur.getNom : '' }}</a></h4>
+                              {% endif %}
+                            {% endif %}
+                          </div>
+
+                          <div class="comment-content mb-2">
+                            <p>{{ commentaire.getContenu }}</p>
+                          </div>
+
+                          {% if app.session.get('user') != null %}
+                            <div class="row">
+                              <div class="btn btn-link btn-reveal-right" onclick="reponse({{ commentaire.getId }})">
+                                Repondre<i class="d-icon-arrow-right"></i>
+                              </div>
+                              <form id="{{ 'form-' ~ commentaire.getId }}" class="d-none" method="POST" action="{{ path('app_commentaire_reponse', { id: commentaire.getId }) }}">
+                                <input type="hidden" value="{{ app.session.get('user').id }}" name="expediteur" />
+                                <input type="hidden" name="idProduit" value="{{ produit.getId() }}" />
+                                <textarea id="{{ 'commentaire-' ~ commentaire.getId }}" cols="30" rows="6" class="form-control mb-4 mt-2" placeholder="Entrer votre reponse" name="commentaire" required></textarea>
+                                <div>
+                                  <button type="submit" id="{{ 'envoyer-' ~ commentaire.getId }}" class="btn btn-success">Repondre</button>
+                                  <div id="{{ 'annuler-' ~ commentaire.getId }}" class="btn btn-warning ms-5" onclick="annuler({{ commentaire.getId }})">Annuler</div>
+                                </div>
+                              </form>
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <ul>
+                        {% if (commentaire.getReponseCommentaires|length) > 0 %}
+                          {% for item in commentaire.getReponseCommentaires %}
+                            <li>
+                              <div class="comment">
+                                <figure class="comment-media">
+                                  <a href="#"><img src="{{ asset('theme/images/blog/comments/2.jpg') }}" alt="avatar" /></a>
+                                </figure>
+
+                                <div class="comment-body">
+                                  <div class="comment-user">
+                                    <span class="comment-date">{{ item.getDate }}</span>
+                                    <h4><a href="#">{{ item.getExpediteur.getNom }}</a></h4>
+                                  </div>
+
+                                  <div class="comment-content mb-2">
+                                    <p>{{ item.getContenu }}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          {% endfor %}
+                        {% endif %}
+                      </ul>
+                    </li>
+                  {% endfor %}
+
+                  <!--                                                      <li>
+                    <div class="comment">
+                      <figure class="comment-media">
+                        <a href="#"><img src="{{ asset('theme/images/blog/comments/1.jpg') }}" alt="avatar" /></a>
+                      </figure>
+
+                      <div class="comment-body">
+                        <div class="comment-user">
+                          <span class="comment-date">November 9, 2018 at 2:19 pm</span>
+                          <h4><a href="#">Johnathan Castillo</a></h4>
+                        </div>
+
+                        <div class="comment-content mb-2">
+                          <p>Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+                        </div>
+                        <a href="#" class="btn btn-link btn-reveal-right">REPLY<i class="d-icon-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </li>                                                      -->
+                </ul>
+              </div>
+              <!-- End Comments -->
+              {% if app.session.get('user') is defined and app.session.get('user') != null %}
+                <div class="reply" id="alert-chat">
+                  <div class="title-wrapper text-left mb-4">
+                    <h3 class="title title-simple text-left text-normal">Laisser un commentaire</h3>
+                    <p class="d-none">Votre adresse e-mail ne sera pas publiée. Les champs obligatoires sont marqués *</p>
+                  </div>
+                  <form action="{{ path('app_commentaire_add_by_produit', { id: produit.getId }) }}" method="POST">
+                    <textarea id="reply-message" cols="30" rows="6" class="form-control mb-4" placeholder="Entrer votre commentaire" name="commentaire" required></textarea>
+                    <div class="row">
+                      {% if 'ROLE_VENDEUR' in app.session.get('user').roles %}
+                        <div class="col-md-6 mb-5">
+                          <input type="hidden" class="form-control" name="vendeur" value="{{ app.session.get('user').id }}" />
+                        </div>
+                      {% else %}
+                        <div class="col-md-6 mb-5">
+                          <input type="hidden" class="form-control" name="client" value="{{ app.session.get('user').id }}" />
+                        </div>
+                      {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-rounded">POSTER UN COMMENTAIRE<i class="d-icon-arrow-right"></i></button>
+                  </form>
+                </div>
+              {% endif %}
+            </div>
+            {% include 'components/product/related-products.html.twig' %}
+          </div>
+
+          <aside class="col-xl-3 col-lg-4 sidebar right-sidebar sidebar-fixed sticky-sidebar-wrapper">
+            <div class="sidebar-overlay"></div>
+            <a class="sidebar-close" href="#"><i class="d-icon-times"></i></a>
+            <a href="#" class="sidebar-toggle"><i class="fas fa-chevron-left"></i></a>
+            <div class="sidebar-content">
+              <div class="sticky-sidebar">
+                {% include 'components/product/vendor-info.html.twig' %}
+
+                {% include 'components/product/contact-form.html.twig' %}
+
+                {% include 'components/product/vendor-products.html.twig' %}
+
+                <!-- End Widget Products -->
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    function reponse(id) {
+      document.getElementById('form-' + id).classList.remove('d-none')
+    }
+    
+    function annuler(id) {
+      document.getElementById('form-' + id).classList.add('d-none')
+    }
+  </script>
+{% endblock %}
+{% block footer %}
+  {% include 'components/base/footer-copy.html.twig' %}
+{% endblock %}

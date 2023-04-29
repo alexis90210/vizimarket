@@ -1,0 +1,454 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Modifier un produit</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Modifier un produit</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+
+							<div id="addproduct-nav-pills-wizard" class="twitter-bs-wizard">
+								<ul class="twitter-bs-wizard-nav">
+									<li class="nav-item add-product-border">
+										<a href="#basic-info" class="nav-link" data-toggle="tab">
+											<span class="step-number">01. Description du produit</span>
+										</a>
+									</li>
+
+									<li class="nav-item add-product-border">
+										<a href="#Donnees-produit" class="nav-link" data-toggle="tab">
+											<span class="step-number">02. Donnees du produit</span>
+										</a>
+									</li>
+
+									<li class="nav-item add-product-border">
+										<a href="#product-img" class="nav-link" data-toggle="tab">
+											<span class="step-number">03. Gallerie du produit</span>
+										</a>
+									</li>
+								</ul>
+								<!-- ebd ul -->
+								<div id="tab-content1" class="tab-content twitter-bs-wizard-tab-content">
+									<div class="tab-pane" id="basic-info">
+										<h4 class="header-title">Informations de base</h4>
+										<p class="card-title-desc">Remplissez toutes les informations ci-dessous</p>
+
+
+										<div class="row">
+											<div class="mb-3 col-lg-4">
+												<label class="form-label" for="producttitre">Titre du produit</label>
+												<input id="producttitre" name="producttitre" type="text" class="form-control" placeholder="Entrer le Nom du produit">
+											</div>
+											<div class="mb-3 col-lg-4">
+												<label class="form-label" for="productQte">quantité du produit</label>
+												<input id="productQte" name="productQte" type="number" class="form-control" placeholder="Entrer la quantité du produit">
+											</div>
+											<div class="mb-3 col-lg-4">
+												<label for="Categorie">Categorie</label>
+												<select class="form-select js-example-disabled-results" id="categories">
+													
+													{%for categorie in categories%}
+														<option value="{{categorie.id}}">{{categorie.nom}}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+
+					
+
+										<div class="row">
+											<div class="mb-3 col-lg-6">
+												<label class="form-label" for="productdesc">Description</label>
+												<textarea class="form-control" id="productdesc" rows="2" placeholder="Enter Description"></textarea>
+											</div>
+
+											<div class="mb-3 col-lg-6">
+												<label class="form-label" for="productCaracteristic">Caracteristiques
+												</label>
+												<textarea class="form-control" id="productCaracteristic" rows="2" placeholder="Entrer les Caracteristiques"></textarea>
+											</div>
+										</div>
+
+										<ul class="pager wizard twitter-bs-wizard-pager-link">
+											<li class="next">
+												<a href="#">
+													Suivant
+													<i class="mdi mdi-arrow-right ms-1"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!-- end tabpane -->
+									<div class="tab-pane" id="Donnees-produit">
+										<div
+											id="smarttab">
+
+											<!-- Tabs -->
+											<ul class="nav">
+												<li>
+													<a class="nav-link" href="#tab-astuce"></a>
+												</li>
+												<li>
+													<a class="nav-link" href="#tab-variable">
+														Details du produit
+													</a>
+												</li>
+										
+												<li>
+													<a class="nav-link" href="#tab-Etiquette">
+														Etiquette
+													</a>
+												</li>
+												<li>
+													<a class="nav-link" href="#tab-Expedition">
+														Expedition
+													</a>
+												</li>
+												<li>
+													<a class="nav-link" href="#tab-Variations">
+														Variations
+													</a>
+												</li>
+												<li>
+													<a class="nav-link" href="#tab-complement">
+														Info. complemetaire
+													</a>
+												</li>
+											</ul>
+
+											<!-- Tabbed Content -->
+											<div
+												class="tab-content" id="tab-content2" style='height:100%' >
+
+												{# TAB VARAIBLE #}
+
+												<div id="tab-variable" class="tab-pane" role="tabpanel">
+
+													<div class="mb-3 col-lg-3">
+														<label class="form-label" for="EstDisponible">Est t-il Disponible
+														</label>
+														<input id="EstDisponible" name="EstDisponible" type="checkbox">
+													</div>
+
+													<!--<div class='row'>
+														<div class="mb-3 col-lg-4">
+														<label for="oui">Produit Simple </label>
+														<input type="radio" id="oui" name="choix" value="oui">
+
+														<label for="non">Produit Variable</label>
+														<input type="radio" id="non" name="choix" value="non">
+														</div>
+													</div> -->
+
+													<div class="row">
+														<div class="mb-3 col-lg-4">
+															<label for="Taille">Taille</label>
+															<select class="form-select" id="taille">
+																<option value="S">S</option>
+																<option value="XS">XS</option>
+																<option value="M">M</option>
+																<option value="L">L</option>
+																<option value="XL">XL</option>
+																<option value="XXL">XXL</option>
+															</select>
+														</div>
+
+														<div class="mb-3 col-lg-4">
+															<label for="Tarif-regulier-variable">Tarif régulier ($)</label>
+															<input type="number" class="form-control" id="Tarif-regulier-variable" placeholder="Enter Tarif">
+														</div>
+														<div class="mb-3 col-lg-4">
+															<label for="Tarif-promo-variable">Tarif promo ($)</label>
+															<input type="number" class="form-control" id="Tarif-promo-variable" placeholder="Enter Tarif">
+														</div>
+
+													</div>
+
+													<button id="buttonModifier" class="btn btn-primary btn-block btn-rounded mt-3 mb-3" onclick="onModifie()">Modifier le produit</button>
+
+													<hr>
+
+													<div class="table-responsive">
+														<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+															<thead class="thead-light">
+																<tr>
+																	<th>
+																		#
+																	</th>
+																	<th id="headerTaille">Taille</th>
+																	<th>Tarif</th>
+																	<th>Tarif Promo</th>
+																	<th >Disponiblite</th>
+																	<th id="headerAction" style="width: 120px;">Action</th>
+																</tr>
+															</thead>
+															<tbody id="body-variation">
+																
+															</tbody>
+														</table>
+													</div>
+												</div>
+
+												{# TAB SIMPLE #}
+
+												<!--<div id="tab-simple" class="tab-pane" role="tabpanel">
+
+													<div class="mb-3 col-lg-3">
+														<label class="form-label" for="EstDisponible">Est t-il Disponible
+														</label>
+														<input id="EstDisponibleSimple" name="EstDisponible" type="checkbox">
+													</div>
+
+													<div class="row">
+
+														<div class="mb-3 col-lg-6">
+															<label for="Tarif-regulier-simple">Tarif régulier ($)</label>
+															<input type="number" class="form-control" id="Tarif-regulier-simple" placeholder="Enter Tarif">
+														</div>
+														<div class="mb-3 col-lg-6">
+															<label for="Tarif-promo-simple">Tarif promo ($)</label>
+															<input type="number" class="form-control" id="Tarif-promo-simple" placeholder="Enter Tarif-promo">
+														</div>
+
+													</div>
+
+													<button class="btn btn-primary btn-block btn-rounded mt-3 mb-3" onclick="editSimple()" >Modifier ce produit</button>
+
+													<hr>
+
+													<div class="table-responsive">
+														<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+															<thead class="thead-light">
+																<tr>
+																	<th>
+																		#
+																	</th>
+																	<th>Tarif</th>
+																	<th>Tarif Promo</th>
+																	<th>Disponiblite</th>
+																</tr>
+															</thead>
+															<tbody id="body-simple">
+																
+															</tbody>
+														</table>
+													</div>
+												</div> -->
+
+												{# etiquette #}
+
+												<div id="tab-Etiquette" class="tab-pane" role="tabpanel">
+													<div class="mb-3">
+														<label for="">État du stock</label>
+														<select class="form-select" id="selectEtiquette">
+															{% for etiquette in etiquettes%}
+															<option value="{{etiquette.getId}}">{{etiquette.getNom}}</option>
+															{% endfor %}
+														</select>
+													</div>
+												</div>
+
+												{#  expedition #}
+
+												<div id="tab-Expedition" class="tab-pane" role="tabpanel">
+													<div class="mb-3">
+														<label for="Poids">Poids (kg)</label>
+														<input type="Number" class="form-control" id="Poids" placeholder="Enter Poids">
+													</div>
+													<div class="mb-3">
+														<label for="">Dimensions (cm)</label>
+														<div class="d-flex gap-3">
+															<input type="number" class="form-control" id="Longueur" placeholder="Longueur">
+															<input type="number" class="form-control" id="Largeur" placeholder="Largeur">
+															<input type="number" class="form-control" id="Hauteur" placeholder="Hauteur">
+														</div>
+													</div>
+												</div>
+
+												{# variation #}
+
+												<div id="tab-Variations" class="tab-pane" role="tabpanel">
+													<div class="">
+														<div class="row">
+															<div class="mb-3 col-lg-6">
+																<label for="">Lib. Couleur</label>
+																<input type="text" class="form-control" id="lib-couleur" placeholder="Lib. Couleur">
+															</div>
+
+															<div class="mb-3 col-lg-6">
+																<label for="">Couleur Produit</label>
+																<input type="color" class="form-control" id="couleur" placeholder="Couleur">
+															</div>
+
+														</div>
+
+														<div class="pt-4">
+															<hr>
+															<button type="button" class="btn btn-primary waves-effect waves-light" onclick="addMoreVariation()" >Ajouter une couleur</button>
+														</div>
+
+														<div class="table-responsive">
+															<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+																<thead class="thead-light">
+																	<tr>
+																		<th>#</th>
+																		<th>Lib.</th>
+																		<th>couleur</th>
+																		<th style="width: 120px;">Action</th>
+																	</tr>
+																</thead>
+																<tbody id="body-more-variation">
+																	
+																</tbody>
+															</table>
+														</div>
+
+													</div>
+
+												</div>
+
+												{# tab-complement #}
+
+												<div id="tab-complement" class="tab-pane" role="tabpanel">
+
+													<div class="mb-3">
+														<label class="form-label" for="AccepteGaranti">Accepte Garranti ?
+														</label>
+														<input id="AccepteGaranti" name="AccepteGaranti" type="checkbox">
+													</div>
+
+													<div class="mb-3 col-lg-3">
+														<label class="form-label" for="AccepteLivraison">Accepte la Livraison ?
+														</label>
+														<input id="AccepteLivraison" name="AccepteLivraison" type="checkbox">
+													</div>
+													<div class="row">
+														<div class="mb-3">
+															<label for="MinPrixPourReservationGratuite">Min. Prix Pour Reservation Gratuite ($)</label>
+															<input type="number" class="form-control" id="MinPrixPourReservationGratuite" placeholder="Enter Prix">
+														</div>
+
+														<div class="mb-3">
+															<label for="PrixLivraison">Prix Livraison ($)</label>
+															<input type="number" class="form-control" id="PrixLivraison" placeholder="Enter Prix">
+														</div>
+
+													</div>
+
+													<div class="row">
+														<div class="mb-3 col-lg-6">
+															<label class="form-label" for="InformationLivraisonAsavoir">Information Livraison A Savoir</label>
+															<textarea class="form-control" id="InformationLivraisonAsavoir" rows="2" placeholder="Enter info."></textarea>
+														</div>
+
+														<div class="mb-3 col-lg-6">
+															<label class="form-label" for="productCaracteristic">Caracteristiques
+															</label>
+															<textarea class="form-control" id="productCaracteristic" rows="2" placeholder="Entrer les Caracteristiques"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+
+										<ul class="pager wizard twitter-bs-wizard-pager-link">
+											<li class="next">
+												<a href="#">
+													Suivant
+													<i class="mdi mdi-arrow-right ms-1"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!-- end tabpane -->
+									<div class="tab-pane" id="product-img">
+										<h4 class="header-title">Images du produit</h4>
+										<p class="card-title-desc">Télécharger l'image du produit</p>
+
+										<div class="row">
+											<div class="mb-3 col-lg-4">
+												<label for="tailleProduit">Taille</label>
+												<select class="form-select" id="tailleProduitSimple">
+													<option disabled selected>Selectionner la taille</option>
+												</select>
+											</div>
+
+											<div class="mb-3 col-lg-4">
+												<label for="selectCouleur">Couleur</label>
+												<select class="form-select" id="selectCouleur">
+													<option disabled selected>Selectionner une couleur</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="fallback">
+											<input name="file" type="file" id="finalPhoto" class="form-control" accept="image/*" multiple/>
+										</div>
+
+										<button class="btn btn-primary btn-block btn-rounded mt-3 mb-3" onclick="addPhoto()">Ajouter ces images</button>
+										<hr>
+										<div class="table-responsive">
+											<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+												<thead class="thead-light">
+													<tr>
+														<th>#</th>
+														<th>Taille</th>
+														<th>Couleur</th>
+														<th>Image</th>
+														<th style="width: 120px;">Action</th>
+													</tr>			
+												</thead>
+												<tbody id="table-images">
+													
+												</tbody>
+											</table>
+										</div>
+
+										<div class="d-flex justify-content-end mt-3">
+											<button class="btn btn-success" onclick="finalValidation()">Modifier</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end row -->
+
+			</div>
+
+
+		</div>
+
+	<script src="{{ asset('/custom-js/affiche-produit.js') }}"></script>
+
+	{% endblock %}

@@ -1,0 +1,328 @@
+<div class="tab-pane " id="product-tab-reviews">
+	<div class="row">
+		<div class="col-12 mb-6">
+			<div class="avg-rating-container">
+				<mark>0.0</mark>
+				<div class="avg-rating">
+					<span class="avg-rating-title">Note moyenne</span>
+					<div class="ratings-container mb-0">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<span class="rating-reviews">(0 avis)</span>
+					</div>
+				</div>
+			</div>
+			<div class="ratings-list mb-2">
+				<div class="ratings-item">
+					<div class="ratings-container mb-0">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+					</div>
+					<div class="rating-percent">
+						<span style="width:0%;"></span>
+					</div>
+					<div class="progress-value">0%</div>
+				</div>
+				<div class="ratings-item">
+					<div class="ratings-container mb-0">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top">4.00</span>
+						</div>
+					</div>
+					<div class="rating-percent">
+						<span style="width:0%;"></span>
+					</div>
+					<div class="progress-value">0%</div>
+				</div>
+				<div class="ratings-item">
+					<div class="ratings-container mb-0">
+						<div class="ratings-full">
+							<span class="ratings" style="width:60%"></span>
+							<span class="tooltiptext tooltip-top">4.00</span>
+						</div>
+					</div>
+					<div class="rating-percent">
+						<span style="width:0%;"></span>
+					</div>
+					<div class="progress-value">0%</div>
+				</div>
+				<div class="ratings-item">
+					<div class="ratings-container mb-0">
+						<div class="ratings-full">
+							<span class="ratings" style="width:40%"></span>
+							<span class="tooltiptext tooltip-top">4.00</span>
+						</div>
+					</div>
+					<div class="rating-percent">
+						<span style="width:0%;"></span>
+					</div>
+					<div class="progress-value">0%</div>
+				</div>
+				<div class="ratings-item">
+					<div class="ratings-container mb-0">
+						<div class="ratings-full">
+							<span class="ratings" style="width:20%"></span>
+							<span class="tooltiptext tooltip-top">4.00</span>
+						</div>
+					</div>
+					<div class="rating-percent">
+						<span style="width:0%;"></span>
+					</div>
+					<div class="progress-value">0%</div>
+				</div>
+			</div>
+			<a class="btn btn-dark btn-rounded submit-review-toggle" href="#">Soumettre l'avis</a>
+		</div>
+		<div class="col-12 comments pt-2 pb-10 border-no">
+			<nav class="toolbox">
+				<div class="toolbox-left">
+					<div class="toolbox-item">
+						<a href="#" class="btn btn-outline btn-rounded">Tous les avis</a>
+					</div>
+					<div class="toolbox-item">
+						<a href="#" class="btn btn-outline btn-rounded">Avec images</a>
+					</div>
+					<div class="toolbox-item">
+						<a href="#" class="btn btn-outline btn-rounded">Avec des vidéos</a>
+					</div>
+				</div>
+				<div class="toolbox-right">
+					<div class="toolbox-item toolbox-sort select-box text-dark">
+						<label>Trier par :</label>
+						<select name="orderby" class="form-control">
+							<option value="">Ordre par défaut</option>
+							<option value="newest" selected="selected">Avis les plus récents
+							</option>
+							<option value="oldest">Avis les plus anciens</option>
+							<option value="high_rate">Note la plus élevée</option>
+							<option value="low_rate">Note la plus basse</option>
+							<option value="most_likely">Le plus probable</option>
+							<option value="most_unlikely">Le plus improbable</option>
+						</select>
+					</div>
+				</div>
+			</nav>
+			<ul class="comments-list">
+				<li>
+					<div class="comment">
+						<figure class="comment-media">
+							<a href="#">
+								<img src="{{ asset ('theme/images/blog/comments/1.jpg') }}" alt="avatar">
+							</a>
+						</figure>
+						<div class="comment-body">
+							<div class="comment-rating ratings-container">
+								<div class="ratings-full">
+									<span class="ratings" style="width:100%"></span>
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+							</div>
+							<div class="comment-user">
+								<span class="comment-date">by
+									<span class="font-weight-semi-bold text-uppercase text-dark">Jean
+										Biche</span>
+									au
+									<span class="font-weight-semi-bold text-dark">Novembre
+										22,
+										2018</span>
+								</span>
+							</div>
+
+							<div class="comment-content mb-5">
+								<p>Sed pretium, ligula sollicitudin laoreet viverra,
+																		                                                                        tortor
+																		                                                                        libero sodales leo,
+																		                                                                        eget blandit nunc tortor eu nibh. Nullam mollis.
+																		                                                                        Ut
+																		                                                                        justo.
+																		                                                                        Suspendisse potenti.
+																		                                                                        Sed egestas, ante et vulputate volutpat, eros
+																		                                                                        pede
+																		                                                                        semper
+																		                                                                        est, vitae luctus metus libero eu augue.</p>
+							</div>
+							<div class="file-input-wrappers">
+								<img class="btn-play btn-img pwsp" src="{{ asset ('theme/images/products/product1.jpg') }}" width="280" height="315" alt="product"/>
+
+
+								<img class="btn-play btn-img pwsp" src="{{ asset ('theme/images/products/product3.jpg') }}" width="280" height="315" alt="product"/>
+
+								<a class="btn-play btn-iframe" style="background-image: url(images/product/product.jpg);background-size: cover;" href="video/memory-of-a-woman.mp4">
+									<i class="d-icon-play-solid"></i>
+								</a>
+							</div>
+							<div class="feeling mt-5">
+								<button class="btn btn-link btn-icon-left btn-slide-up btn-infinite like mr-2">
+									<i class="fa fa-thumbs-up"></i>
+									aime (<span class="count">0</span>)
+								</button>
+								<button class="btn btn-link btn-icon-left btn-slide-down btn-infinite unlike">
+									<i class="fa fa-thumbs-down"></i>
+									n'aime pas (<span class="count">0</span>)
+								</button>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="comment">
+						<figure class="comment-media">
+							<a href="#">
+								<img src="{{ asset ('theme/images/blog/comments/2.jpg') }}" alt="avatar">
+							</a>
+						</figure>
+
+						<div class="comment-body">
+							<div class="comment-rating ratings-container">
+								<div class="ratings-full">
+									<span class="ratings" style="width:100%"></span>
+									<span class="tooltiptext tooltip-top"></span>
+								</div>
+							</div>
+							<div class="comment-user">
+								<span class="comment-date">by
+									<span class="font-weight-semi-bold text-uppercase text-dark">John
+																				                                                                            Doe</span>
+									on
+									<span class="font-weight-semi-bold text-dark">Nov
+																				                                                                            22,
+																				                                                                            2018</span>
+								</span>
+							</div>
+
+							<div class="comment-content">
+								<p>Sed pretium, ligula sollicitudin laoreet viverra,
+																		                                                                        tortor
+																		                                                                        libero sodales leo, eget blandit nunc tortor eu
+																		                                                                        nibh.
+																		                                                                        Nullam
+																		                                                                        mollis.
+																		                                                                        Ut justo. Suspendisse potenti. Sed egestas, ante
+																		                                                                        et
+																		                                                                        vulputate volutpat,
+																		                                                                        eros pede semper est, vitae luctus metus libero
+																		                                                                        eu
+																		                                                                        augue.
+																		                                                                        Morbi purus libero,
+																		                                                                        faucibus adipiscing, commodo quis, avida id,
+																		                                                                        est.
+																		                                                                        Sed
+																		                                                                        lectus. Praesent elementum
+																		                                                                        hendrerit tortor. Sed semper lorem at felis.
+																		                                                                        Vestibulum
+																		                                                                        volutpat.</p>
+							</div>
+							<div class="feeling mt-5">
+								<button class="btn btn-link btn-icon-left btn-slide-up btn-infinite like mr-2">
+									<i class="fa fa-thumbs-up"></i>
+									Like (<span class="count">0</span>)
+								</button>
+								<button class="btn btn-link btn-icon-left btn-slide-down btn-infinite unlike">
+									<i class="fa fa-thumbs-down"></i>
+									Unlike (<span class="count">0</span>)
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+			<nav class="toolbox toolbox-pagination justify-content-end">
+				<ul class="pagination">
+					<li class="page-item disabled">
+						<a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+							<i class="d-icon-arrow-left"></i>Prev
+						</a>
+					</li>
+					<li class="page-item active" aria-current="page">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item page-item-dots">
+						<a class="page-link" href="#">6</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link page-link-next" href="#" aria-label="Next">
+							Next<i class="d-icon-arrow-right"></i>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<!-- End Comments -->
+	<div class="review-form-section">
+		<div class="review-overlay"></div>
+		<div class="review-form-wrapper">
+			<div class="title-wrapper text-left">
+				<h3 class="title title-simple text-left text-normal">Ajouter un avis
+				</h3>
+				<p>Votre adresse e-mail ne sera pas publiée. Les champs obligatoires sont
+					marqué
+					*
+				</p>
+			</div>
+			<div class="rating-form">
+				<label for="rating" class="text-dark">Votre note *
+				</label>
+				<span class="rating-stars selected">
+					<a class="star-1" href="#">1</a>
+					<a class="star-2" href="#">2</a>
+					<a class="star-3" href="#">3</a>
+					<a class="star-4 active" href="#">4</a>
+					<a class="star-5" href="#">5</a>
+				</span>
+
+				<select name="rating" id="rating" required="" style="display: none;">
+					<option value="">Tarif…</option>
+					<option value="5">Parfait</option>
+					<option value="4">Bon</option>
+					<option value="3">Moyenne</option>
+					<option value="2">Pas si mal</option>
+					<option value="1">Très médiocre</option>
+				</select>
+			</div>
+			<form action="#">
+				<textarea id="reply-message" cols="30" rows="6" class="form-control mb-4" placeholder="Comment *" required></textarea>
+
+				<div class="review-medias">
+					<div class="file-input form-control image-input" style="background-image: url(theme/images/product/placeholder.png);">
+						<div class="file-input-wrapper"></div>
+						<label class="btn-action btn-upload" title="Upload Media">
+							<input type="file" accept=".png, .jpg, .jpeg" name="riode_comment_medias_image_1">
+						</label>
+						<label class="btn-action btn-remove" title="Remove Media"></label>
+					</div>
+					<div class="file-input form-control image-input" style="background-image: url(theme/images/product/placeholder.png);">
+						<div class="file-input-wrapper"></div>
+						<label class=" btn-action btn-upload" title="Upload Media">
+							<input type="file" accept=".png, .jpg, .jpeg" name="riode_comment_medias_image_2">
+						</label>
+						<label class="btn-action btn-remove" title="Remove Media"></label>
+					</div>
+					<div class="file-input form-control video-input" style="background-image: url(theme/images/product/placeholder.png);">
+						<video class="file-input-wrapper" controls=""></video>
+						<label class="btn-action btn-upload" title="Upload Media">
+							<input type="file" accept=".avi, .mp4" name="riode_comment_medias_video_1">
+						</label>
+						<label class="btn-action btn-remove" title="Remove Media"></label>
+					</div>
+				</div>
+				<p>Télécharger des images et des vidéos. Nombre maximal : 3, taille : 2 Mo</p>
+				<button type="submit" class="btn btn-primary btn-rounded">Nous faire parvenir<i class="d-icon-arrow-right"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- End Reply -->
+</div>

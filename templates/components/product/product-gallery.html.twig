@@ -1,0 +1,24 @@
+<div class="col-md-6">
+  <div class="product-gallery pg-vertical">
+    <div id="carousel-deux" class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1">
+      {% for image in produit.getGalleries %}
+        <figure class="product-image">
+          {# wid:504, hei:567 #}
+          <img id="produit-image-couverture" src="{{ image.getImage }}" data-zoom-image="{{ image.getImage }}" alt="Women's Brown Leather Backpacks" width="800" height="900" />
+        </figure>
+      {% endfor %}
+    </div>
+
+    <div id="mini-slide" class="product-thumbs-wrap">
+      <div class="product-thumbs" id="gallerie-box-produit">
+        {% for image in produit.getGalleries %}
+          <div class="product-thumb active">
+            <img src="{{ image.getImage }}" alt="product thumbnail" width="118" height="135" />
+          </div>
+        {% endfor %}
+      </div>
+      <button class="thumb-up disabled"><i class="fas fa-chevron-left"></i></button>
+      <button class="thumb-down disabled"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>

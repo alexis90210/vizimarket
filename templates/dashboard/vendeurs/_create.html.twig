@@ -1,0 +1,111 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Ajouter un vendeur</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Ajouter un createur</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid">
+		<div class="page-content-wrapper">
+			<div class="row">
+				<form method="POST" id="form-create-vendeur">
+                    <div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+
+							<div class="row">
+								<div class="mb-3 col-lg-4">
+									<label class="form-label" for="logo">Logo du vendeur</label>
+									<input id="logo" name="logo" required type="file" accept="image/*" class="form-control">
+								</div>
+
+								<div class="mb-3 col-lg-4">
+									<label class="form-label" for="password">Password</label>
+									<input id="Password" name="password" required type="password" class="form-control" placeholder="Entrer le password du createur">
+								</div>
+							</div>
+							<div class="row">
+								<div class="mb-3 col-lg-4">
+									<label class="form-label" for="nom">Nom</label>
+									<input id="nom" name="nom" type="text" required class="form-control" placeholder="Entrer le Nom du vendeur">
+								</div>
+								<div class="mb-3 col-lg-4">
+									<label class="form-label" for="mobile">mobile</label>
+									<input id="mobile" name="mobile" type="text" required class="form-control" placeholder="Entrer le numero du vendeur">
+								</div>
+
+								<div class="mb-3 col-lg-4">
+									<label class="form-label" for="email">email</label>
+									<input id="email" name="email" type="email" required class="form-control" placeholder="Entrer l'email du vendeur">
+								</div>
+							</div>
+
+							<div class="row">
+
+								<div class="mb-3 col-lg-4">
+									<label class="form-label" for="adresse">adresse</label>
+									<input id="adresse" name="adresse" type="text" class="form-control" placeholder="Entrer l'adresse">
+								</div>
+
+								<div class="mb-3 col-lg-4">
+									<label for="pays">Pays</label>
+									<select class="form-select" name="pays" id="pays" required >
+										<option disabled value="">choisir...</option>
+										<option value="Congo, republic">Congo, republic
+										</option>
+										<option value="Maroc">Maroc</option>
+									</select>
+								</div>
+
+								<div class="mb-3 col-lg-4">
+									<label for="Createur">Associe a un createur ?</label>
+									<select class="form-select" name="createur" id="createur-select" required>
+										<option disabled value="">choisir...</option>
+										{% for createur in createurs %}
+											<option value="{{ createur.getId}}">{{ createur.getNom }}</option>
+										{% endfor %}
+									</select>
+								</div>
+
+							</div>
+
+							<div class="row">
+								<div class="mb-3 col-lg-12">
+									<label class="form-label" for="description">description</label>
+									<textarea id="description" name="description" class="form-control" ></textarea>
+								</div>
+							</div>
+
+                            <button class="btn btn-primary btn-block btn-rounded mt-3 mb-3" type="submit" >Ajouter un vendeur</button>
+
+						</div>
+					</div>
+				</div>
+                </form>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{ asset('custom-js/create.js') }}"></script>
+
+{% endblock %}

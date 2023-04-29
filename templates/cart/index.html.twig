@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart
+{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+	{% include "components/base/header-logo.html.twig" %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('theme/css/style.min.css') }}">
+	<main class="main cart">
+		<div class="page-content pt-7 pb-10">
+			<div class="step-by pr-4 pl-4">
+				<h3 class="title title-simple title-step active">
+					<a href="{{path('app_panier')}}">1. Panier</a>
+				</h3>
+				<h3 class="title title-simple title-step">
+					<a href="/checkout">2. Paiement</a>
+				</h3>
+				<h3 class="title title-simple title-step">
+					<a href="/order">3. Commande terminée</a>
+				</h3>
+			</div>
+			<div class="container mt-7 mb-2">
+				<div class="row">
+					<div class="col-lg-8 col-md-12 pr-lg-4">
+						<table class="shop-table cart-table">
+							<thead>
+								<tr>
+									<th>
+										<span>Image</span>
+									</th>
+									<th>
+										<span>Produit</span>
+									</th>
+								
+									<th>
+										<span>Prix</span>
+									</th>
+									<th>
+										<span>quantité</span>
+									</th>
+									<th>Sous-total</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody id="panier-container"></tbody>
+						</table>
+						<div class="cart-actions mb-6 pt-4">
+							<a href="{{path('app_home')}}" class="btn btn-dark btn-md btn-rounded btn-icon-left mr-4 mb-4">
+								<i class="d-icon-arrow-left"></i>Continuer vos achats</a>
+							<bouton type="soumettre" class="btn btn-outline btn-dark btn-md btn-arrondi" onclick="loadPanier()">Mettre à jour
+								                                     Panier</bouton>
+						</div>
+						{# <div class="cart-coupon-box mb-8">
+							<h4 class="title coupon-title text-uppercase ls-m">Coupon Discount</h4>
+							<input type="text" name="coupon_code" class="input-text form-control text-grey ls-m mb-4" id="coupon_code" value="" placeholder="Enter coupon code here...">
+							<button type="submit" class="btn btn-md btn-dark btn-rounded btn-outline">Appliquer
+								                                     Coupon</button>
+						</div> #}
+					</div>
+					<aside class="col-lg-4 sticky-sidebar-wrapper">
+						<div class="sticky-sidebar" data-sticky-options="{'bottom': 20}">
+							<div class="summary mb-4">
+								<h3 class="summary-title text-left">Totaux du panier</h3>
+								<table class="shipping">
+									<tr class="summary-subtotal">
+										<td>
+											<h4 class="summary-subtitle">Sous-total</h4>
+										</td>
+										<td>
+											<b>€</b><span class="summary-subtotal-price">0</span>
+										</td>
+									</tr>
+									{# <tr class="sumnary-shipping shipping-row-last">
+										<td colspan="2">
+											<h4 class="summary-subtitle">Calculer l'expédition</h4>
+											<ul>
+												<li>
+													<div class="custom-radio">
+														<input type="radio" id="flat_rate" name="shipping" class="custom-control-input" checked>
+														<label class="custom-control-label" for="flat_rate">Forfait</label>
+													</div>
+												</li>
+												<li>
+													<div class="custom-radio">
+														<input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
+														<label class="custom-control-label" for="free-shipping">Livraison gratuite</label>
+													</div>
+												</li>
+
+												<li>
+													<div class="custom-radio">
+														<input type="radio" id="local_pickup" name="shipping" class="custom-control-input">
+														<label class="custom-control-label" for="local_pickup">Collecte locale</label>
+													</div>
+												</li>
+											</ul>
+										</td>
+									</tr> #}
+								</table>
+								{# <div class="shipping-address">
+									<label>Expédition à
+										<strong>CA.</strong>
+									</label>
+									<div class="select-box">
+										<select name="country" class="form-control">
+											<option value="us" selected>États-Unis (US)</option>
+											<option value="uk">
+												Royaume-Uni</option>
+											<option value="fr">France</option>
+											<option value="aus">Autriche</option>
+										</select>
+									</div>
+									<div class="select-box">
+										<select name="country" class="form-control">
+											<option value="us" selected>Californie</option>
+											<option value="fr">Alaska</option>
+											<option value="fr">Delaware</option>
+											<option value="aus">Hawaï</option>
+										</select>
+									</div>
+									<input type="text" class="form-control" name="code" placeholder="Ville"/>
+									<input type="text" class="form-control" name="code" placeholder="ZIP"/>
+									<a href="#" class="btn btn-md btn-dark btn-rounded btn-outline">Update
+										                                            totals</a>
+								</div> #}
+								<table class="total">
+									<tr class="summary-subtotal">
+										<td>
+											<h4 class="summary-subtitle">Total</h4>
+										</td>
+										<td>
+											<b>€</b><sapn class="summary-total-price ls-s">426.99</span>
+										</td>
+									</tr>
+								</table>
+								<a href="/checkout" class="btn btn-dark btn-rounded btn-checkout">Passer à la caisse</a>
+							</div>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<script src="{{ asset('custom-js/load-panier.js') }}"></script>
+{% endblock %}
+{% block footer %}
+	{% include "components/base/footer-copy.html.twig" %}
+{% endblock %}
+{% block footerSticky %}{% endblock %}

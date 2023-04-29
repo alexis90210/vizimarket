@@ -1,0 +1,147 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Configuration du design</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Configuration du design</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div
+						class="float-end d-none d-sm-block">{# <a href="" class="btn btn-success">Ajouter un attribut</a> #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid" id="configuration-createur" configuration-id="{{configuration.getId}}" createur-id="{{app.user.id}}">
+
+		<div class="page-content-wrapper">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="card">
+						<div class="card-body">
+							<p class="card-title-desc">Gerer les couleurs</p>
+
+
+							<div class="row">
+								<div class="my-3 col-lg-4">
+									<label for="">Choisir une couleur Fond</label>
+									<input type="color" class="form-control" onchange="setColor('couleur-fond')" id="couleur-fond"  value="{{configuration.getCouleurFond}}">
+									<input type="text" id="couleur-fond-2" placeholder="Entrer manuellement ( ex: #dedede )" value="{{configuration.getCouleurFond}}" class="form-control">
+								</div>
+
+								<div class="my-3 col-lg-4">
+									<label for="">Choisir une couleur Header</label>
+									<input type="color" class="form-control" id="couleur-header" onchange="setColor('couleur-header')" value="{{configuration.getCouleurHeader}}">
+									<input type="text" id="couleur-header-2" placeholder="Entrer manuellement ( ex: #dedede )" class="form-control" value="{{configuration.getCouleurHeader}}">
+								</div>
+
+								<div class="my-3 col-lg-4">
+									<label for="">Choisir une couleur Footer</label>
+									<input type="color" class="form-control" id="couleur-footer" onchange="setColor('couleur-footer')" value="{{configuration.getCouleurFooter}}">
+									<input type="text" id="couleur-footer-2" placeholder="Entrer manuellement ( ex: #dedede )" class="form-control" value="{{configuration.getCouleurFooter}}">
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-xl-8">
+							<div class="card">
+								<div class="card-body">
+									<p class="card-title-desc">Changer la police et choisir sa taille</p>
+
+									<p class="card-title-desc">Previsualisation</p>
+
+									<div id="preview-design">
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aut excepturi, suscipit, odit vitae numquam in ipsa, nostrum quia quas repellendus iste id adipisci illo temporibus? A culpa magni ipsam!
+									</div>
+
+
+									<div class="row">
+										<div class="my-3 col-lg-6">
+											<label for="">Police</label>
+											<select class="form-select" id="police" onchange="updateStyle()" value="{{configuration.getFontFamily}}">
+												<option value="Arial">Arial</option>
+												<option value="MontSerrat">MontSerrat</option>
+												<option value="Poppins">Poppins</option>
+											</select>
+										</div>
+
+										<div class="my-3 col-lg-6">
+											<label for="">Taille (px)</label>
+											<select class="form-select" id="taille" onchange="updateStyle()"  value="{{configuration.getFontSize}}">
+												{% for i in [8,10,12,14,16,18,20,25,28,30,35] %}
+													<option value="{{i}}">{{i}}</option>
+												{% endfor %}
+											</select>
+										</div>
+
+									</div>
+
+
+								</div>
+
+							</div>
+						</div>
+                        <div class="col-xl-4">
+
+								<div class="card">
+									<div class="card-body">
+										<p class="card-title-desc">Demander une police</p>
+										<div class="row">
+											<div class="my-2 col-lg-12">
+												<label for="">Nom Police</label>
+												<input type="text" id="police-personnalisee" placeholder="ex: Poppins" class="form-control">
+											</div>
+
+                                            <div class="my-2 col-lg-12">
+												<label for="">Fichier de Police (.zip)</label>
+												<input type="file" accept=".zip" placeholder="ex: Poppins" class="form-control">
+											</div>
+
+										</div>
+                                        <button class="btn btn-primary">Soumettre</button>
+									</div>
+								</div>
+							</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<button class="btn btn-primary" onclick="createDesign()">Mettre a jour</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- END ROW -->
+		</div>
+	</div>
+
+	<script src="{{ asset('custom-js/auto-update.js')}}"></script>
+	<script src="{{ asset('custom-js/create-design.js')}}"></script>
+
+{% endblock %}

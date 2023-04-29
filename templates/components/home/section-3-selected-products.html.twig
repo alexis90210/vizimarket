@@ -1,0 +1,892 @@
+{# <div class="title-wrapper d-flex justify-content-between flex-wrap mb-3 pt-6 appear-animate" data-animation-options="{'name': 'fadeIn'}">
+	<h2 class="title d-block text-left mr-4">
+		Selected Products<br>
+		<span class="d-block font-weight-normal text-body text-normal ls-normal">Toutes nos nouveautés dans une sélection exclusive de marques</span>
+	</h2>
+	<div class="tab tab-nav-boxed">
+		<ul class="nav nav-tabs border-no">
+			<li class="nav-item">
+				<a href="#tab-1" class="nav-link active">Nouveautés</a>
+</li>
+<li class="nav-item">
+<a href="#tab-2" class="nav-link">Meilleur vendeur</a>
+</li>
+<li class="nav-item">
+<a href="#tab-3" class="nav-link">Les plus populaires</a>
+</li>
+<li class="nav-item">
+<a href="#tab-4" class="nav-link">Tout afficher</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="tab-content mb-10 pb-6 appear-animate" data-animation-options="{'name': 'fadeIn'}">
+	<div class="tab-pane active" id="tab-1">
+		<div class="owl-carousel owl-theme row cols-xl-5 cols-lg-4 cols-md-3 cols-2" data-owl-options="{
+				                                    'nav': false,
+				                                    'dots': true,
+				                                    'margin': 20,
+				                                    'responsive': {
+				                                        '0': {
+				                                            'items': 2
+				                                        },
+				                                        '576': {
+				                                            'items': 2
+				                                        },
+				                                        '768': {
+				                                            'items': 3
+				                                        },
+				                                        '992': {
+				                                            'items': 4
+				                                        },
+				                                        '1200': {
+				                                            'items': 5
+				                                        }
+				                                    }
+				                                }">
+			<div class="product-wrap">
+				<div class="product product-border text-center">
+					<figure class="product-media">
+						<a href="{{path('app_product',{'id':'1'})}}">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/18-1.jpg') }}" alt="product" width="260" height="293">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/18-2.jpg') }}" alt="product" width="260" height="293">
+						</a>
+						<div class="product-action-vertical">
+							<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+								<i class="d-icon-bag"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+								<i class="d-icon-heart"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+								<i class="d-icon-search"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+								<i class="d-icon-compare"></i>
+							</a>
+						</div>
+					</figure>
+					<div class="product-details">
+						<h3 class="product-name">
+							<a href="{{path('app_product',{'id':'1'})}}">Appareil photo large et rapide</a>
+						</h3>
+						<div class="product-price">
+							<span class="price">€209.00 - $215.00</span>
+						</div>
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:40%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+							<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 2 avis
+								                                                        )</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-wrap">
+				<div class="product product-border text-center">
+					<figure class="product-media">
+						<a href="{{path('app_product',{'id':'1'})}}">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/19-1.jpg') }}" alt="product" width="260" height="293">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/19-2.jpg') }}" alt="product" width="260" height="293">
+						</a>
+						<div class="product-action-vertical">
+							<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+								<i class="d-icon-bag"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+								<i class="d-icon-heart"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+								<i class="d-icon-search"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+								<i class="d-icon-compare"></i>
+							</a>
+						</div>
+					</figure>
+					<div class="product-details">
+						<h3 class="product-name">
+							<a href="{{path('app_product',{'id':'1'})}}">Appareil photo professionnel, Sonny Pixel Perfect</a>
+						</h3>
+						<div class="product-price">
+							<span class="price">€129.99</span>
+						</div>
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:80%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+							<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 5 avis
+								                                                        )</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-wrap">
+				<div class="product product-border text-center">
+					<figure class="product-media">
+						<a href="{{path('app_product',{'id':'1'})}}">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/20-1.jpg') }}" alt="product" width="260" height="293">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/20-2.jpg') }}" alt="product" width="260" height="293">
+						</a>
+						<div class="product-action-vertical">
+							<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+								<i class="d-icon-bag"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+								<i class="d-icon-heart"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+								<i class="d-icon-search"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+								<i class="d-icon-compare"></i>
+							</a>
+						</div>
+					</figure>
+					<div class="product-details">
+						<h3 class="product-name">
+							<a href="{{path('app_product',{'id':'1'})}}">Women’s Comforter</a>
+						</h3>
+						<div class="product-price">
+							<span class="price">€75.00</span>
+						</div>
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:80%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+							<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 7 avis
+								                                                        )</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-wrap">
+				<div class="product product-border text-center">
+					<figure class="product-media">
+						<a href="{{path('app_product',{'id':'1'})}}">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/21-1.jpg') }}" alt="product" width="260" height="293">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/21-2.jpg') }}" alt="product" width="260" height="293">
+						</a>
+						<div class="product-action-vertical">
+							<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+								<i class="d-icon-bag"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+								<i class="d-icon-heart"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+								<i class="d-icon-search"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+								<i class="d-icon-compare"></i>
+							</a>
+						</div>
+					</figure>
+					<div class="product-details">
+						<h3 class="product-name">
+							<a href="{{path('app_product',{'id':'1'})}}">Fashionable Brown Denim Shoes</a>
+						</h3>
+						<div class="product-price">
+							<ins class="new-price">€43.00</ins>
+							<del class="old-price">€84.00</del>
+						</div>
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:100%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+							<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 3 avis
+								                                                        )</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product-wrap">
+				<div class="product product-border text-center">
+					<figure class="product-media">
+						<a href="{{path('app_product',{'id':'1'})}}">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/22-1.jpg') }}" alt="product" width="260" height="293">
+							<img src="{{ asset( 'theme/images/demos/demo-market2/product/22-2.jpg') }}" alt="product" width="260" height="293">
+						</a>
+						<div class="product-action-vertical">
+							<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+								<i class="d-icon-bag"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+								<i class="d-icon-heart"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+								<i class="d-icon-search"></i>
+							</a>
+							<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+								<i class="d-icon-compare"></i>
+							</a>
+						</div>
+					</figure>
+					<div class="product-details">
+						<h3 class="product-name">
+							<a href="{{path('app_product',{'id':'1'})}}">Classic Hiking Hat</a>
+						</h3>
+						<div class="product-price">
+							<ins class="new-price">€32.00</ins>
+							<del class="old-price">€63.00</del>
+						</div>
+						<div class="ratings-container">
+							<div class="ratings-full">
+								<span class="ratings" style="width:100%"></span>
+								<span class="tooltiptext tooltip-top"></span>
+							</div>
+							<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 9 avis
+								                                                        )</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane" id="tab-2">
+		<div class="owl-carousel owl-theme row cols-xl-5 cols-lg-4 cols-md-3 cols-2" data-owl-options="{
+				                                    'nav': false,
+				                                    'dots': true,
+				                                    'margin': 20,
+				                                    'responsive': {
+				                                        '0': {
+				                                            'items': 2
+				                                        },
+				                                        '576': {
+				                                            'items': 2
+				                                        },
+				                                        '768': {
+				                                            'items': 3
+				                                        },
+				                                        '992': {
+				                                            'items': 4
+				                                        },
+				                                        '1200': {
+				                                            'items': 5
+				                                        }
+				                                    }
+				                                }">
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/23-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/23-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Secuerity Guard</a>
+					</h3>
+					<div class="product-price">
+						<span class="price">€98.00 - $99.00</span>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 2 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/24-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/24-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">A Summer Clothes 3x</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€199.00</ins>
+						<del class="old-price">€210.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 5 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/25-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/25-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Woman’s Light Handbag</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€98</ins>
+						<del class="old-price">€129.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:60%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 7 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/26-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/26-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Phone Tiny Audio</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€132.00</ins>
+						<del class="old-price">€234.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 3 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/27-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/27-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Multi Functional Trunk</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€129.00</ins>
+						<del class="old-price">€165.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 9 avis )</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane" id="tab-3">
+		<div class="owl-carousel owl-theme row cols-xl-5 cols-lg-4 cols-md-3 cols-2" data-owl-options="{
+				                                    'nav': false,
+				                                    'dots': true,
+				                                    'margin': 20,
+				                                    'responsive': {
+				                                        '0': {
+				                                            'items': 2
+				                                        },
+				                                        '576': {
+				                                            'items': 2
+				                                        },
+				                                        '768': {
+				                                            'items': 3
+				                                        },
+				                                        '992': {
+				                                            'items': 4
+				                                        },
+				                                        '1200': {
+				                                            'items': 5
+				                                        }
+				                                    }
+				                                }">
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/18-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/18-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Fast Wide Camera</a>
+					</h3>
+					<div class="product-price">
+						<span class="price">€209.00 - $215.00</span>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:40%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 2 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/19-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/19-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Professional Camera Set, Sonny Pixel
+							                                                    Perfect</a>
+					</h3>
+					<div class="product-price">
+						<span class="price">€129.99</span>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 5 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/20-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/20-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Women’s Comforter</a>
+					</h3>
+					<div class="product-price">
+						<span class="price">€75</span>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 7 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/23-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/23-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Secuerity Guard</a>
+					</h3>
+					<div class="product-price">
+						<span class="price">€98.00 - $99.00</span>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 2 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/24-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/24-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">A Summer Clothes 3x</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€199.00</ins>
+						<del class="old-price">€210.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:80%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 5 avis )</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane" id="tab-4">
+		<div class="owl-carousel owl-theme row cols-xl-5 cols-lg-4 cols-md-3 cols-2" data-owl-options="{
+				                                    'nav': false,
+				                                    'dots': true,
+				                                    'margin': 20,
+				                                    'responsive': {
+				                                        '0': {
+				                                            'items': 2
+				                                        },
+				                                        '576': {
+				                                            'items': 2
+				                                        },
+				                                        '768': {
+				                                            'items': 3
+				                                        },
+				                                        '992': {
+				                                            'items': 4
+				                                        },
+				                                        '1200': {
+				                                            'items': 5
+				                                        }
+				                                    }
+				                                }">
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/21-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/21-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Fashionable Brown Denim Shoes</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€43.00</ins>
+						<del class="old-price">€84.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 3 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/22-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/22-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Classic Hiking Hat</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€32.00</ins>
+						<del class="old-price">€63.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 9 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/25-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/25-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Woman’s Light Handbag</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€98</ins>
+						<del class="old-price">€129.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:60%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 7 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/26-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/26-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Phone Tiny Audio</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€132.00</ins>
+						<del class="old-price">€234.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 3 avis )</a>
+					</div>
+				</div>
+			</div>
+			<div class="product product-border text-center">
+				<figure class="product-media">
+					<a href="{{path('app_product',{'id':'1'})}}">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/27-1.jpg') }}" alt="product" width="260" height="293">
+						<img src="{{ asset( 'theme/images/demos/demo-market2/product/27-2.jpg') }}" alt="product" width="260" height="293">
+					</a>
+					<div class="product-action-vertical">
+						<a href="#" class="btn-product-icon btn-cart" data-toggle="modal" data-target="#addCartModal" title="Add to cart">
+							<i class="d-icon-bag"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-wishlist" title="Ajouter à la liste de souhaits">
+							<i class="d-icon-heart"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-quickview" title="Aperçu rapide">
+							<i class="d-icon-search"></i>
+						</a>
+						<a href="#" class="btn-product-icon btn-compare" title="Comparer">
+							<i class="d-icon-compare"></i>
+						</a>
+					</div>
+				</figure>
+				<div class="product-details">
+					<h3 class="product-name">
+						<a href="{{path('app_product',{'id':'1'})}}">Multi Functional Trunk</a>
+					</h3>
+					<div class="product-price">
+						<ins class="new-price">€129.00</ins>
+						<del class="old-price">€165.00</del>
+					</div>
+					<div class="ratings-container">
+						<div class="ratings-full">
+							<span class="ratings" style="width:100%"></span>
+							<span class="tooltiptext tooltip-top"></span>
+						</div>
+						<a href="{{path('app_product',{'id':'1'})}}" class="rating-reviews">( 9 avis )</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> #}

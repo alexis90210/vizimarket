@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block vazimarketStyle %}
+	<!-- plugin css -->
+	<link
+	href="{{ asset('_dashboard/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css"/>
+	<!-- twitter-bootstrap-wizard css -->
+	<link
+	rel="stylesheet" href="{{ asset('_dashboard/assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
+
+	<!-- dropzone css -->
+	<link
+	href="{{ asset('_dashboard/assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css"/>
+	<!-- Bootstrap Css -->
+	<link href="{{ asset('_dashboard/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css"/>
+	<!-- Icons Css -->
+	<!-- select2 css -->
+	<link href="{{ asset('_dashboard/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css"/> <link
+	href="{{ asset('_dashboard/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css"/>
+	<!-- App Css-->
+	<link href="{{ asset('_dashboard/assets/css/app.css')}}" id="app-style" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.min.css')}}">
+	<link href="{{ asset('plugins/smartTab/dist/css/smart_tab_pills.css') }}" rel="stylesheet" />
+
+
+{% endblock %}
+
+{% block vazimarket %}
+
+	{% block body %}
+
+		<div id="layout-wrapper">
+
+			{% include "components/dashboard/page-topbar.html.twig" %}
+
+			{% include "components/dashboard/vertical-menu.html.twig" %}
+
+			<div class="main-content">
+
+
+				<div class="page-content">
+					{% block dashboardPageContent %}{% endblock %}
+
+				</div>
+
+
+				{% include "components/dashboard/footer.html.twig" %}
+
+			</div>
+		</div>
+
+		{% include "components/dashboard/rightside.html.twig" %}
+
+		<div class="rightbar-overlay"></div>
+
+
+	{% endblock %}
+
+	<!-- JAVASCRIPT -->
+	<script src="{{ asset('_dashboard/assets/libs/jquery/jquery.min.js') }}"></script>
+	<script src="{{ asset('_dashboard/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('_dashboard/assets/libs/metismenu/metisMenu.min.js') }}"></script>
+	<script src="{{ asset('_dashboard/assets/libs/simplebar/simplebar.min.js') }}"></script>
+	<script src="{{ asset('_dashboard/assets/libs/node-waves/waves.min.js') }}"></script>
+
+	<!-- apexcharts -->
+	<script src="{{ asset('_dashboard/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+	<!-- Plugins js-->
+	<script src="{{ asset('_dashboard/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+
+	<script src="{{ asset('_dashboard/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js') }}"></script>
+
+	<!-- twitter-bootstrap-wizard js -->
+	<script src="{{ asset('_dashboard/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+
+	<script src="{{ asset('_dashboard/assets/libs/twitter-bootstrap-wizard/prettify.js') }}"></script>
+
+	<!-- select 2 plugin -->
+	<script src="{{ asset('_dashboard/assets/libs/select2/js/select2.min.js') }}"></script>
+
+	<!-- dropzone plugin -->
+	<script src="{{ asset('_dashboard/assets/libs/dropzone/min/dropzone.min.js') }}"></script>
+
+	<!-- init js -->
+	<script src="{{ asset('_dashboard/assets/js/pages/ecommerce-add-product.init.js') }}"></script>
+
+	<!-- Import custom js -->
+	<script src="{{ asset('_dashboard/assets/js/pages/dashboard.init.js') }}"></script>
+
+	<!-- Import custom js -->
+	<script src="{{ asset('_dashboard/assets/js/app.js') }}"></script>
+
+	<!-- Import smartTab -->
+	<script src="{{ asset('plugins/smartTab/dist/js/jquery.smartTab.js')}}"></script>
+
+	
+
+{% endblock %}

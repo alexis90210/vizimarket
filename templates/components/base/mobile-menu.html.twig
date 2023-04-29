@@ -1,0 +1,403 @@
+<div class="mobile-menu-wrapper">
+  <div class="mobile-menu-overlay"></div>
+  <!-- End of Overlay -->
+  <a class="mobile-menu-close" href="#"><i class="d-icon-times"></i></a>
+  <!-- End of CloseButton -->
+  <div class="mobile-menu-container scrollable">
+    <form action="#" class="input-wrapper">
+      <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Recherchez votre mot-clé..." required />
+      <button class="btn btn-search" type="submit" title="submit-button"><i class="d-icon-search"></i></button>
+    </form>
+
+    <!-- End of Search Form -->
+
+    <div class="tab tab-nav-simple tab-nav-center tab-nav-boxed">
+      <ul class="nav nav-tabs nav-fill" role="tablist">
+        <li class="nav-item">
+          <a href="#tab-11" class="nav-link active">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab-21" class="nav-link">Categories</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mobile-menu mmenu-anim tab-content">
+      <div class="tab-pane active" id="tab-11">
+        <ul>
+          <li>
+            <a href="/">Accueil</a>
+          </li>
+          <li>
+            <a href="#">Categories</a>
+          </li>
+          <li>
+            <a href="{{ path('app_product', { id: '1' }) }}" class="active">Products</a>
+          </li>
+          <li>
+            <a href="#">Pages</a>
+            <ul>
+              <li>
+                <a href="/about-us">À propos</a>
+              </li>
+              <li>
+                <a href="/contact-us">Nous contacter</a>
+              </li>
+              <li>
+                <a href="{{ path('app_compte') }}">Connexion</a>
+              </li>
+              <li>
+                <a href="/faqs">FAQs</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="tab-21">
+        <ul>
+          <li>
+            <a href="#"><i class="d-icon-t-shirt1"></i>Mode</a>
+            <ul>
+              <li>
+                <a href="#">Femmes</a>
+                <ul>
+                  <li>
+                    <a href="#">Nouvelles Arrivées</a>
+                  </li>
+                  <li>
+                    <a href="#">Meilleures ventes</a>
+                  </li>
+                  <li>
+                    <a href="#">Tendance</a>
+                  </li>
+                  <li>
+                    <a href="#">Clothing</a>
+                  </li>
+                  <li>
+                    <a href="#">Vêtements</a>
+                  </li>
+                  <li>
+                    <a href="#">Sacs</a>
+                  </li>
+                  <li>
+                    <a href="#">Accessoires</a>
+                  </li>
+                  <li>
+                    <a href="#">Bijoux et Montres</a>
+                  </li>
+                  <li>
+                    <a href="#">Vente</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Hommes</a>
+                <ul>
+                  <li>
+                    <a href="#">Nouveautés</a>
+                  </li>
+                  <li>
+                    <a href="#">Meilleures ventes</a>
+                  </li>
+                  <li>
+                    <a href="#">Tendance</a>
+                  </li>
+                  <li>
+                    <a href="#">Vêtements</a>
+                  </li>
+                  <li>
+                    <a href="#">Chaussures</a>
+                  </li>
+                  <li>
+                    <a href="#">Sacs</a>
+                  </li>
+                  <li>
+                    <a href="#">Accessoires</a>
+                  </li>
+                  <li>
+                    <a href="#">Bijoux et montres</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-home"></i>Maison & Jardin</a>
+            <ul>
+              <li>
+                <a href="#">Chambre</a>
+                <ul>
+                  <li>
+                    <a href="#">Lits, cadres et Socles</a>
+                  </li>
+                  <li>
+                    <a href="#">Commodes</a>
+                  </li>
+                  <li>
+                    <a href="#">Tables de chevet</a>
+                  </li>
+                  <li>
+                    <a href="#">Lits et Têtes de lit</a>
+                  </li>
+                  <li>
+                    <a href="#">Armureries</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Salon</a>
+                <ul>
+                  <li>
+                    <a href="#">Tables basses</a>
+                  </li>
+                  <li>
+                    <a href="#">Chaises</a>
+                  </li>
+                  <li>
+                    <a href="#">Tableaux</a>
+                  </li>
+                  <li>
+                    <a href="#">Futons et canapés Lits</a>
+                  </li>
+                  <li>
+                    <a href="#">Armoires & Coffres</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Bureau</a>
+                <ul>
+                  <li>
+                    <a href="#">Chaises de bureau</a>
+                  </li>
+                  <li>
+                    <a href="#">Bureaux</a>
+                  </li>
+                  <li>
+                    <a href="#">Bibliothèques</a>
+                  </li>
+                  <li>
+                    <a href="#">Classeurs</a>
+                  </li>
+                  <li>
+                    <a href="#">Salle de repos</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Cuisine et salle à manger</a>
+                <ul>
+                  <li>
+                    <a href="#">Ensembles de salle à manger</a>
+                  </li>
+                  <li>
+                    <a href="#">Rangement de cuisine Armoires</a>
+                  </li>
+                  <li>
+                    <a href="#">Porte-bagages</a>
+                  </li>
+                  <li>
+                    <a href="#">Chaises de salle à manger</a>
+                  </li>
+                  <li>
+                    <a href="#">Table à manger</a>
+                  </li>
+                  <li>
+                    <a href="#">Tabourets de bar</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-desktop"></i>Électronique</a>
+            <ul>
+              <li>
+                <a href="#">Portables et ordinateurs</a>
+                <ul>
+                  <li>
+                    <a href="#">Ordinateur Ordinateurs</a>
+                  </li>
+                  <li>
+                    <a href="#">Moniteurs</a>
+                  </li>
+                  <li>
+                    <a href="#">Ordinateurs portables</a>
+                  </li>
+                  <li>
+                    <a href="#">Pilotes durs et Stockage</a>
+                  </li>
+                  <li>
+                    <a href="#">Imprimantes et Fournitures</a>
+                  </li>
+                  <li>
+                    <a href="#">Ordinateur Accessoires</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">TV et vidéo</a>
+                <ul>
+                  <li>
+                    <a href="#">Téléviseurs</a>
+                  </li>
+                  <li>
+                    <a href="#">Audio domestique Intervenants</a>
+                  </li>
+                  <li>
+                    <a href="#">Projecteurs</a>
+                  </li>
+                  <li>
+                    <a href="#">Diffusion multimédia Appareils</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Appareils photo numériques</a>
+                <ul>
+                  <li>
+                    <a href="#">Reflex numérique Caméras</a>
+                  </li>
+                  <li>
+                    <a href="#">Sports et action Caméras</a>
+                  </li>
+                  <li>
+                    <a href="#">Objectifs d'appareil photo</a>
+                  </li>
+                  <li>
+                    <a href="#">Imprimante photo</a>
+                  </li>
+                  <li>
+                    <a href="#">Mémoire numérique Cartes</a>
+                  </li>
+                  <li>
+                    <a href="#">Sacs photo, Sacs à dos</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Téléphones portables</a>
+                <ul>
+                  <li>
+                    <a href="#">Téléphones de l'opérateur</a>
+                  </li>
+                  <li>
+                    <a href="#">Téléphones déverrouillés</a>
+                  </li>
+                  <li>
+                    <a href="#">Téléphone et portable Cas</a>
+                  </li>
+                  <li>
+                    <a href="#">Téléphone portable Chargeurs</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-sofa"></i>Meubles</a>
+            <ul>
+              <li>
+                <a href="#">Meubles</a>
+                <ul>
+                  <li>
+                    <a href="#">Canapés et canapés</a>
+                  </li>
+                  <li>
+                    <a href="#">Fauteuils</a>
+                  </li>
+                  <li>
+                    <a href="#">Cadres de lit</a>
+                  </li>
+                  <li>
+                    <a href="#">Tables d'appoint</a>
+                  </li>
+                  <li>
+                    <a href="#">Coiffeuses</a>
+                  </li>
+                  <li>
+                    <a href="#">Coffre de Tiroirs</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Éclairage</a>
+                <ul>
+                  <li>
+                    <a href="#">Ampoules</a>
+                  </li>
+                  <li>
+                    <a href="#">Lampes</a>
+                  </li>
+                  <li>
+                    <a href="#">Lumières de plafond</a>
+                  </li>
+                  <li>
+                    <a href="#">Appliques murales</a>
+                  </li>
+                  <li>
+                    <a href="#">Salle de bain Éclairage</a>
+                  </li>
+                  <li>
+                    <a href="#">Extérieur Éclairage</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Jardin et extérieur</a>
+                <ul>
+                  <li>
+                    <a href="#">Jardin Meubles</a>
+                  </li>
+                  <li>
+                    <a href="#">Tondeuses à gazon</a>
+                  </li>
+                  <li>
+                    <a href="#">Pression Rondelles</a>
+                  </li>
+                  <li>
+                    <a href="#">Tous les jardins Outils</a>
+                  </li>
+                  <li>
+                    <a href="#">Repas en plein air</a>
+                  </li>
+                  <li>
+                    <a href="#">Barbecue & Équipement</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-heartbeat"></i>Santé & Beauté</a>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-gift"></i>Idées de cadeau</a>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-gamepad1"></i>Jouets et jeux</a>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-cook"></i>Cuisine</a>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-mobile"></i>Téléphones intelligents</a>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-camera2"></i>Appareils photo et photos</a>
+          </li>
+          <li>
+            <a href="#"><i class="d-icon-clock"></i>Accessoires</a>
+          </li>
+          <li>
+            <a href="#" class="font-weight-semi-bold text-primary text-uppercase ls-25">Afficher toutes les catégories<i class="d-icon-angle-right"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End of MobileMenu -->
+  </div>
+</div>

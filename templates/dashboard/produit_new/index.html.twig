@@ -1,0 +1,492 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<style>
+		.active-c-tab {
+			padding-right: 0.6em;
+			padding-left: 0.6em;
+			--bs-bg-opacity: 1;
+			background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+			--bs-text-opacity: 1;
+			color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+		}
+	</style>
+	<!-- start page title -->
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Ajouter un produit</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vazimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Ajouter un produit</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="float-end d-none d-sm-block"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper">
+			<form id="form-create-produit" action="{{path('app_create_produit_new', {'role' : app.user.access})}}" method="POST" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="card">
+							<div class="card-body">
+								<div>
+									<div>
+										<h4 class="header-title">Informations de base</h4>
+										<p class="card-title-desc">Remplissez toutes les informations ci-dessous</p>
+
+										<div class="row">
+											<div class="mb-3 col-lg-6">
+												<label class="form-label" for="producttitre">Titre du produit</label>
+												<input id="producttitre" name="producttitre" type="text" class="form-control" placeholder="Entrer le Nom du produit">
+											</div>
+											<div class="mb-3 col-lg-6">
+												<label class="form-label" for="productQte">quantité du produit</label>
+												<input id="productQte" name="productQte" type="number" class="form-control" value="1" placeholder="Entrer la quantité du produit">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="mb-3 col-lg-12">
+												<label class="form-label" for="productdesc">Description</label>
+												<textarea class="form-control" id="productdesc" placeholder="Enter Description" name="productdesc"></textarea>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div>
+									<h4 class="header-title">Carateristique du produit</h4>
+									<p class="card-title-desc">Renseignez le champs</p>
+
+									<div class="row">
+										<div class="mb-3 col-lg-12">
+											<textarea name="caracteristique" class="form-control" id="productcaracteristique" placeholder="Enter Carateristique" name="productcaracteristique"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div>
+									<h4 class="header-title">Type de produit</h4>
+
+									<select name="produit-type" id="produit-type" class="form-select" vendeur={{app.user.id}}>
+										<option value="1" selected>
+											Produit simple</option>
+										<option value="2" title="non disponible">
+											Produit variable</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+						{# donnee produit variable #}
+						<div class="card" id="pvariable">
+							<div class="card-body">
+								<div>
+									<h4 class="header-title">Donnees du produit (<a href="#">variable</a>)</h4>
+									<p class="card-title-desc">Cliquez sur
+										<a href="#">Attribut</a>
+										pour commencer
+									</p>
+
+									<!-- Tabs -->
+									<ul class="nav mb-3">
+
+										<li style="cursor:pointer;">
+											<a class="nav-link mx-1 rounded-pill active-c-tab" id="tab-variable-attribut-title" onclick="openTabVariable('tab-variable-attribut')">
+												Attributs
+											</a>
+										</li>
+
+										<li style="cursor:pointer;">
+											<a class="nav-link mx-1 rounded-pill" id="tab-variable-variation-title" onclick="openTabVariable('tab-variable-variation')">
+												Variations
+											</a>
+										</li>
+
+									</ul>
+
+									<div style="height:100%">
+
+										{#  attribut #}
+
+
+											<div id="tab-variable-attribut"> <h4 class="header-title">Attribut personnalise du produit</h4>
+											<div class="row d-flex align-content-center align-items-center">
+												<div class="col-lg-8 mb-3">
+													<select name="produit-attribut" id="produit-attribut-selection" class="form-select">
+														{% for attribut in attributsPrincipaux %}
+															<option value="{{attribut.nom}}" title="{{attribut.nom}}" selected>
+															{{attribut.nom}}</option>
+														{% endfor %}
+													</select>
+												</div>
+
+												<div class="col-lg-4">
+													<p class="btn btn-success" onclick="addAttribut()">Ajouter</p>
+												</div>
+
+												{# details de l'attribtut #}
+
+											    <div id="box-attributs"></div>
+											
+											</div>
+
+											<div class="d-flex justify-content-end mt-3" onclick="openTabVariable('tab-variable-variation')">
+												<div class="btn btn-success">suivant
+													<i class="mdi mdi-arrow-right"></i>
+												</div>
+											</div>
+										</div>
+
+										{#  variation #}
+
+										<div id="tab-variable-variation" class="d-none">
+
+											<div class="mb-3">
+												<label for="">Les variations du produit</label>
+												{# injected attributes fields #}
+												<div class="row" id="generated-field-attributes"></div>
+											
+												<div id="box-variations"></div>		
+
+												<hr>
+
+												<div class="d-flex justify-content-start mt-3" onclick="openTabVariable('tab-variable-attribut')">
+													{# <div class="btn btn-success">
+													<i class="mdi mdi-arrow-left"></i>
+													Retour														
+												</div> #}
+
+
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						{# donnee produit simple #}
+						<div class="card" id="psimple">
+							<div class="card-body">
+								<div>
+									<h4 class="header-title">Donnees du produit  (<a href="#">simple</a>)</h4>
+									<p class="card-title-desc">Cliquez sur
+										<a href="#">Details</a>
+										pour commencer</p>
+
+									<div>
+
+										<!-- Tabs -->
+										<ul class="nav mb-3">
+											<li style="cursor:pointer;">
+												<a class="nav-link mx-1 rounded-pill active-c-tab" id="tab-detail-title" onclick="openTab('tab-detail')">
+													Details
+												</a>
+											</li>
+
+											<li style="cursor:pointer;">
+												<a class="nav-link mx-1 rounded-pill" id="tab-expedition-title" onclick="openTab('tab-expedition')">
+													Expedition</a>
+											</li>
+
+											<li style="cursor:pointer;">
+												<a class="nav-link mx-1 rounded-pill" id="tab-complement-title" onclick="openTab('tab-complement')">
+													Info. complemetaire
+												</a>
+											</li>
+										</ul>
+
+										<!-- Tabbed Content -->
+										<div
+											style="height:100%">
+
+											{# TAB VARAIBLE #}
+
+											<div id="tab-detail">
+
+												<div class="row">
+													<div class="mb-3 col-lg-6">
+														<label for="Tarif-regulier">Tarif régulier (€)</label>
+														<input name="tarif-regulier" type="number" class="form-control" id="Tarif-regulier" placeholder="Enter Tarif" name="tarif-regulier">
+													</div>
+													<div class="mb-3 col-lg-6">
+														<label for="Tarif-promo">Tarif promo (€)</label>
+														<input name="tarif-promo" type="number" class="form-control" id="Tarif-promo" placeholder="Enter Tarif" name='tarif-promo'>
+													</div>
+
+												</div>
+
+
+												<div class="d-flex justify-content-end mt-3" onclick="openTab('tab-expedition')">
+													<div class="btn btn-success">suivant
+														<i class="mdi mdi-arrow-right"></i>
+													</div>
+												</div>
+
+											</div>
+
+											{#  expedition #}
+
+											<div id="tab-expedition" class="d-none">
+												<div class="mb-3">
+													<label for="Poids">Poids (kg)</label>
+													<input type="Number" class="form-control" id="Poids" name='poids' placeholder="Enter Poids">
+												</div>
+												<div class="mb-3">
+													<label for="">Dimensions (cm)</label>
+													<div class="d-flex gap-3">
+														<input type="number" class="form-control" id="Longueur" placeholder="Longueur" name="longueur">
+														<input type="number" class="form-control" id="Largeur" placeholder="Largeur" name="largeur">
+														<input type="number" class="form-control" id="Hauteur" placeholder="Hauteur" name="hauteur">
+													</div>
+												</div>
+
+												<div class="d-flex justify-content-end mt-3" onclick="openTab('tab-complement')">
+													<div class="btn btn-success">suivant
+														<i class="mdi mdi-arrow-right"></i>
+													</div>
+												</div>
+											</div>
+
+
+											{# tab-complement #}
+
+											<div id="tab-complement" class="d-none">
+
+												<div class="row">
+
+													<div class="mb-3">
+														<label for="PrixLivraison">Prix Livraison (€)</label>
+														<input type="number" class="form-control" id="PrixLivraison" placeholder="Enter Prix" name="prix-livraison">
+													</div>
+
+												</div>
+
+												<div class="row">
+													<div class="mb-3 col-lg-12">
+														<label class="form-label" for="InformationLivraisonAsavoir">Information Livraison A Savoir</label>
+														<textarea class="form-control" name='informaton-a-savoir' id="InformationLivraisonAsavoir" rows="2" placeholder="Enter info."></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="card" id="gallerie-produit-simple">
+							<div class="card-body">
+
+								<div>
+									<h4 class="header-title">Images du produit</h4>
+									<p class="card-title-desc">Image de couverutre du produit</p>
+
+									<center>
+										<img id="preview-cover-produit-file" width="100" alt="">
+									</center>
+
+									<div class="fallback">
+										<input type="file" name='final-photo-cover' id="finalPhotoCover" required class="form-control" accept="image/*"/>
+									</div>
+
+									<hr>
+									<h4 class="header-title">Gallerie du produit (max 10)</h4>
+									<small class="text-danger">Entrez les photos en une fois</small>
+									<div class="row col-lg-12 mt-1" id="finalPhotoFullBox"></div>
+
+									<div class="fallback">
+										<input name="final-gallerie[]" type="file" id="finalPhotoFull" class="form-control" accept="image/*" multiple/>
+									</div>
+
+									<div class="table-responsive d-none">
+										<table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+											<thead class="thead-light">
+												<tr>
+													<th>#</th>
+													<th>Image</th>
+													<th style="width: 120px;">Action</th>
+												</tr>
+											</thead>
+											<tbody id="table-images"></tbody>
+										</table>
+									</div>
+
+
+								</div>
+
+
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<h4 class="header-title" id="categorie-length" length="{{categories|length}}">Categorie du produit</h4>
+								<p class="card-title-desc">Veuillez cocher min une categorie</p>
+								<div style="height:200px; overflow-y:scroll; overflow-x:hidden; scroll-behavior:smooth">
+									{% for categorie in categories %}
+										<div class="mb-1" id={{"categorie-"~categorie.id}}>
+											<input name="{{"categorie_"~categorie.id}}" type="checkbox" id={{"categorie_"~categorie.id}}>
+											<label for={{"categorie_"~categorie.id}}>{{categorie.getNom}}</label>
+										</div>
+										{% for i in allCategorie%}
+											{% if(i.getParent == categorie.id) %}
+												<div class="mb-1 ps-4"  id={{"categorie-"~i.getId}}>
+													<input name="{{"categorie_"~i.getId}}" type="checkbox" id={{"categorie_"~i.getId}}>
+													<label for={{"categorie_"~i.getId}}>{{i.getNom}}</label>
+												</div>
+											{% endif %}
+										{% endfor %}
+									{% endfor %}
+								</div>
+								<details>
+									<summary class="text-success">
+										demande de creation d'une categorie
+									</summary>
+									<div class="">
+
+
+										<div class="mb-1 col-lg-12">
+											<label class="form-label" for="nom">Nom</label>
+											<input id="nom" name="nom" type="text" class="form-control" placeholder="Entrer le Nom ">
+										</div>
+										<div class="mb-1 col-lg-12">
+											<label for="categorie">categorie parente</label>
+											<select class="form-select">
+												<option value="">Aucun</option>
+												<option value="">cate...</option>
+
+											</select>
+										</div>
+
+										<div class="d-flex justify-content-end mt-3">
+											<button class="btn btn-success">Soumettre</button>
+										</div>
+
+									</div>
+								</details>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div>
+									<h4 class="header-title">Marque du produit</h4>
+									<p class="card-title-desc">Veuillez selectionner</p>
+
+									<div class="mb-3">
+										<select name="marque" class="form-select" id="selectMarque">
+											<option disabled selected>Select une marque</option>
+											{% for marque in marques %}
+												<option value="{{marque.getId}}">{{marque.getNom}}</option>
+											{% endfor %}
+										</select>
+									</div>
+
+								</div>
+								<details>
+									<summary class="text-success">
+										Creer une Marque
+									</summary>
+									<div class="border border-2 border-light border-rounded">
+
+
+										<div class="mb-1 col-lg-12">
+											<label class="form-label" for="nom">Nom</label>
+											<input id="nomMarque" name="nom" type="text" class="form-control" placeholder=" entrer le nom ">
+										</div>
+
+
+										<div class="d-flex justify-content-end mt-3">
+											<div class="btn btn-success" onclick="addMarque()">valider</div>
+										</div>
+
+									</div>
+								</details>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="col-12">
+									<p id="submit-add-produit" class="btn btn-success">Creer maintenant <i class="mdi mdi-save"></i> </p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- end row -->
+					{# <div class="col-12 mb-4">
+						<p id="submit-add-produit" class="btn btn-success">Valider la creation <i class="mdi mdi-save"></i> </p>
+					</div> #}
+				</form>
+			</div>
+
+
+		</div>
+
+	<script src="{{ asset('_dashboard/assets/libs/jquery/jquery.min.js') }}"></script>
+	<!-- Import Trumbowyg -->
+	<script src="{{ asset('plugins/trumbowyg/dist/trumbowyg.min.js')}}"></script>
+	<script>
+		$('#productdesc').trumbowyg();
+		{# $('#productCaracteristic').trumbowyg();
+		$('#productcaracteristique').trumbowyg();
+		$('#InformationLivraisonAsavoir').trumbowyg(); #}
+
+		$(document).ready(function() {
+			$('.js-example-basic-multiple').select2();
+		});
+
+	</script>
+
+
+		<script src="{{ asset('custom-js/attribut.handler.js') }}"></script>
+
+		<script src="{{ asset('custom-js/variation.handler.js') }}"></script>
+
+		<script src="{{ asset('/custom-js/product-handler.js')}}"></script>
+
+		<script src="{{ asset('/custom-js/marque-image-handler.js') }}"></script>
+
+		<script src="{{ asset('/custom-js/app.js') }}"></script>
+
+		<script src="{{ asset('custom-js/custom.tab.js')}}"></script>
+
+		<script src="{{ asset('custom-js/create-produit-variable.js')}}"></script>
+
+	{% endblock %}

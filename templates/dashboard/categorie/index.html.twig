@@ -1,0 +1,223 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+
+	<!-- start page title -->
+
+	<div class="page-title-box">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-sm-6">
+					<div class="page-title">
+						<h4>Toutes les categories principales</h4>
+						<ol class="breadcrumb m-0">
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Vaizimarket</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="javascript: void(0);">Marketplace</a>
+							</li>
+							<li class="breadcrumb-item active">Toutes les categories</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div
+						class="float-end d-none d-sm-block">{# <a href="" class="btn btn-success">Ajouter une categorie</a> #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end page title -->
+
+
+	<div class="container-fluid">
+
+		<div class="page-content-wrapper" style="font-size:14px !important;">
+			<div class="row">
+				<div class="col-xl-4">
+					{{form_start(form)}}
+					<div class="text-danger">
+						{{ form_errors(form) }}
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<p class="card-title-desc">Ajouter une categorie</p>
+							{% for type, messages in app.flashes() %}
+
+								<p class="text-{{type}} mt-2">
+									{{ messages[0] }}
+								</p>
+							{% endfor %}
+
+							<div class="mb-3">
+								<label for="nom">Nom</label>
+								{{ form_widget(form.nom, {'attr': {'class': 'form-control','name':'nom','id':'nom'}}) }}
+							</div>
+
+							<div class="my-3">
+								<label for="image">Image</label>
+								{{ form_widget(form.image, {'attr': {'class': 'form-control','name':'image','id':'image'}})}}
+							</div>
+
+							<div class="mb-3">
+								<label for="categorie">categorie parente</label>
+								{{ form_widget(form.parent, {'attr': {'class': 'form-select','name':'categorie','id':'categorie'}})}}					
+							</div>
+
+							<div class="my-3">
+								{{ form_widget(form.en_avant, {'attr': {'class': '','name':'mettre_en_avant','id':'mettre_en_avant','checked':false}})}}
+								<label for="mettre_en_avant">Mettre en avant ?  </label>
+								<p>(Au maximum trois categories)</p>
+							</div>
+
+							{{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary waves-effect waves-light','id':'submit'}}) }}
+
+						</div>
+					</div>
+					{{form_end(form)}}
+				</div>
+
+				<div class="col-xl-8">
+					<div class="card m-b-30">
+						<div class="card-body">
+							<h4 class="mt-0 header-title mb-4"  style="font-size:14px !important;">Categorie</h4>
+							<div class="table-responsive">
+								<table class="table table-centered table-nowrap table-hover mb-0">
+									<thead>
+										<tr>
+											<th scope="">Image</th>
+											<th scope="col">Nom</th>
+											<th scope="col">Parente</th>
+											<th scope="col">En avant</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										{% for categorie in allCategorie %}
+											<tr>
+
+												<td>
+													<img src={{categorie.image}} style="width:50px;height:50px" class='rounded'/>
+												</td>
+
+												<td>
+													<h5  style="font-size:14px !important;">
+														{{categorie.nom}}
+													</h5>
+												</td>
+												<td>
+													{%for i in allCategorie%}
+														{% if(i.getId==categorie.getParent)%}
+														<h5  style="font-size:14px !important;">
+															{{i.getNom}}
+														</h5>
+														{% endif %}
+													{% endfor %}
+												</td>
+
+												<td>
+													<h5  style="font-size:14px !important;">
+														{{categorie.isEnAvant?'oui':'non'}}
+													</h5>
+												</td>
+												
+
+												<td id="tooltip-container0">
+													<a data-bs-toggle="modal" data-bs-target="#modif-modal-{{categorie.id}}" class="me-3 text-primary" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+														<i class="mdi mdi-pencil font-size-18"></i>
+													</a>
+													<a href="{{path('app_delete_categorie',{'id':categorie.getId,'role': app.user.access})}}" class="text-danger" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+														<i class="mdi mdi-trash-can font-size-18"></i>
+													</a>
+												</td>
+
+
+
+
+												<div class="modal fade" id="modif-modal-{{categorie.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+							<div class="modal-header">
+								<h1 class="modal-title fs-5" id="exampleModalLabel">Modification cette categorie</h1>
+								<button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<form method="post" id='form-{{categorie.id}}' action={{path('app_edit_categorie',{'id':categorie.id,'role' : app.user.access})}} enctype="multipart/form-data">
+									<div class="my-3">
+										<label for="edit_nom">Nom</label>
+										<input type="text" id="edit_nom" name="edit_nom" class="form-control" value='{{categorie.nom}}' />
+									</div>
+									
+									<div class="row mt-2">
+										<label for="edit_image">Modifier votre photo</label>
+										<input type="file" id="edit_image" name="edit_image" class="form-control"/>
+									</div>
+
+									<div class="mb-3">
+										<label for="categorie">categorie parente</label>
+										<select class="form-select" name='edit_categorieParent'>
+											<option value="">Aucun</option>
+											{% for categorie in allCategorie %}
+												<option value="{{ categorie.getId}}">{{ categorie.getNom}}</option>
+											{% endfor %}
+										</select>
+									</div>
+
+									{% if(categorie.isEnAvant) %}
+									
+									<div class="my-3">
+										<label for="edit_checkbox">Mettre en avant?</label>
+										<input type="checkbox" id="edit_checkbox" name="edit_checkbox" class="" checked/>
+									</div>
+									{% else %}
+										<div class="my-3">
+										<label for="edit_checkbox">Mettre en avant?</label>
+										<input type="checkbox" id="edit_checkbox" name="edit_checkbox" class=""/>
+									</div>
+									{% endif %}
+										
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+								<button onClick="modif({{categorie.id}})" type="button" class="btn btn-primary">Modifier</button>
+							</div>
+							</div>
+						</div>
+						</div>
+
+											</tr>
+										{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+<script>
+
+		function modif(id){
+
+			console.log(id);
+
+			const form= document.getElementById('form-'+id);
+
+			form.submit();
+			
+		}
+	
+</script>
+
+		<!-- container-fluid -->
+
+	{% endblock %}

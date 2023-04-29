@@ -1,0 +1,252 @@
+{% extends 'dashboard/_base.html.twig' %}
+
+{% block dashboardPageContent %}
+  <!-- start page title -->
+  <div class="page-title-box">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-sm-6">
+          <div class="page-title">
+            <h4>Configuration des Modes de Paiements</h4>
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item">
+                <a href="javascript: void(0);">Vazimarket</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript: void(0);">Marketplace</a>
+              </li>
+              <li class="breadcrumb-item active">Configuration des Modes de Paiements</li>
+            </ol>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="float-end d-none d-sm-block">
+            {# <a href="" class="btn btn-success">Creer un mode</a> #}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end page title -->
+
+  <div class="container-fluid">
+    <div class="page-content-wrapper">
+      
+     <div class="row">
+        <div class="col-xl-8">
+            <div class="row">
+        {% for item in modesPaiements %}
+          <div class="col-xl-4">
+            <div class="card">
+              <div class="card-body">
+
+                
+                <div class="d-flex justify-content-between">
+                    <img src="{{item.getLogo}}" alt="" width="70px" class="rounded" srcset="">
+
+                    <div>
+                        <a href="#" class="btn">
+                            <i class="mdi mdi-delete text-danger"></i>
+                        </a>
+
+                        <a href="#" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#edit-modal-{{item.getId}}">
+                            <i class="fa fa-edit text-success"></i>
+                        </a>
+                    </div>
+                </div>
+
+                {# MODAL EDIT #}
+                <!-- Modal -->
+                <div class="modal fade" id="edit-modal-{{item.getId}}" tabindex="-1" aria-labelledby="edit-modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="edit-modalLabel">Mise a jour</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    <div class="my-2 col-lg-12">
+                        <label for="">Nom</label>
+                        <input type="text" class="form-control" placeholder="ex:PayPal" value="{{item.getNom}}">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-10">
+                            <div class="my-2 col-lg-12">
+                                <label for="">Logo</label>
+                                <input type="file" class="form-control" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="col-xl-2">
+                            <img src="{{item.getLogo}}" alt="" width="70px" class="rounded" srcset="">
+                        </div>
+                    </div>
+
+                    <div class="my-2 col-lg-12">
+                        <label for="">Description</label>
+                        <textarea class="form-control" placeholder="ex:PayPal est ..." value="{{item.getDescription}}"></textarea>
+                    </div>
+
+                    
+                    <div class="d-flex gap-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                    </div>
+
+                    </div>     
+                    </div>
+                </div>
+                </div>
+                {# MODAL #}
+
+                <div><p class="mb-0 mt-4">{{ item.getNom }}</p></div>
+
+                <h3 class="mt-3" style="font-size:12px">{{ item.getDescription ?? "La description "~ item.getNom ~" s'affichera ici" }}</h3>
+                                 
+                <div class="my-1">
+                  {% if item.isActif %}
+                      <p class="mb-0 alert alert-success p-0">Actif</p>
+                  {% else %}                      
+                      <p><a href="#" class="btn p-1 btn-outline-info">Configurer maintenant</a></p>
+                  {% endif %}
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+            {% if modesPaiements|length == 0 %}
+                <div class="card">
+                    <div class="card-body">
+                        <p class="alert alert-warning">
+                        <i class="fa fa-info pe-4"></i>
+                        Aucun mode de paiement n'a encore ete enregistre et configure</p>
+                    </div>
+                </div>
+            
+            {% endif %}
+            
+
+      </div>
+        </div>
+
+
+        <div class="col-xl-4">
+            <div class="card">
+                {{ form_start(form) }}
+                    <div class="card-body">
+                    <p class="card-title-desc">Creer un mode</p>
+									
+                    {% if error %}
+                        <p class="alert alert-danger">Moyen de paiement deja existant</p>                    
+                    {% endif %}
+                    
+                    <div class="my-2 col-lg-12">
+                        <label for="">Nom</label>
+                        {{ form_widget(form.nom, {'attr': {'class': 'form-control','name':'nom', 'placeholder':'ex: PayPal'}})}}
+                    </div>
+
+                    <div class="my-2 col-lg-12">
+                        <label for="">Logo</label>
+                        {{ form_widget(form.logo, {'attr': {'class': 'form-control','name':'logo' }})}}
+                    </div>
+
+                    <div class="my-2 col-lg-12">
+                        <label for="">Description</label>
+                        {{ form_widget(form.Description, {'attr': {'class': 'form-control','name':'Description', 'maxlength':'200' }})}}
+                    </div>
+
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary' }})}}
+
+                </div>
+                {{ form_end(form) }}
+            </div>
+        
+        </div>
+     
+     </div>
+    </div>
+  </div>
+  <!-- container-fluid -->
+
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-visa text-info h1"></i>
+
+							<h3 class="mt-3 font-size-22">**** **** **** 2355</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-danger p-0 px-3">Non actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">PAYPLUG</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>   -->
+  <!-- end card -->
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-mastercard text-danger h1"></i>
+
+							<h3 class="mt-3 font-size-22">**** **** **** 5452</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-danger p-0 px-3">Non actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">Paypal</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>   -->
+
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-discover text-success h1"></i>
+
+							<h3 class="mt-3 font-size-22">**** **** **** 2656</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-success p-0 px-3">Actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">ALMA</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>   -->
+  <!-- end col -->
+  <!--  	<div class="col-xl-3">
+					<div class="card">
+						<div class="card-body">
+							<i class="fab fa-cc-amex text-primary h1"></i>
+
+							<h3 class="mt-3 font-size-24">**** **** **** 4575</h3>
+
+							<div class="mt-3">
+								<div class="float-end">
+									<p class="mb-0 alert alert-success p-0 px-3">Actif
+									</p>
+								</div>
+
+								<p class="mb-0 mt-4">Autre</p>
+							</div>
+						</div>
+					</div>
+				</div>   -->
+{% endblock %}
